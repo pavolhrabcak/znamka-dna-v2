@@ -65,3 +65,4 @@ public/admin/           ← Decap CMS
 ```
 # znamka-dna
 # znamka-dna-v2
+# znamka-dna-v2
