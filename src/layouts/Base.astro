@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+const { title = 'Známka dňa', description = 'Blog o klasických gravírovaných poštových známkach.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} — Známka dňa</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate" type="application/rss+xml" title="Známka dňa RSS" href="/rss.xml" />
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Nav -->
+  <nav class="border-b border-cream-300 px-8 md:px-12 py-5">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <a href="/" class="font-serif text-lg tracking-wide text-cream-900 hover:text-cream-700 transition-colors">
+        Známka dňa
+      </a>
+      <ul class="hidden md:flex items-center gap-7 text-[11px] tracking-widest uppercase text-cream-600">
+        <li><a href="/archiv" class="hover:text-cream-900 transition-colors">Archív</a></li>
+        <li><a href="/tlaciarene" class="hover:text-cream-900 transition-colors">Tlačiarne</a></li>
+        <li><a href="/krajiny" class="hover:text-cream-900 transition-colors">Krajiny</a></li>
+        <li><a href="/hladat" class="hover:text-cream-900 transition-colors">Hľadať</a></li>
+        <li><a href="/o-blogu" class="hover:text-cream-900 transition-colors">O blogu</a></li>
+      </ul>
+      <a href="/rss.xml" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors hidden md:block">RSS</a>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-cream-300 mt-16 py-10 px-8">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] tracking-widest uppercase text-cream-500">
+      <span>© {new Date().getFullYear()} Známka dňa</span>
+      <div class="flex gap-6">
+        <a href="/archiv" class="hover:text-cream-900 transition-colors">Archív</a>
+        <a href="/o-blogu" class="hover:text-cream-900 transition-colors">O blogu</a>
+        <a href="/rss.xml" class="hover:text-cream-900 transition-colors">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

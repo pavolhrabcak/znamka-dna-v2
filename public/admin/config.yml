@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: public/stamps
+public_folder: /stamps
+
+collections:
+  - name: stamps
+    label: Známky
+    label_singular: Známka
+    folder: src/content/stamps
+    create: true
+    slug: "{{fields.country | slugify}}-{{fields.denomination | slugify}}-{{fields.year_issued}}"
+    fields:
+      - { label: Názov, name: title, widget: string }
+      - { label: Dátum publikácie, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: Krajina, name: country, widget: string }
+      - { label: Región, name: region, widget: string, required: false, hint: "napr. Britské kolónie" }
+      - { label: Nominálna hodnota, name: denomination, widget: string, hint: "napr. 4 centy" }
+      - { label: Rok vydania, name: year_issued, widget: number, value_type: int }
+      - { label: Tlačiareň, name: printer, widget: string }
+      - label: Technika
+        name: technique
+        widget: select
+        options:
+          - { label: Hĺbkotlač (Recess), value: recess }
+          - { label: Výšková tlač (Letterpress), value: letterpress }
+          - { label: Litografia, value: lithography }
+          - { label: Fotogravúra, value: photogravure }
+          - { label: Kombinovaná, value: mixed }
+      - { label: Tagy, name: tags, widget: list, default: [] }
+      - { label: Obrázok, name: image, widget: image }
+      - { label: Koncept, name: draft, widget: boolean, default: false, required: false }
+      - { label: Text článku, name: body, widget: markdown }

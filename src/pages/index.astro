@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import StampCard from '../components/StampCard.astro';
+import { getCollection, render } from 'astro:content';
+
+const allStamps = await getCollection('stamps', s => !s.data.draft);
+allStamps.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const latest = allStamps[0];
+const recent = allStamps.slice(1, 7);
+const { Content } = await render(latest);
+
+const { title, country, denomination, year_issued, printer, technique, tags, image, date } = latest.data;
+const formattedDate = new Date(date).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base title={title}>
+
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-12">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <div class="flex flex-col items-center gap-5">
+        <div
+          id="stamp-wrap"
+          class="w-full border border-cream-300 bg-white p-8 cursor-zoom-in transition-shadow hover:shadow-lg relative group"
+          onclick="openLightbox()"
+          title="Klikni pre väčší náhľad"
+        >
+          <img id="stamp-thumb" src={image} alt={title} class="w-full object-contain" />
+          <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase text-cream-400 opacity-0 group-hover:opacity-100 transition-opacity">Zväčšiť</span>
+        </div>
+        <p class="text-[10px] tracking-widest uppercase text-cream-500">{country} · {denomination} · {year_issued}</p>
+      </div>
+
+      <div>
+        <p class="text-[11px] tracking-widest uppercase text-cream-500 mb-3">{formattedDate} · {country}</p>
+        <h1 class="font-serif text-3xl md:text-4xl font-normal text-cream-900 leading-tight mb-2">{title}</h1>
+        <p class="font-serif italic text-cream-600 text-base mb-7">{denomination} — {country}</p>
+
+        <div class="flex gap-8 mb-7 pb-6 border-b border-cream-200">
+          <div>
+            <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Tlačiareň</p>
+            <p class="text-sm text-cream-800">{printer}</p>
+          </div>
+          <div>
+            <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Technika</p>
+            <p class="text-sm text-cream-800 capitalize">{technique}</p>
+          </div>
+          <div>
+            <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Vydaná</p>
+            <p class="text-sm text-cream-800">{year_issued}</p>
+          </div>
+        </div>
+
+        <div class="stamp-prose mb-7">
+          <Content />
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-7">
+          {tags.map(tag => (
+            <a href={`/archiv?tag=${tag}`} class="text-[11px] px-3 py-1 border border-cream-300 text-cream-600 hover:border-cream-700 hover:text-cream-900 transition-colors">
+              #{tag}
+            </a>
+          ))}
+        </div>
+
+        <a href={`/znamky/${latest.slug}`} class="text-[11px] tracking-widest uppercase text-cream-900 border-b border-cream-900 pb-px hover:text-cream-600 transition-colors">
+          Čítať celý článok →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {recent.length > 0 && (
+    <section class="max-w-5xl mx-auto px-8 md:px-12 pb-16">
+      <div class="border-t border-cream-200 pt-10 mb-8">
+        <p class="text-[10px] tracking-widest uppercase text-cream-400">Predchádzajúce známky</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        {recent.map(stamp => <StampCard stamp={stamp} />)}
+      </div>
+      <div class="mt-10 text-center">
+        <a href="/archiv" class="text-[11px] tracking-widest uppercase text-cream-600 border-b border-cream-400 pb-px hover:text-cream-900 transition-colors">
+          Celý archív →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 items-center justify-center cursor-zoom-out" onclick="closeLightbox()">
+    <div class="relative max-w-4xl w-full mx-8" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white/60 hover:text-white text-2xl leading-none px-2">&#215;</button>
+      <div class="bg-white p-6 md:p-10">
+        <img src={image} alt={title} class="w-full object-contain max-h-[80vh]" />
+      </div>
+      <p class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-4">
+        {country} · {denomination} · {printer} · {year_issued} — ESC alebo klikni mimo pre zatvorenie
+      </p>
+    </div>
+  </div>
+
+  <script>
+    window.openLightbox = function() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden'); lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeLightbox = function() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden'); lb.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeLightbox(); });
+  </script>
+
+</Base>

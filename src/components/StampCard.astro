@@ -1,0 +1,39 @@
+---
+const { stamp } = Astro.props;
+const { slug } = stamp;
+const { title, country, denomination, year_issued, printer, tags, image, date } = stamp.data;
+const formattedDate = new Date(date).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<article class="group">
+  <a href={`/znamky/${slug}`} class="block">
+    <!-- Stamp image with white mat -->
+    <div class="border border-cream-300 bg-white p-5 mb-4 overflow-hidden transition-shadow group-hover:shadow-md">
+      <img
+        src={image}
+        alt={title}
+        class="w-full object-contain max-h-52"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Meta -->
+    <div class="space-y-1">
+      <p class="text-[10px] tracking-widest uppercase text-cream-500">{country} · {year_issued}</p>
+      <h2 class="font-serif text-base font-normal text-cream-900 group-hover:text-cream-700 transition-colors leading-snug">{title}</h2>
+      <p class="text-[11px] text-cream-500 italic">{printer}</p>
+    </div>
+  </a>
+
+  <!-- Tags -->
+  <div class="flex flex-wrap gap-1 mt-2">
+    {tags.slice(0,3).map(tag => (
+      <a
+        href={`/archiv?tag=${tag}`}
+        class="text-[10px] px-2 py-0.5 border border-cream-300 text-cream-600 hover:border-cream-600 hover:text-cream-900 transition-colors"
+      >
+        #{tag}
+      </a>
+    ))}
+  </div>
+</article>

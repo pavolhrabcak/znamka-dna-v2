@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cream-50 text-cream-900 font-sans;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Prose styles for stamp article body */
+.stamp-prose {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2a2822;
+}
+.stamp-prose p   { margin-bottom: 1rem; }
+.stamp-prose h2  { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400; margin: 2rem 0 0.75rem; color: #1a1a18; }
+.stamp-prose em  { font-style: italic; }
+.stamp-prose strong { font-weight: 500; }
+
+/* Pagefind search UI overrides */
+#search .pagefind-ui__search-input {
+  border: 0.5px solid #d0ccc4 !important;
+  background: #fff !important;
+  border-radius: 2px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+}
+#search .pagefind-ui__result-title {
+  font-family: 'Playfair Display', serif !important;
+}

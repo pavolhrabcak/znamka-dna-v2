@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="O blogu">
+  <section class="max-w-2xl mx-auto px-8 md:px-12 pt-14 pb-16">
+    <div class="mb-10">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-2">O projekte</p>
+      <h1 class="font-serif text-3xl font-normal text-cream-900">Známka dňa</h1>
+    </div>
+
+    <div class="stamp-prose space-y-5">
+      <p>
+        Každý deň jedna gravírovaná poštová známka. Blog sa zameriava na klasické
+        <em>recess printing</em> — hĺbkotlač, pri ktorej gravér ručne ryje motív do oceľovej platne.
+      </p>
+      <p>
+        Hlavný záujem: britské koloniálne série (De La Rue, Bradbury Wilkinson, Waterlow &amp; Sons)
+        a Latinská Amerika (American Bank Note Company). Práve v týchto dvoch oblastiach dosiahla
+        gravíra na poštových známkach svoju zlatú éru — od 80. rokov 19. storočia po 60. roky 20. storočia.
+      </p>
+      <p>
+        Každý príspevok obsahuje: sken známky, základné katalogizačné údaje a historický kontext —
+        čo je zobrazené, prečo bol motív zvolený, čo sa dialo v danej krajine a dobe.
+      </p>
+
+      <div class="border-t border-cream-200 pt-6 mt-8">
+        <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-4">Tlačiarne v centre záujmu</p>
+        <ul class="space-y-2">
+          {[
+            ['De La Rue', 'Londýn, dominantná sila britskej koloniálnej filatelie'],
+            ['Bradbury, Wilkinson & Co.', 'Londýn, výnimočná jemnosť gravúry'],
+            ['Waterlow & Sons', 'Londýn, rival De La Rue'],
+            ['American Bank Note Co.', 'New York, Latinská Amerika a zámorské územia USA'],
+            ['Perkins Bacon', 'Londýn, historicky prvá tlačiareň poštových známok'],
+          ].map(([name, desc]) => (
+            <li class="flex gap-3">
+              <span class="font-serif text-cream-900">{name}</span>
+              <span class="text-cream-500 text-sm">— {desc}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

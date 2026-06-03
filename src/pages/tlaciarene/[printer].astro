@@ -1,0 +1,37 @@
+---
+import Base from '../../layouts/Base.astro';
+import StampCard from '../../components/StampCard.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const stamps = await getCollection('stamps', s => !s.data.draft);
+  const printers = [...new Set(stamps.map(s => s.data.printer))];
+  return printers.map(printer => ({
+    params: { printer: printer.toLowerCase().replace(/[^a-z0-9]+/g, '-') },
+    props: { printerName: printer },
+  }));
+}
+
+const { printerName } = Astro.props;
+const allStamps = await getCollection('stamps', s => !s.data.draft && s.data.printer === printerName);
+allStamps.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Base title={printerName}>
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-16">
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-10 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <a href="/tlaciarene" class="hover:text-cream-900 transition-colors">Tlačiarne</a>
+      <span>/</span>
+      <span class="text-cream-600">{printerName}</span>
+    </nav>
+    <div class="mb-10">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-2">Tlačiareň · {allStamps.length} {allStamps.length === 1 ? 'známka' : 'známok'}</p>
+      <h1 class="font-serif text-3xl font-normal text-cream-900">{printerName}</h1>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {allStamps.map(stamp => <StampCard stamp={stamp} />)}
+    </div>
+  </section>
+</Base>

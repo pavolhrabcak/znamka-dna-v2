@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const stamps = await getCollection('stamps', s => !s.data.draft);
+  return stamps.map(stamp => ({ params: { slug: stamp.slug }, props: { stamp } }));
+}
+
+const { stamp } = Astro.props;
+const { Content } = await render(stamp);
+const { title, country, region, denomination, year_issued, printer, technique, tags, image, date } = stamp.data;
+const formattedDate = new Date(date).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base title={title}>
+  <article class="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-16">
+
+    <!-- Breadcrumb -->
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-10 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <a href="/archiv" class="hover:text-cream-900 transition-colors">Archív</a>
+      <span>/</span>
+      <span class="text-cream-600">{title}</span>
+    </nav>
+
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+      <!-- Stamp panel -->
+      <div class="flex flex-col items-center gap-5 md:sticky md:top-8">
+        <div
+          class="w-full border border-cream-300 bg-white p-8 cursor-zoom-in transition-shadow hover:shadow-lg relative group"
+          onclick="openLightbox()"
+          title="Klikni pre väčší náhľad"
+        >
+          <img src={image} alt={title} class="w-full object-contain" />
+          <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase text-cream-400 opacity-0 group-hover:opacity-100 transition-opacity">Zväčšiť</span>
+        </div>
+        <p class="text-[10px] tracking-widest uppercase text-cream-500 text-center">{country} · {denomination} · {year_issued}</p>
+
+        <!-- Metadata card -->
+        <div class="w-full border border-cream-200 bg-cream-100 p-5 space-y-3">
+          {[
+            ['Krajina', country],
+            ['Región', region],
+            ['Nominálna hodnota', denomination],
+            ['Rok vydania', String(year_issued)],
+            ['Tlačiareň', printer],
+            ['Technika', technique],
+          ].filter(([_, v]) => v).map(([label, value]) => (
+            <div class="flex justify-between gap-4">
+              <span class="text-[10px] tracking-widest uppercase text-cream-500">{label}</span>
+              <span class="text-xs text-cream-800 capitalize text-right">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Article content -->
+      <div>
+        <p class="text-[11px] tracking-widest uppercase text-cream-500 mb-3">{formattedDate}</p>
+        <h1 class="font-serif text-3xl md:text-4xl font-normal text-cream-900 leading-tight mb-8">{title}</h1>
+
+        <div class="stamp-prose">
+          <Content />
+        </div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-8 pt-8 border-t border-cream-200">
+          {tags.map(tag => (
+            <a href={`/archiv?tag=${tag}`} class="text-[11px] px-3 py-1 border border-cream-300 text-cream-600 hover:border-cream-700 hover:text-cream-900 transition-colors">
+              #{tag}
+            </a>
+          ))}
+        </div>
+
+        <!-- Back link -->
+        <div class="mt-10">
+          <a href="/" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors">
+            ← Späť na najnovšiu
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 items-center justify-center cursor-zoom-out" onclick="closeLightbox()">
+    <div class="relative max-w-4xl w-full mx-8" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white/60 hover:text-white text-2xl leading-none px-2">&#215;</button>
+      <div class="bg-white p-6 md:p-10">
+        <img src={image} alt={title} class="w-full object-contain max-h-[80vh]" />
+      </div>
+      <p class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-4">
+        {country} · {denomination} · {printer} · {year_issued} — ESC alebo klikni mimo pre zatvorenie
+      </p>
+    </div>
+  </div>
+
+  <script>
+    window.openLightbox = function() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden'); lb.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeLightbox = function() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden'); lb.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeLightbox(); });
+  </script>
+</Base>
