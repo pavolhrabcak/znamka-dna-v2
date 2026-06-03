@@ -64,3 +64,4 @@ public/stamps/          ← Obrázky známok
 public/admin/           ← Decap CMS
 ```
 # znamka-dna
+# znamka-dna-v2
