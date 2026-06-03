@@ -8,7 +8,7 @@ year_issued: 1955
 printer: Bradbury, Wilkinson
 technique: recess
 tags: [britské-kolónie, borneo, etnografia, bradbury-wilkinson, kajan, gravíra]
-image: /stamps/sarawak-kayam.webp
+image: /stamps/sarawak-4c.png
 ---
 
 Táto známka zachytáva bojového tanečníka kmeňa Kajan — jedného z domorodých národov Bornea. Mač, ktorý drží vo vzduchu, je _mandau_, tradičná zbraň aj symbol spoločenského postavenia v kajánskej kultúre.
