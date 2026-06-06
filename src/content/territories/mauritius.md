@@ -6,13 +6,36 @@ period_start: 1810
 period_end: 1968
 capital: Port Louis
 current_country: Maurícius
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [indian-ocean,de-la-rue,waterlow]
+tags: [indian-ocean, de-la-rue, waterlow]
 stamps:
-  []
+  - image: /stamps/Mauritius.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/Mauritius3.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/Mauritius1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/Mauritius2.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1810
     event: Britská správa — dobytie od Francúzska

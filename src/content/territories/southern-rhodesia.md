@@ -12,7 +12,25 @@ printers:
   - Bradbury, Wilkinson
 tags: [africa, victoria-falls, de-la-rue, zimbabwe, rhodes]
 stamps:
+  - image: /stamps/s-rhodesia.webp
+    denomination: 1s
+    year: 1935
+    era: KGV
+    printer: De La Rue
+    note: Victoria Falls (Mosi-oa-Tunya)
   - image: /stamps/s-rhodesia-1.webp
+    denomination: 1s
+    year: 1935
+    era: KGV
+    printer: De La Rue
+    note: Victoria Falls (Mosi-oa-Tunya)
+  - image: /stamps/s-rhodesia-2.webp
+    denomination: 1s
+    year: 1935
+    era: KGV
+    printer: De La Rue
+    note: Victoria Falls (Mosi-oa-Tunya)
+  - image: /stamps/s-rhodesia-3.webp
     denomination: 1s
     year: 1935
     era: KGV

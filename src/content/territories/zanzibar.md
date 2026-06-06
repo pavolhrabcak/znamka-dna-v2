@@ -6,12 +6,35 @@ period_start: 1890
 period_end: 1964
 capital: Zanzibar City
 current_country: Tanzánia
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
-tags: [east-africa,de-la-rue,spices,sultan]
+tags: [east-africa, de-la-rue, spices, sultan]
 stamps:
-  []
+  - image: /stamps/zanzibar.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/zanzibar-1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/zanzibar-2.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/zanzibar-3.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1890
     event: Britský protektorát

@@ -6,13 +6,36 @@ period_start: 1868
 period_end: 1966
 capital: Maseru
 current_country: Lesotho
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [southern-africa,de-la-rue,waterlow]
+tags: [southern-africa, de-la-rue, waterlow]
 stamps:
-  []
+  - image: /stamps/basutoland.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/basutoland1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/basutoland2.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/basutoland3.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1868
     event: Britský protektorát

@@ -5,12 +5,35 @@ period_start: 1901
 period_end: 1974
 capital: Alofi
 current_country: Niue
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
-tags: [oceania,de-la-rue,pacific,new-zealand]
+tags: [oceania, de-la-rue, pacific, new-zealand]
 stamps:
-  []
+  - image: /stamps/niue.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/niue1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/niue2.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/niue3.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1901
     event: Britský protektorát — správa Nového Zélandu

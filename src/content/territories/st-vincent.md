@@ -6,13 +6,24 @@ period_start: 1763
 period_end: 1979
 capital: Kingstown
 current_country: Svätý Vincent a Grenadíny
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
-  []
+  - image: /stamps/st-vincent.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/st-vincent-1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1763
     event: Britská kolónia po Parížskej zmluve

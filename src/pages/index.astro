@@ -6,7 +6,7 @@ const allTerritories = await getCollection('territories', t => !t.data.draft);
 const stampCount = allTerritories.reduce((sum, t) => sum + t.data.stamps.length, 0);
 ---
 
-<Base title="Britské kolónie — Gravírované poštové známky">
+<Base title="Britské kolónie — Gravírované poštové známky" description="Malá encyklopédia gravírovaných poštových známok britského impéria. Teritóriá, tlačiarne, éry KGV, KGVI a QEII — hĺbkotlačové emisie britských kolónií na jednom mieste.">
   <section class="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-16">
 
     <!-- Hero -->

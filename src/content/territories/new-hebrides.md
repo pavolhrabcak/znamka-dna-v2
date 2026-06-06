@@ -5,13 +5,36 @@ period_start: 1906
 period_end: 1980
 capital: Vila
 current_country: Vanuatu
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,condominium,pacific]
+tags: [oceania, de-la-rue, waterlow, condominium, pacific]
 stamps:
-  []
+  - image: /stamps/hebrides.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/hebrides-1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/hebrides-2.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/hebrides-3.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1906
     event: Anglo-francúzske kondominíum

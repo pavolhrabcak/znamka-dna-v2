@@ -11,9 +11,20 @@ printers:
   - Waterlow & Sons
   - De La Rue
   - Bradbury, Wilkinson
-tags: [southern-africa,waterlow,de-la-rue,bsac,rhodesia]
+tags: [southern-africa, waterlow, de-la-rue, bsac, rhodesia]
 stamps:
-  []
+  - image: /stamps/bsa-company.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
+  - image: /stamps/bsa-company1.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1889
     event: Britská juhoafrická spoločnosť — kráľovská charta

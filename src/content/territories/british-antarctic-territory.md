@@ -8,9 +8,14 @@ eras: [QEII]
 printers:
   - De La Rue
   - Harrison & Sons
-tags: [south-atlantic,de-la-rue,harrison,antarctica,wildlife]
+tags: [south-atlantic, de-la-rue, harrison, antarctica, wildlife]
 stamps:
-  []
+  - image: /stamps/bat.webp
+    denomination: 1½d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+    note: English Harbour
 timeline:
   - year: 1908
     event: Britský nárok na antarktické územie
