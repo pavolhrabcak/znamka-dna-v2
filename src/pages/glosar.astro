@@ -19,27 +19,25 @@ import Base from '../layouts/Base.astro';
     </nav>
 
     <!-- Hero -->
-    <div class="mb-10 pb-8 border-b border-cream-200">
+    <div class="mb-8 pb-8 border-b border-cream-200">
       <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-3">Referencia · Hĺbkotlač</p>
       <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Glosár</h1>
-      <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic mb-7">
+      <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic">
         Technické pojmy ryteckej a tlačiarenskej praxe britských koloniálnych emisií
       </p>
-      <div class="flex flex-wrap items-baseline gap-x-7 gap-y-2">
-        <a href="#tlac" class="text-[11px] tracking-widest uppercase text-cream-600 hover:text-cream-900 transition-colors">Recess Printing</a>
-        <span class="text-cream-300 hidden sm:inline">·</span>
-        <a href="#arch" class="text-[11px] tracking-widest uppercase text-cream-600 hover:text-cream-900 transition-colors">Anatómia hárku</a>
-        <span class="text-cream-300 hidden sm:inline">·</span>
-        <a href="#material" class="text-[11px] tracking-widest uppercase text-cream-600 hover:text-cream-900 transition-colors">Papier &amp; Atrament</a>
-        <span class="text-cream-300 hidden sm:inline">·</span>
-        <a href="#chyby" class="text-[11px] tracking-widest uppercase text-cream-600 hover:text-cream-900 transition-colors">Variety &amp; Chyby</a>
-        <span class="text-cream-300 hidden sm:inline">·</span>
-        <a href="#stav" class="text-[11px] tracking-widest uppercase text-cream-600 hover:text-cream-900 transition-colors">Stav známky</a>
-      </div>
     </div>
 
-    <!-- Section 1: Printing & Production -->
-    <div id="tlac" class="mb-12 pb-10 border-b border-cream-200">
+    <!-- Tab bar -->
+    <div class="flex flex-wrap gap-x-8 gap-y-0 border-b border-cream-200 mb-10">
+      <button class="tab-btn pb-2.5 -mb-px text-[11px] tracking-widest uppercase border-b-2 text-cream-900 border-cream-800 transition-colors" data-target="tlac">Technológia tlače</button>
+      <button class="tab-btn pb-2.5 -mb-px text-[11px] tracking-widest uppercase border-b-2 text-cream-400 border-transparent hover:text-cream-700 transition-colors" data-target="arch">Dizajn a hárok</button>
+      <button class="tab-btn pb-2.5 -mb-px text-[11px] tracking-widest uppercase border-b-2 text-cream-400 border-transparent hover:text-cream-700 transition-colors" data-target="material">Papier &amp; Atrament</button>
+      <button class="tab-btn pb-2.5 -mb-px text-[11px] tracking-widest uppercase border-b-2 text-cream-400 border-transparent hover:text-cream-700 transition-colors" data-target="chyby">Variety &amp; Chyby</button>
+      <button class="tab-btn pb-2.5 -mb-px text-[11px] tracking-widest uppercase border-b-2 text-cream-400 border-transparent hover:text-cream-700 transition-colors" data-target="stav">Stav známky</button>
+    </div>
+
+    <!-- Panel 1: Printing & Production -->
+    <div id="tab-tlac" class="tab-panel">
       <div class="mb-8">
         <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">1</p>
         <h2 class="font-serif text-2xl font-normal text-cream-900">Technológia a fázy tlače</h2>
@@ -89,6 +87,16 @@ import Base from '../layouts/Base.astro';
 
         <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-x-8 gap-y-1">
           <dt>
+            <span class="font-semibold text-cream-900">Key Plate</span>
+            <span class="block text-[11px] tracking-widest uppercase text-cream-600 mt-0.5">Kľúčová / Hlavná tlačová platňa</span>
+          </dt>
+          <dd class="stamp-prose">
+            Skutočná fyzická kovová platňa, ktorá tlačila masový, unifikovaný rám a portrét panovníka pre desiatky rôznych kolónií v dvojfázovom procese tlače. Arch papiera išiel do lisu dvakrát: najprv z univerzálnej Key Plate a následne z malej, špecifickej a lacnej Duty Plate (Nápisovej/Menovitej platne), ktorá dotlačila názov konkrétnej kolónie a hodnotu. Hoci bol tento postup doménou typografie, výnimočne sa uplatnil aj pri luxusnej veľkoformátovej hĺbkotlači (recess). De La Rue takto vytlačila vysoké hodnoty (2s až £1) pre kolónie ako Bermudy, Nyasaland či Leeward Islands za vlády Juraja VI. Išlo o technologicky náročnú dvojplatňovú hĺbkotlač, kde jedna platňa niesla univerzálny rám s portrétom kráľa a druhá texty pre danú kolóniu, čo dnes filatelisti študujú kvôli vzácnym posunom sútlače a odtieňom atramentu.
+          </dd>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-x-8 gap-y-1">
+          <dt>
             <span class="font-semibold text-cream-900">Master Die</span>
             <span class="block text-[11px] tracking-widest uppercase text-cream-600 mt-0.5">Hlavná matica</span>
           </dt>
@@ -109,8 +117,8 @@ import Base from '../layouts/Base.astro';
       </dl>
     </div>
 
-    <!-- Section 2: Sheet Anatomy -->
-    <div id="arch" class="mb-12 pb-10 border-b border-cream-200">
+    <!-- Panel 2: Sheet Anatomy -->
+    <div id="tab-arch" class="tab-panel hidden">
       <div class="mb-8">
         <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">2</p>
         <h2 class="font-serif text-2xl font-normal text-cream-900">Anatómia hárku, okraje a dizajn známok</h2>
@@ -130,11 +138,11 @@ import Base from '../layouts/Base.astro';
 
         <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-x-8 gap-y-1">
           <dt>
-            <span class="font-semibold text-cream-900">Key Plate / Key Type</span>
-            <span class="block text-[11px] tracking-widest uppercase text-cream-600 mt-0.5">Kľúčový typ / Jednotná platňa</span>
+            <span class="font-semibold text-cream-900">Key Type</span>
+            <span class="block text-[11px] tracking-widest uppercase text-cream-600 mt-0.5">Jednotný vizuálny typ / Dizajnový koncept</span>
           </dt>
           <dd class="stamp-prose">
-            Unifikovaný dizajn rámu, ktorý De La Rue používala pre desiatky rôznych kolónií, kde sa menil len názov územia a nominálna hodnota. Typické pre éru kráľovnej Viktórie a pre niektoré série Georga V. Umožňovalo lacnú a rýchlu produkciu.
+            Označuje štandardizovanú grafickú šablónu (predlohu) známky, ktorú londýnske tlačiarne (najmä De La Rue) zdieľali naprieč viacerými úplne odlišnými kolóniami s cieľom ušetriť náklady na dizajn. Vytvoril sa spoločný rám s prázdnymi miestami („tablety"), do ktorých sa neskôr vkladal názov konkrétnej krajiny a hodnota. Typickým príkladom sú slávne spoločné koloniálne emisie (Omnibus Issues), ako dizajn „Imperium", prípadne série k Striebornému jubileu (1935) či Korunovácii (1937). Pozor: Tento koncept bol viazaný takmer výlučne na tlač z výšky (kníhtlač / typografiu), ktorá technicky umožňovala jednoduchú výmenu textových častí. Lokálne emisie, ktoré opakovane používali ten istý národný motív naprieč vládami viacerých panovníkov (napr. séria „Baobab a dobytok" pre Bečuánsko), sa nepovažujú za Key Type, ale za dlhotrvajúce obrazové definitívy, pretože boli pre každého panovníka rytecky vytvorené na mieru odznova.
           </dd>
         </div>
 
@@ -180,8 +188,8 @@ import Base from '../layouts/Base.astro';
       </dl>
     </div>
 
-    <!-- Section 3: Paper, Ink & Gum -->
-    <div id="material" class="mb-12 pb-10 border-b border-cream-200">
+    <!-- Panel 3: Paper, Ink & Gum -->
+    <div id="tab-material" class="tab-panel hidden">
       <div class="mb-8">
         <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">3</p>
         <h2 class="font-serif text-2xl font-normal text-cream-900">Materiály a chémia</h2>
@@ -241,8 +249,8 @@ import Base from '../layouts/Base.astro';
       </dl>
     </div>
 
-    <!-- Section 4: Flaws & Varieties -->
-    <div id="chyby" class="mb-12 pb-10 border-b border-cream-200">
+    <!-- Panel 4: Flaws & Varieties -->
+    <div id="tab-chyby" class="tab-panel hidden">
       <div class="mb-8">
         <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">4</p>
         <h2 class="font-serif text-2xl font-normal text-cream-900">Výrobné chyby a variety</h2>
@@ -327,8 +335,8 @@ import Base from '../layouts/Base.astro';
       </dl>
     </div>
 
-    <!-- Section 5: Condition & Grading -->
-    <div id="stav" class="mb-12">
+    <!-- Panel 5: Condition & Grading -->
+    <div id="tab-stav" class="tab-panel hidden">
       <div class="mb-8">
         <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">5</p>
         <h2 class="font-serif text-2xl font-normal text-cream-900">Medzinárodné skratky stavu známok</h2>
@@ -386,4 +394,25 @@ import Base from '../layouts/Base.astro';
     </div>
 
   </article>
+
+  <script>
+    const ACTIVE = ['text-cream-900', 'border-cream-800'];
+    const INACTIVE = ['text-cream-400', 'border-transparent', 'hover:text-cream-700'];
+
+    document.querySelectorAll<HTMLButtonElement>('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target!;
+
+        document.querySelectorAll<HTMLElement>('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('tab-' + target)!.classList.remove('hidden');
+
+        document.querySelectorAll<HTMLButtonElement>('.tab-btn').forEach(b => {
+          b.classList.remove(...ACTIVE);
+          b.classList.add(...INACTIVE);
+        });
+        btn.classList.remove(...INACTIVE);
+        btn.classList.add(...ACTIVE);
+      });
+    });
+  </script>
 </Base>
