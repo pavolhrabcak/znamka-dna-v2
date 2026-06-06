@@ -1,116 +1,80 @@
 ---
 import Base from '../layouts/Base.astro';
-import StampCard from '../components/StampCard.astro';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const allStamps = await getCollection('stamps', s => !s.data.draft);
-allStamps.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const latest = allStamps[0];
-const recent = allStamps.slice(1, 7);
-const { Content } = await render(latest);
-
-const { title, country, denomination, year_issued, printer, technique, tags, image, date } = latest.data;
-const formattedDate = new Date(date).toLocaleDateString('sk-SK', { day: 'numeric', month: 'long', year: 'numeric' });
+const allTerritories = await getCollection('territories', t => !t.data.draft);
+const stampCount = allTerritories.reduce((sum, t) => sum + t.data.stamps.length, 0);
 ---
 
-<Base title={title}>
+<Base title="Britské kolónie — Gravírované poštové známky">
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-16">
 
-  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-12">
-    <div class="grid md:grid-cols-2 gap-16 items-start">
-
-      <div class="flex flex-col items-center gap-5">
-        <div
-          id="stamp-wrap"
-          class="w-full border border-cream-300 bg-white p-8 cursor-zoom-in transition-shadow hover:shadow-lg relative group"
-          onclick="openLightbox()"
-          title="Klikni pre väčší náhľad"
-        >
-          <img id="stamp-thumb" src={image} alt={title} class="w-full object-contain" />
-          <span class="absolute bottom-3 right-3 text-[10px] tracking-widest uppercase text-cream-400 opacity-0 group-hover:opacity-100 transition-opacity">Zväčšiť</span>
-        </div>
-        <p class="text-[10px] tracking-widest uppercase text-cream-500">{country} · {denomination} · {year_issued}</p>
-      </div>
-
-      <div>
-        <p class="text-[11px] tracking-widest uppercase text-cream-500 mb-3">{formattedDate} · {country}</p>
-        <h1 class="font-serif text-3xl md:text-4xl font-normal text-cream-900 leading-tight mb-2">{title}</h1>
-        <p class="font-serif italic text-cream-600 text-base mb-7">{denomination} — {country}</p>
-
-        <div class="flex gap-8 mb-7 pb-6 border-b border-cream-200">
-          <div>
-            <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Tlačiareň</p>
-            <p class="text-sm text-cream-800">{printer}</p>
-          </div>
-          <div>
-            <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Technika</p>
-            <p class="text-sm text-cream-800 capitalize">{technique}</p>
-          </div>
-          <div>
-            <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Vydaná</p>
-            <p class="text-sm text-cream-800">{year_issued}</p>
-          </div>
-        </div>
-
-        <div class="stamp-prose mb-7">
-          <Content />
-        </div>
-
-        <div class="flex flex-wrap gap-2 mb-7">
-          {tags.map(tag => (
-            <a href={`/archiv?tag=${tag}`} class="text-[11px] px-3 py-1 border border-cream-300 text-cream-600 hover:border-cream-700 hover:text-cream-900 transition-colors">
-              #{tag}
-            </a>
-          ))}
-        </div>
-
-        <a href={`/znamky/${latest.slug}`} class="text-[11px] tracking-widest uppercase text-cream-900 border-b border-cream-900 pb-px hover:text-cream-600 transition-colors">
-          Čítať celý článok →
-        </a>
+    <!-- Hero -->
+    <div class="mb-14">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-3">Recess printing · Britské impérium</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Britské kolónie</h1>
+      <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic mb-6">Malá encyklopédia gravírovaných poštových známok britského impéria</p>
+      <div class="stamp-prose">
+        <p>Napriek tomu, že Británia začala získavať kolónie až o sto rokov neskôr ako Španielsko, v nasledujúcich rokoch svoje zaostávanie vyrovnala a v koloniálnej politike neskôr predstihla všetky ostatné európske veľmoci.</p>
+        <p>Desaťročia pred prvou svetovou vojnou bola Británia veľmocou s najväčším územím. V období jej vrcholného rozmachu k nej patrila takmer štvrtina celej zemegule a riadila životy vyše 400 miliónov ľudí. V tomto období Británia v rozličnej miere ovplyvňovala všetky svetadiely. Neskôr, na imperiálnej výstave v roku 1926, bolo koloniálne panstvo prezentované ako impérium, nad ktorým nezapadá slnko.</p>
+        <p>Pre Britov bolo dôležité, aby na rozličných miestach sveta vybudovali strategické oporné body (napr. Gibraltar, Ascension, Singapur, Aden, Cyprus), ktoré mali strážiť námorné trasy a obchodné prístavy. Tieto prístavy im často slúžili ako odrazové mostíky ku kolonizácii vnútrozemia.</p>
+        <p>Aj mimoriadny význam Indie — „perly britskej koruny" — nútil kontrolovať Britániu všetky trasy vedúce z Indie k Britským ostrovom.</p>
+        <p>Británia rozširovala a upevňovala svoje koloniálne výdobytky aj z prestíže a tiež preto, aby územie nezískal niekto iný. Rozširovaním svojho koloniálneho impéria získavala mimoriadny vplyv na svetové dianie.</p>
       </div>
     </div>
-  </section>
 
-  {recent.length > 0 && (
-    <section class="max-w-5xl mx-auto px-8 md:px-12 pb-16">
-      <div class="border-t border-cream-200 pt-10 mb-8">
-        <p class="text-[10px] tracking-widest uppercase text-cream-400">Predchádzajúce známky</p>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-        {recent.map(stamp => <StampCard stamp={stamp} />)}
-      </div>
-      <div class="mt-10 text-center">
-        <a href="/archiv" class="text-[11px] tracking-widest uppercase text-cream-600 border-b border-cream-400 pb-px hover:text-cream-900 transition-colors">
-          Celý archív →
-        </a>
-      </div>
-    </section>
-  )}
+    <!-- Action section -->
+    <div class="mb-10 border-y border-cream-200 py-8">
 
-  <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 items-center justify-center cursor-zoom-out" onclick="closeLightbox()">
-    <div class="relative max-w-4xl w-full mx-8" onclick="event.stopPropagation()">
-      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white/60 hover:text-white text-2xl leading-none px-2">&#215;</button>
-      <div class="bg-white p-6 md:p-10">
-        <img src={image} alt={title} class="w-full object-contain max-h-[80vh]" />
-      </div>
-      <p class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-4">
-        {country} · {denomination} · {printer} · {year_issued} — ESC alebo klikni mimo pre zatvorenie
+      <p class="font-serif text-2xl md:text-3xl font-normal text-cream-800 mb-7 leading-snug">
+        Preskúmajte Britské impérium<br class="hidden md:block"/> prostredníctvom poštových známok tlačených z hĺbky (Intaglio)
       </p>
+
+      <!-- Stats -->
+      <div class="flex flex-wrap items-baseline gap-x-7 gap-y-2 mb-8">
+        <div>
+          <span class="font-serif text-3xl text-cream-900">{allTerritories.length}</span>
+          <span class="text-[10px] tracking-widest uppercase text-cream-400 ml-1.5">teritórií</span>
+        </div>
+        <span class="text-cream-300 hidden sm:inline">·</span>
+        <div>
+          <span class="font-serif text-3xl text-cream-900">{stampCount}</span>
+          <span class="text-[10px] tracking-widest uppercase text-cream-400 ml-1.5">detailov známok</span>
+        </div>
+        <span class="text-cream-300 hidden sm:inline">·</span>
+        <span class="text-[11px] tracking-widest uppercase text-cream-600">KGV · KGVI · QEII</span>
+        <span class="text-cream-300 hidden sm:inline">·</span>
+        <span class="text-[11px] tracking-widest uppercase text-cream-600">Recess printing</span>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-3">
+        <a href="/territories" class="bg-cream-900 text-white text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-800 transition-colors">
+          Preskúmať teritóriá
+        </a>
+        <a href="/era/kgv"  class="border border-amber-200  bg-amber-50  text-amber-700  text-[11px] tracking-widest uppercase px-5 py-3 hover:border-amber-400  transition-colors">KGV</a>
+        <a href="/era/kgvi" class="border border-blue-200   bg-blue-50   text-blue-700   text-[11px] tracking-widest uppercase px-5 py-3 hover:border-blue-400   transition-colors">KGVI</a>
+        <a href="/era/qeii" class="border border-violet-200 bg-violet-50 text-violet-700 text-[11px] tracking-widest uppercase px-5 py-3 hover:border-violet-400 transition-colors">QEII</a>
+        <a href="/printer/waterlow-and-sons"  class="border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-5 py-3 hover:border-cream-700 hover:text-cream-900 transition-colors">Waterlow</a>
+        <a href="/printer/de-la-rue"          class="border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-5 py-3 hover:border-cream-700 hover:text-cream-900 transition-colors">De La Rue</a>
+        <a href="/printer/bradbury-wilkinson" class="border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-5 py-3 hover:border-cream-700 hover:text-cream-900 transition-colors">Bradbury</a>
+      </div>
+
     </div>
-  </div>
 
-  <script>
-    window.openLightbox = function() {
-      const lb = document.getElementById('lightbox');
-      lb.classList.remove('hidden'); lb.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    };
-    window.closeLightbox = function() {
-      const lb = document.getElementById('lightbox');
-      lb.classList.add('hidden'); lb.classList.remove('flex');
-      document.body.style.overflow = '';
-    };
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeLightbox(); });
-  </script>
+    <!-- British Empire map — single clickable area to /territories -->
+    <a href="/territories" class="block group relative overflow-hidden border border-cream-200 hover:border-cream-400 transition-colors duration-300">
+      <img
+        src="/stamps/The_British_Empire.png"
+        alt="Mapa Britského impéria"
+        class="w-full block transition-transform duration-500 group-hover:scale-[1.04]"
+      />
+      <div class="absolute inset-0 flex items-end justify-end p-4 pointer-events-none">
+        <span class="text-white text-[10px] tracking-widest uppercase px-3 py-1.5 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          Preskúmať všetky kolónie →
+        </span>
+      </div>
+    </a>
 
+  </section>
 </Base>

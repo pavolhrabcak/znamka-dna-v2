@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import TerritoryCard from '../../components/TerritoryCard.astro';
+import { getCollection } from 'astro:content';
+import { slugify } from '../../lib/slugify';
+
+export async function getStaticPaths() {
+  const territories = await getCollection('territories', t => !t.data.draft);
+  const printerMap = new Map<string, typeof territories>();
+
+  for (const t of territories) {
+    for (const printer of t.data.printers) {
+      if (!printerMap.has(printer)) printerMap.set(printer, []);
+      printerMap.get(printer)!.push(t);
+    }
+  }
+
+  return [...printerMap.entries()].map(([printer, list]) => ({
+    params: { printer: slugify(printer) },
+    props: {
+      printer,
+      territories: list.sort((a, b) => a.data.name.localeCompare(b.data.name)),
+    },
+  }));
+}
+
+const { printer, territories } = Astro.props as { printer: string; territories: any[] };
+
+const allPrinters = [...new Set(territories.flatMap((t: any) => t.data.printers))];
+---
+
+<Base title={printer}>
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <span class="text-cream-600">{printer}</span>
+    </nav>
+
+    <div class="mb-5 pb-5 border-b border-cream-200">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Tlačiareň</p>
+      <h1 class="font-serif text-3xl font-normal text-cream-900 mb-1">{printer}</h1>
+      <p class="text-[11px] tracking-widest uppercase text-cream-400">{territories.length} teritórií</p>
+    </div>
+
+    {territories.length > 0 ? (
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
+        {territories.map((t: any) => <TerritoryCard territory={t} />)}
+      </div>
+    ) : (
+      <p class="font-serif italic text-cream-400 text-lg py-16 text-center">
+        Žiadne teritória pre túto tlačiareň.
+      </p>
+    )}
+
+  </section>
+</Base>

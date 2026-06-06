@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+import TerritoryCard from '../../components/TerritoryCard.astro';
+import { getCollection } from 'astro:content';
+import { CONTINENTS, continentLabelMap, continentToSlug, continentColorMap, slugToContinent } from '../../lib/continentSlug';
+
+export async function getStaticPaths() {
+  const territories = await getCollection('territories', t => !t.data.draft);
+  return CONTINENTS.map(continent => ({
+    params: { continent: continentToSlug(continent) },
+    props: {
+      continent,
+      territories: territories
+        .filter(t => t.data.continent === continent)
+        .sort((a, b) => a.data.name.localeCompare(b.data.name)),
+    },
+  }));
+}
+
+const { continent, territories } = Astro.props;
+const color = continentColorMap[continent];
+const label = continentLabelMap[continent];
+---
+
+<Base title={label}>
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <span class="text-cream-600">{label}</span>
+    </nav>
+
+    <div class="mb-5 pb-5 border-b border-cream-200">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">Kontinent</p>
+      <h1 class="font-serif text-4xl font-normal mb-2" style={`color: ${color.text}`}>{label}</h1>
+      <p class="text-[11px] tracking-widest uppercase text-cream-400">{territories.length} teritórií</p>
+    </div>
+
+    <!-- Continent switcher -->
+    <div class="mb-6 flex flex-wrap gap-2">
+      {CONTINENTS.map(c => (
+        <a
+          href={`/continent/${continentToSlug(c)}`}
+          class={`text-[10px] tracking-widest uppercase px-3 py-1.5 border transition-colors ${
+            c === continent
+              ? 'border-cream-700 text-cream-900 bg-cream-100'
+              : 'border-cream-300 text-cream-500 hover:border-cream-600 hover:text-cream-800'
+          }`}
+        >
+          {continentLabelMap[c]}
+        </a>
+      ))}
+    </div>
+
+    {territories.length > 0 ? (
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
+        {territories.map(t => <TerritoryCard territory={t} />)}
+      </div>
+    ) : (
+      <p class="font-serif italic text-cream-400 text-lg py-16 text-center">
+        Žiadne teritória pre tento kontinent.
+      </p>
+    )}
+
+  </section>
+</Base>

@@ -6,30 +6,61 @@ media_folder: public/stamps
 public_folder: /stamps
 
 collections:
-  - name: stamps
-    label: Známky
-    label_singular: Známka
-    folder: src/content/stamps
+  - name: territories
+    label: Teritóriá
+    label_singular: Teritórium
+    folder: src/content/territories
     create: true
-    slug: "{{fields.country | slugify}}-{{fields.denomination | slugify}}-{{fields.year_issued}}"
+    slug: "{{fields.name | slugify}}"
     fields:
-      - { label: Názov, name: title, widget: string }
-      - { label: Dátum publikácie, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
-      - { label: Krajina, name: country, widget: string }
-      - { label: Región, name: region, widget: string, required: false, hint: "napr. Britské kolónie" }
-      - { label: Nominálna hodnota, name: denomination, widget: string, hint: "napr. 4 centy" }
-      - { label: Rok vydania, name: year_issued, widget: number, value_type: int }
-      - { label: Tlačiareň, name: printer, widget: string }
-      - label: Technika
-        name: technique
+      - { label: Názov, name: name, widget: string, hint: "napr. Aden, Antigua, British Guiana" }
+      - label: Kontinent
+        name: continent
         widget: select
         options:
-          - { label: Hĺbkotlač (Recess), value: recess }
-          - { label: Výšková tlač (Letterpress), value: letterpress }
-          - { label: Litografia, value: lithography }
-          - { label: Fotogravúra, value: photogravure }
-          - { label: Kombinovaná, value: mixed }
-      - { label: Tagy, name: tags, widget: list, default: [] }
-      - { label: Obrázok, name: image, widget: image }
-      - { label: Koncept, name: draft, widget: boolean, default: false, required: false }
-      - { label: Text článku, name: body, widget: markdown }
+          - { label: Afrika, value: Africa }
+          - { label: Ázia, value: Asia }
+          - { label: Amerika a Karibik, value: Americas }
+          - { label: Austrália a Tichomorie, value: Oceania }
+          - { label: Európa, value: Europe }
+      - { label: Rok začiatku britskej správy, name: period_start, widget: number, value_type: int }
+      - { label: Rok konca britskej správy, name: period_end, widget: number, value_type: int, required: false }
+      - { label: Hlavné mesto, name: capital, widget: string, required: false }
+      - { label: Dnešná krajina / štát, name: current_country, widget: string, required: false }
+      - label: Panovnícke éry
+        name: eras
+        widget: select
+        multiple: true
+        options:
+          - { label: "KGV — George V (1910–1936)", value: KGV }
+          - { label: "KGVI — George VI (1936–1952)", value: KGVI }
+          - { label: "QEII — Elizabeth II (1952–)", value: QEII }
+      - label: Tlačiarne
+        name: printers
+        widget: list
+        required: false
+        hint: "Zoznam tlačiarní, napr. De La Rue, Waterlow & Sons, Bradbury Wilkinson"
+      - label: Tagy
+        name: tags
+        widget: list
+        required: false
+      - label: Ukážky známok
+        name: stamps
+        widget: list
+        required: false
+        summary: "{{fields.denomination}} · {{fields.year}} · {{fields.era}}"
+        fields:
+          - { label: Obrázok, name: image, widget: image }
+          - { label: Nominálna hodnota, name: denomination, widget: string, hint: "napr. 4c, 1s, 2½d" }
+          - { label: Rok vydania, name: year, widget: number, value_type: int }
+          - label: Éra
+            name: era
+            widget: select
+            options:
+              - { label: KGV, value: KGV }
+              - { label: KGVI, value: KGVI }
+              - { label: QEII, value: QEII }
+          - { label: Tlačiareň, name: printer, widget: string, required: false }
+          - { label: Krátka poznámka k motívu, name: note, widget: string, required: false }
+      - { label: Koncept (nezverejniť), name: draft, widget: boolean, default: false, required: false }
+      - { label: História a filatelistický kontext, name: body, widget: markdown }

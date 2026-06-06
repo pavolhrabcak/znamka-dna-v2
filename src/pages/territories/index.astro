@@ -1,0 +1,258 @@
+---
+import Base from '../../layouts/Base.astro';
+import TerritoryCard from '../../components/TerritoryCard.astro';
+import { getCollection } from 'astro:content';
+import { CONTINENTS, continentLabelMap } from '../../lib/continentSlug';
+
+const allTerritories = await getCollection('territories', t => !t.data.draft);
+allTerritories.sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].sort();
+---
+
+<Base title="Teritóriá">
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <span class="text-cream-600">Teritóriá</span>
+    </nav>
+
+    <!-- Filters -->
+    <div class="mb-6 flex flex-wrap items-center gap-3">
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Teritórium</label>
+        <select id="filter-territory" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[160px]">
+          <option value="">Všetky</option>
+          {allTerritories.map(t => <option value={t.data.name}>{t.data.name}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Panovník</label>
+        <select id="filter-era" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[110px]">
+          <option value="">Všetky</option>
+          <option value="KGV">KGV</option>
+          <option value="KGVI">KGVI</option>
+          <option value="QEII">QEII</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Tlačiareň</label>
+        <select id="filter-printer" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[150px]">
+          <option value="">Všetky</option>
+          {allPrinters.map(p => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Kontinent</label>
+        <select id="filter-continent" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[140px]">
+          <option value="">Všetky</option>
+          {CONTINENTS.map(c => <option value={c}>{continentLabelMap[c]}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5 self-end">
+        <span class="text-[9px] tracking-widest uppercase text-cream-400 invisible">_</span>
+        <button id="filter-reset" class="text-[10px] tracking-widest uppercase text-cream-400 hover:text-cream-900 border border-transparent hover:border-cream-300 px-2 py-1.5 transition-colors">
+          Zrušiť filtre
+        </button>
+      </div>
+    </div>
+
+    <!-- Toolbar: sort + view toggle -->
+    <div class="mb-4 flex items-end justify-between">
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Zoradiť</label>
+        <select id="sort-sel" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[150px]">
+          <option value="az">A → Z</option>
+          <option value="za">Z → A</option>
+        </select>
+      </div>
+      <div class="flex items-center gap-1">
+        <button id="view-gallery" title="Galéria" class="p-1.5 border border-cream-700 bg-cream-100 text-cream-900 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0" y="0" width="6" height="6" fill="currentColor"/><rect x="8" y="0" width="6" height="6" fill="currentColor"/><rect x="0" y="8" width="6" height="6" fill="currentColor"/><rect x="8" y="8" width="6" height="6" fill="currentColor"/></svg>
+        </button>
+        <button id="view-list" title="Zoznam" class="p-1.5 border border-cream-300 text-cream-400 hover:border-cream-600 hover:text-cream-800 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0" y="1" width="14" height="2" fill="currentColor"/><rect x="0" y="6" width="14" height="2" fill="currentColor"/><rect x="0" y="11" width="14" height="2" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="territory-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
+      {allTerritories.map(t => (
+        <div
+          class="territory-item"
+          data-name={t.data.name}
+          data-eras={t.data.eras.join(',')}
+          data-continent={t.data.continent}
+          data-printers={t.data.printers.join('|')}
+          data-period={t.data.period_start}
+        >
+          <div class="gallery-card">
+            <TerritoryCard territory={t} />
+          </div>
+          <div class="list-row hidden">
+            <a href={`/territories/${t.slug}`} class="flex items-center gap-4 py-3 border-b border-cream-100 hover:bg-cream-50 px-1 group transition-colors">
+              <span class="font-serif text-sm text-cream-900 group-hover:text-cream-950 flex-1 min-w-0 truncate">
+                {t.data.name}
+                <span class="font-sans text-[12px] tracking-widest text-cream-400 ml-1.5">· {t.data.period_start}–{t.data.period_end ?? ''}</span>
+              </span>
+              <span class="text-[9px] tracking-widest uppercase text-cream-400 whitespace-nowrap shrink-0 hidden sm:block">{continentLabelMap[t.data.continent]}</span>
+              <div class="flex gap-1 w-28 shrink-0">
+                {t.data.eras.includes('KGV')  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+                {t.data.eras.includes('KGVI') && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                {t.data.eras.includes('QEII') && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+              </div>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p id="no-results" class="hidden text-center text-cream-400 font-serif italic text-lg py-16">
+      Žiadne teritória nevyhovujú filtrom.
+    </p>
+
+  </section>
+
+  <script>
+    const eraSel       = document.getElementById('filter-era') as HTMLSelectElement;
+    const contSel      = document.getElementById('filter-continent') as HTMLSelectElement;
+    const territorySel = document.getElementById('filter-territory') as HTMLSelectElement;
+    const printerSel   = document.getElementById('filter-printer') as HTMLSelectElement;
+    const resetBtn     = document.getElementById('filter-reset') as HTMLButtonElement;
+    const sortSel      = document.getElementById('sort-sel') as HTMLSelectElement;
+    const galleryBtn   = document.getElementById('view-gallery') as HTMLButtonElement;
+    const listBtn      = document.getElementById('view-list') as HTMLButtonElement;
+    const noResults    = document.getElementById('no-results') as HTMLParagraphElement;
+    const grid         = document.getElementById('territory-grid') as HTMLDivElement;
+    const items        = [...document.querySelectorAll<HTMLDivElement>('.territory-item')];
+
+    const GALLERY_CLS = ['grid','grid-cols-2','md:grid-cols-3','lg:grid-cols-5','gap-x-6','gap-y-10'];
+    const LIST_CLS    = ['flex','flex-col'];
+
+    function applyView(view: 'gallery' | 'list') {
+      if (view === 'gallery') {
+        grid.classList.remove(...LIST_CLS);
+        grid.classList.add(...GALLERY_CLS);
+      } else {
+        grid.classList.remove(...GALLERY_CLS);
+        grid.classList.add(...LIST_CLS);
+      }
+      document.querySelectorAll<HTMLElement>('.gallery-card').forEach(el =>
+        el.classList.toggle('hidden', view === 'list'));
+      document.querySelectorAll<HTMLElement>('.list-row').forEach(el =>
+        el.classList.toggle('hidden', view === 'gallery'));
+
+      const active   = 'border-cream-700 bg-cream-100 text-cream-900';
+      const inactive = 'border-cream-300 text-cream-400';
+      galleryBtn.className = galleryBtn.className.replace(/border-cream-\d+|bg-cream-\d+|text-cream-\d+/g, '').trim();
+      listBtn.className    = listBtn.className.replace(/border-cream-\d+|bg-cream-\d+|text-cream-\d+/g, '').trim();
+      galleryBtn.classList.add(...(view === 'gallery' ? active : inactive).split(' '));
+      listBtn.classList.add(...(view === 'list'    ? active : inactive).split(' '));
+    }
+
+    function applySort() {
+      const sort = sortSel.value;
+      [...items].sort((a, b) => {
+        if (sort === 'az')     return a.dataset.name!.localeCompare(b.dataset.name!);
+        if (sort === 'za')     return b.dataset.name!.localeCompare(a.dataset.name!);
+        if (sort === 'oldest') return +a.dataset.period! - +b.dataset.period!;
+        if (sort === 'newest') return +b.dataset.period! - +a.dataset.period!;
+        return 0;
+      }).forEach(item => grid.appendChild(item));
+    }
+
+    function rebuildTerritoryOptions() {
+      const era     = eraSel.value;
+      const cont    = contSel.value;
+      const printer = printerSel.value;
+      const current = territorySel.value;
+
+      const eligible: string[] = [];
+      items.forEach(item => {
+        const eras     = item.dataset.eras!.split(',');
+        const printers = item.dataset.printers!.split('|');
+        const match = (!era     || eras.includes(era))
+                   && (!cont    || item.dataset.continent === cont)
+                   && (!printer || printers.includes(printer));
+        if (match) eligible.push(item.dataset.name!);
+      });
+
+      territorySel.innerHTML = '<option value="">Všetky</option>';
+      eligible.forEach(name => {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        if (name === current) opt.selected = true;
+        territorySel.appendChild(opt);
+      });
+
+      if (current && !eligible.includes(current)) territorySel.value = '';
+    }
+
+    function applyFilters() {
+      const era       = eraSel.value;
+      const cont      = contSel.value;
+      const territory = territorySel.value;
+      const printer   = printerSel.value;
+      const hasFilter = era || cont || territory || printer;
+
+      let visible = 0;
+      items.forEach(item => {
+        const eras     = item.dataset.eras!.split(',');
+        const printers = item.dataset.printers!.split('|');
+        const match = (!era       || eras.includes(era))
+                   && (!cont      || item.dataset.continent === cont)
+                   && (!territory || item.dataset.name === territory)
+                   && (!printer   || printers.includes(printer));
+        item.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      noResults.classList.toggle('hidden', visible > 0);
+      [eraSel, contSel, territorySel, printerSel].forEach(sel => {
+        const active = !!sel.value;
+        sel.classList.toggle('bg-cream-900', active);
+        sel.classList.toggle('text-white', active);
+        sel.classList.toggle('border-cream-900', active);
+        sel.classList.toggle('bg-white', !active);
+        sel.classList.toggle('text-cream-700', !active);
+        sel.classList.toggle('border-cream-300', !active);
+      });
+      resetBtn.classList.toggle('text-cream-400', !hasFilter);
+      resetBtn.classList.toggle('border-transparent', !hasFilter);
+      resetBtn.classList.toggle('text-cream-900', !!hasFilter);
+      resetBtn.classList.toggle('border-cream-700', !!hasFilter);
+    }
+
+    galleryBtn.addEventListener('click', () => applyView('gallery'));
+    listBtn.addEventListener('click',    () => applyView('list'));
+    sortSel.addEventListener('change',   applySort);
+
+    [eraSel, contSel, printerSel].forEach(sel => sel.addEventListener('change', () => {
+      rebuildTerritoryOptions();
+      applyFilters();
+    }));
+    territorySel.addEventListener('change', applyFilters);
+
+    resetBtn.addEventListener('click', () => {
+      eraSel.value = ''; contSel.value = ''; printerSel.value = '';
+      rebuildTerritoryOptions();
+      territorySel.value = '';
+      applyFilters();
+    });
+
+    // Pre-select filters from URL params (e.g. ?printer=De+La+Rue)
+    const params = new URLSearchParams(window.location.search);
+    const printerParam = params.get('printer');
+    const eraParam     = params.get('era');
+    const contParam    = params.get('continent');
+    if (printerParam) printerSel.value = printerParam;
+    if (eraParam)     eraSel.value     = eraParam;
+    if (contParam)    contSel.value    = contParam;
+
+    rebuildTerritoryOptions();
+    applyFilters();
+  </script>
+</Base>

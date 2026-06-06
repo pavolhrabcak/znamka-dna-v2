@@ -1,0 +1,257 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { continentLabelMap, continentToSlug } from '../../lib/continentSlug';
+import { slugify } from '../../lib/slugify';
+
+export async function getStaticPaths() {
+  const territories = await getCollection('territories', t => !t.data.draft);
+  return territories.map(t => ({
+    params: { slug: t.slug },
+    props: { territory: t },
+  }));
+}
+
+const { territory } = Astro.props;
+const { Content } = await render(territory);
+const { name, continent, flag, period_start, period_end, capital, current_country, eras, printers, stamps, tags, timeline } = territory.data;
+---
+
+<Base title={name} description={`${name} — britská kolónia ${period_start}–${period_end ?? 'súčasnosť'}. Gravírované poštové známky.`}>
+  <Fragment slot="head">
+    <meta name="keywords" content={[name, continent, ...eras, ...printers, ...tags].join(', ')} />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "name": name,
+      "headline": `${name} — Britské kolónie`,
+      "description": `${name}: britská kolónia ${period_start}–${period_end ?? 'súčasnosť'}. Kontinent: ${continent}. Éry: ${eras.join(', ')}. Tlačiarne: ${printers.join(', ')}.`,
+      "keywords": [name, continent, ...eras, ...printers, ...tags].join(', '),
+      "temporalCoverage": `${period_start}/${period_end ?? ''}`,
+      "about": {
+        "@type": "Place",
+        "name": name,
+        "containedInPlace": { "@type": "Place", "name": "British Empire" }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Britské kolónie — Malá encyklopédia poštových známok"
+      }
+    })} />
+  </Fragment>
+  <article data-pagefind-body class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <a href="/territories" class="hover:text-cream-900 transition-colors">Teritóriá</a>
+      <span>/</span>
+      <span class="text-cream-600">{name}</span>
+    </nav>
+
+    <!-- Header -->
+    <div class="mb-5 pb-5 border-b border-cream-200 flex items-baseline justify-between gap-6">
+      <h1 class="font-serif text-4xl font-normal text-cream-900">{name}</h1>
+      <div class="flex flex-wrap gap-1.5 shrink-0">
+        {eras.includes('KGV')  && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+        {eras.includes('KGVI') && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+        {eras.includes('QEII') && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+      </div>
+    </div>
+
+    <!-- Content grid: sidebar + body -->
+    <div class="grid lg:grid-cols-[260px_1fr] gap-10 mb-8">
+
+      <!-- Sidebar: facts -->
+      <aside>
+        <div class="bg-white border border-cream-300 p-4 space-y-3">
+
+          {flag && (
+            <div class="pb-3 border-b border-cream-200">
+              <img src={flag} alt={`Vlajka — ${name}`} class="w-full border border-cream-200" loading="lazy" />
+            </div>
+          )}
+
+          <div>
+            <p class="text-[11px] tracking-widest uppercase text-cream-400 mb-1">Kontinent</p>
+            <a href={`/continent/${continentToSlug(continent)}`} class="text-base text-cream-800 hover:text-cream-950 transition-colors underline-offset-2 hover:underline">
+              {continentLabelMap[continent]}
+            </a>
+          </div>
+
+          <div>
+            <p class="text-[11px] tracking-widest uppercase text-cream-400 mb-1">Britská správa</p>
+            <p class="text-base text-cream-800">{period_start}–{period_end ?? 'súčasnosť'}</p>
+          </div>
+
+          {capital && (
+            <div>
+              <p class="text-[11px] tracking-widest uppercase text-cream-400 mb-1">Hlavné mesto</p>
+              <p class="text-base text-cream-800">{capital}</p>
+            </div>
+          )}
+
+          {current_country && (
+            <div>
+              <p class="text-[11px] tracking-widest uppercase text-cream-400 mb-1">Dnes</p>
+              <p class="text-base text-cream-800">{current_country}</p>
+            </div>
+          )}
+
+          {printers.length > 0 && (
+            <div>
+              <p class="text-[11px] tracking-widest uppercase text-cream-400 mb-2">Tlačiarne</p>
+              <div class="space-y-1.5">
+                {printers.map(p => (
+                  <a
+                    href={`/printer/${slugify(p)}`}
+                    class="block text-sm text-cream-600 hover:text-cream-900 transition-colors underline-offset-2 hover:underline"
+                  >
+                    {p}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {tags.length > 0 && (
+            <div class="pt-1 border-t border-cream-200">
+              <div class="flex flex-wrap gap-1.5">
+                {tags.map(tag => (
+                  <span class="text-[11px] tracking-widest px-1.5 py-0.5 border border-cream-200 text-cream-500">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+      </aside>
+
+      <!-- Main: history text -->
+      <div class="stamp-prose">
+        <Content />
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    {timeline.length > 0 && (
+      <div class="mb-8 pb-8 border-b border-cream-200">
+        <h2 class="font-serif text-xl font-normal text-cream-900 mb-5">Chronológia</h2>
+        <div class="border-l border-cream-200 ml-1 pl-6 space-y-4">
+          {timeline.map(entry => (
+            <div class="flex gap-6 items-baseline">
+              <span class="font-sans text-[11px] tracking-widest text-cream-600 tabular-nums shrink-0 w-10">{entry.year}</span>
+              <span class="font-garamond text-[1.1rem] text-cream-700 leading-snug">{entry.event}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Stamp examples -->
+    {stamps.length > 0 && (
+      <div>
+        <div class="flex items-baseline justify-between mb-6 pb-4 border-b border-cream-200">
+          <h2 class="font-serif text-xl font-normal text-cream-900">Ukážky známok</h2>
+          <span class="text-[11px] tracking-widest text-cream-600">kliknutím zobrazíte detail</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {stamps.map((stamp, i) => (
+            <div class="flex flex-col">
+              <div
+                class="border border-cream-200 bg-white p-4 mb-3 cursor-zoom-in hover:border-cream-500 hover:shadow-xl hover:scale-150 hover:z-10 transition-all duration-200 relative"
+                onclick={`openLightbox(${i})`}
+              >
+                <div class="aspect-[4/3] flex items-center justify-center overflow-hidden">
+                  <img
+                    src={stamp.image}
+                    alt={`${name} ${stamp.denomination} ${stamp.year}`}
+                    class="w-full h-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <p class="text-[12px] tracking-widest uppercase text-cream-600">{stamp.denomination} · {stamp.year}</p>
+              <div class="flex flex-wrap gap-1 mt-1.5">
+                {stamp.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+                {stamp.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                {stamp.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+                {stamp.printer && <span class="text-[11px] tracking-widest px-1.5 py-0.5 border border-cream-200 text-cream-500">{stamp.printer}</span>}
+              </div>
+              {stamp.note && <p class="text-sm text-cream-500 mt-1.5 italic">{stamp.note}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="mt-14 pt-8 border-t border-cream-200">
+      <a href="/territories" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors">
+        ← Všetky teritóriá
+      </a>
+    </div>
+
+  </article>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex-col items-center justify-center px-8 py-6" onclick="closeLightbox()">
+    <!-- top bar -->
+    <div class="w-full max-w-3xl flex items-center justify-between mb-4 flex-shrink-0" onclick="event.stopPropagation()">
+      <span id="lightbox-counter" class="text-[11px] tracking-widest text-white/40"></span>
+      <button onclick="closeLightbox()" class="text-white/60 hover:text-white text-2xl leading-none px-2 transition-colors">&#215;</button>
+    </div>
+    <!-- image + prev/next -->
+    <div class="relative max-w-3xl w-full flex items-center" onclick="event.stopPropagation()">
+      <button id="lightbox-prev" onclick="lightboxNav(-1)" class="absolute left-0 -translate-x-10 text-white/50 hover:text-white text-5xl leading-none px-2 py-6 transition-colors z-10">&#8249;</button>
+      <button id="lightbox-next" onclick="lightboxNav(1)" class="absolute right-0 translate-x-10 text-white/50 hover:text-white text-5xl leading-none px-2 py-6 transition-colors z-10">&#8250;</button>
+      <div class="w-full">
+        <img id="lightbox-img" src="" alt="" class="w-full object-contain max-h-[75vh]" />
+        <p id="lightbox-caption" class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-4"></p>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ stampItems: stamps.map(s => ({ src: s.image, caption: `${name} ${s.denomination} ${s.year}` })) }}>
+    let currentIndex = 0;
+
+    function updateLightbox() {
+      const item = stampItems[currentIndex];
+      document.getElementById('lightbox-img').src = item.src;
+      document.getElementById('lightbox-img').alt = item.caption;
+      document.getElementById('lightbox-caption').textContent = item.caption;
+      document.getElementById('lightbox-counter').textContent = (currentIndex + 1) + ' / ' + stampItems.length;
+      document.getElementById('lightbox-prev').style.visibility = currentIndex === 0 ? 'hidden' : 'visible';
+      document.getElementById('lightbox-next').style.visibility = currentIndex === stampItems.length - 1 ? 'hidden' : 'visible';
+    }
+
+    window.openLightbox = function(index) {
+      currentIndex = index;
+      updateLightbox();
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex', 'flex-col');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.lightboxNav = function(dir) {
+      const next = currentIndex + dir;
+      if (next >= 0 && next < stampItems.length) {
+        currentIndex = next;
+        updateLightbox();
+      }
+    };
+
+    window.closeLightbox = function() {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex', 'flex-col');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') window.closeLightbox();
+      if (e.key === 'ArrowLeft') window.lightboxNav(-1);
+      if (e.key === 'ArrowRight') window.lightboxNav(1);
+    });
+  </script>
+</Base>

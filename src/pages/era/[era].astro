@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import TerritoryCard from '../../components/TerritoryCard.astro';
+import { getCollection } from 'astro:content';
+
+const ERAS = ['KGV', 'KGVI', 'QEII'] as const;
+type Era = typeof ERAS[number];
+
+const eraInfo: Record<Era, { label: string; monarch: string; years: string; color: string }> = {
+  KGV:  { label: 'KGV',  monarch: 'King George V',     years: '1910–1936', color: '#92400e' },
+  KGVI: { label: 'KGVI', monarch: 'King George VI',    years: '1936–1952', color: '#1e40af' },
+  QEII: { label: 'QEII', monarch: 'Queen Elizabeth II', years: '1952–',    color: '#5b21b6' },
+};
+
+export async function getStaticPaths() {
+  const territories = await getCollection('territories', t => !t.data.draft);
+  return (['KGV', 'KGVI', 'QEII'] as Era[]).map(era => ({
+    params: { era: era.toLowerCase() },
+    props: {
+      era,
+      territories: territories
+        .filter(t => t.data.eras.includes(era))
+        .sort((a, b) => a.data.name.localeCompare(b.data.name)),
+    },
+  }));
+}
+
+const { era, territories } = Astro.props as { era: Era; territories: any[] };
+const info = eraInfo[era];
+---
+
+<Base title={`Éra ${info.label}`}>
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <span class="text-cream-600">{info.label}</span>
+    </nav>
+
+    <div class="mb-5 pb-5 border-b border-cream-200">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">{info.years}</p>
+      <h1 class="font-serif text-4xl font-normal mb-1" style={`color: ${info.color}`}>{info.label}</h1>
+      <p class="text-cream-600 text-sm">{info.monarch}</p>
+    </div>
+
+    {territories.length > 0 ? (
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
+        {territories.map(t => <TerritoryCard territory={t} />)}
+      </div>
+    ) : (
+      <p class="font-serif italic text-cream-400 text-lg py-16 text-center">
+        Žiadne teritória pre túto éru.
+      </p>
+    )}
+
+  </section>
+</Base>

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = 'Známka dňa', description = 'Blog o klasických gravírovaných poštových známkach.' } = Astro.props;
+const { title = 'Britské kolónie', description = 'Encyklopédia gravírovaných poštových známok britského impéria.' } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="sk">
@@ -8,26 +8,38 @@ const { title = 'Známka dňa', description = 'Blog o klasických gravírovanýc
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <title>{title} — Známka dňa</title>
+  <title>{title} — Britské kolónie</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="alternate" type="application/rss+xml" title="Známka dňa RSS" href="/rss.xml" />
+  <slot name="head" />
 </head>
 <body class="min-h-screen flex flex-col">
 
   <!-- Nav -->
-  <nav class="border-b border-cream-300 px-8 md:px-12 py-5">
+  <nav class="bg-stone-100 border-b border-stone-300 px-8 md:px-12 py-5">
     <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="font-serif text-lg tracking-wide text-cream-900 hover:text-cream-700 transition-colors">
-        Známka dňa
+      <a href="/" class="hover:text-stone-700 transition-colors flex flex-col leading-tight">
+        <span class="font-serif text-lg tracking-wide text-stone-900">Britské kolónie</span>
+        <span class="text-[11px] tracking-widest uppercase text-stone-500 mt-0.5">v motívoch poštových známok</span>
       </a>
-      <ul class="hidden md:flex items-center gap-7 text-[11px] tracking-widest uppercase text-cream-600">
-        <li><a href="/archiv" class="hover:text-cream-900 transition-colors">Archív</a></li>
-        <li><a href="/tlaciarene" class="hover:text-cream-900 transition-colors">Tlačiarne</a></li>
-        <li><a href="/krajiny" class="hover:text-cream-900 transition-colors">Krajiny</a></li>
-        <li><a href="/hladat" class="hover:text-cream-900 transition-colors">Hľadať</a></li>
-        <li><a href="/o-blogu" class="hover:text-cream-900 transition-colors">O blogu</a></li>
+      <ul class="hidden md:flex items-center gap-7 text-[13px] tracking-widest uppercase text-stone-600">
+        <li><a href="/territories" class="hover:text-stone-900 transition-colors">Teritóriá</a></li>
+        <li>
+          <span class="text-stone-400 mr-1">Éra:</span>
+          <a href="/era/kgv"  class="hover:text-stone-900 transition-colors mr-3">KGV</a>
+          <a href="/era/kgvi" class="hover:text-stone-900 transition-colors mr-3">KGVI</a>
+          <a href="/era/qeii" class="hover:text-stone-900 transition-colors">QEII</a>
+        </li>
+        <li><a href="/o-blogu" class="hover:text-stone-900 transition-colors">O projekte</a></li>
       </ul>
-      <a href="/rss.xml" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors hidden md:block">RSS</a>
+      <div class="hidden md:flex items-center gap-5">
+        <button onclick="openSearch()" aria-label="Hľadať" class="flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors group">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="6.5" cy="6.5" r="5"/>
+            <line x1="10.5" y1="10.5" x2="14" y2="14"/>
+          </svg>
+          <span id="search-shortcut" class="text-[10px] tracking-widest text-stone-400 group-hover:text-stone-600 transition-colors border border-stone-300 group-hover:border-stone-400 px-1.5 py-0.5">⌘K</span>
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -37,16 +49,85 @@ const { title = 'Známka dňa', description = 'Blog o klasických gravírovanýc
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-cream-300 mt-16 py-10 px-8">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] tracking-widest uppercase text-cream-500">
-      <span>© {new Date().getFullYear()} Známka dňa</span>
+  <footer class="bg-stone-100 border-t border-stone-300 mt-16 py-10 px-8">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] tracking-widest uppercase text-stone-500">
+      <span>© {new Date().getFullYear()} Britské kolónie</span>
       <div class="flex gap-6">
-        <a href="/archiv" class="hover:text-cream-900 transition-colors">Archív</a>
-        <a href="/o-blogu" class="hover:text-cream-900 transition-colors">O blogu</a>
-        <a href="/rss.xml" class="hover:text-cream-900 transition-colors">RSS</a>
+        <a href="/territories" class="hover:text-stone-900 transition-colors">Teritóriá</a>
+        <a href="/era/kgv"  class="hover:text-stone-900 transition-colors">KGV</a>
+        <a href="/era/kgvi" class="hover:text-stone-900 transition-colors">KGVI</a>
+        <a href="/era/qeii" class="hover:text-stone-900 transition-colors">QEII</a>
+        <a href="/o-blogu" class="hover:text-stone-900 transition-colors">O projekte</a>
       </div>
     </div>
   </footer>
+
+  <!-- Pagefind -->
+  <Fragment set:html={`
+    <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+    <script src="/pagefind/pagefind-ui.js"><\/script>
+  `} />
+
+  <!-- Search modal -->
+  <div
+    id="search-modal"
+    class="hidden fixed inset-0 bg-black/80 z-50 items-start justify-center pt-20 px-4"
+    onclick="closeSearch()"
+  >
+    <div class="bg-white w-full max-w-2xl flex flex-col" style="max-height: 80vh" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between px-5 py-3 border-b border-cream-200 flex-shrink-0">
+        <span class="text-[10px] tracking-widest uppercase text-cream-400">Fulltext hľadanie</span>
+        <button onclick="closeSearch()" class="text-cream-400 hover:text-cream-900 transition-colors text-xl leading-none px-1">&#215;</button>
+      </div>
+      <div id="search" class="p-5 overflow-y-auto"></div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      let initialized = false;
+
+      window.openSearch = function () {
+        const modal = document.getElementById('search-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        if (!initialized) {
+          initialized = true;
+          new PagefindUI({
+            element: '#search',
+            showSubResults: true,
+            translations: {
+              placeholder: 'Hľadať teritória, tlačiarne, éry…',
+              zero_results: 'Žiadne výsledky pre "[SEARCH_TERM]"',
+            },
+          });
+        }
+
+        setTimeout(function () {
+          document.querySelector('#search .pagefind-ui__search-input')?.focus();
+        }, 50);
+      };
+
+      const shortcutEl = document.getElementById('search-shortcut');
+      if (shortcutEl) {
+        shortcutEl.textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl+K';
+      }
+
+      window.closeSearch = function () {
+        const modal = document.getElementById('search-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      };
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeSearch();
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+      });
+    })();
+  </script>
 
 </body>
 </html>

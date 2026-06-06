@@ -1,0 +1,39 @@
+---
+import { continentLabelMap } from '../lib/continentSlug';
+const { territory } = Astro.props;
+const { slug } = territory;
+const { name, continent, period_start, period_end, eras, stamps } = territory.data;
+const firstStamp = stamps[0];
+---
+
+<article class="group flex flex-col">
+  <a href={`/territories/${slug}`} class="flex flex-col h-full">
+    <div class="border border-cream-200 bg-white p-5 mb-3 overflow-hidden transition-all duration-200 group-hover:border-cream-500 group-hover:shadow-lg">
+      <div class="aspect-[4/3] flex items-center justify-center">
+        {firstStamp ? (
+          <img
+            src={firstStamp.image}
+            alt={name}
+            class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.04]"
+            loading="lazy"
+          />
+        ) : (
+          <div class="text-cream-200 text-4xl select-none">▦</div>
+        )}
+      </div>
+    </div>
+    <div class="flex flex-col gap-1">
+      <p class="font-serif text-base text-cream-900 leading-snug group-hover:text-cream-950 transition-colors">
+        {name}{stamps.length > 0 && <span class="font-sans text-[11px] text-cream-400 ml-1">({stamps.length})</span>}
+      </p>
+      <p class="text-[12px] tracking-widest uppercase text-cream-600">
+        {continentLabelMap[continent]} · {period_start}–{period_end ?? '…'}
+      </p>
+      <div class="flex flex-wrap gap-1 mt-0.5">
+        {eras.includes('KGV') && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+        {eras.includes('KGVI') && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+        {eras.includes('QEII') && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+      </div>
+    </div>
+  </a>
+</article>
