@@ -1,5 +1,6 @@
 ---
 name: Sarawak
+flag: /flags/sarawak.svg
 continent: Asia
 period_start: 1841
 period_end: 1963

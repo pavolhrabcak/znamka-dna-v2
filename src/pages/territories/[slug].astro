@@ -194,9 +194,9 @@ const { name, continent, flag, period_start, period_end, capital, current_countr
   </article>
 
   <!-- Lightbox -->
-  <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex-col items-center justify-center px-8 py-6" onclick="closeLightbox()">
+  <div id="lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex-col items-center justify-center px-8 py-3" onclick="closeLightbox()">
     <!-- top bar -->
-    <div class="w-full max-w-3xl flex items-center justify-between mb-4 flex-shrink-0" onclick="event.stopPropagation()">
+    <div class="w-full max-w-3xl flex items-center justify-between mb-2 flex-shrink-0" onclick="event.stopPropagation()">
       <span id="lightbox-counter" class="text-[11px] tracking-widest text-white/40"></span>
       <button onclick="closeLightbox()" class="text-white/60 hover:text-white text-2xl leading-none px-2 transition-colors">&#215;</button>
     </div>
@@ -205,8 +205,8 @@ const { name, continent, flag, period_start, period_end, capital, current_countr
       <button id="lightbox-prev" onclick="lightboxNav(-1)" class="absolute left-0 -translate-x-10 text-white/50 hover:text-white text-5xl leading-none px-2 py-6 transition-colors z-10">&#8249;</button>
       <button id="lightbox-next" onclick="lightboxNav(1)" class="absolute right-0 translate-x-10 text-white/50 hover:text-white text-5xl leading-none px-2 py-6 transition-colors z-10">&#8250;</button>
       <div class="w-full">
-        <img id="lightbox-img" src="" alt="" class="w-full object-contain max-h-[75vh]" />
-        <p id="lightbox-caption" class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-4"></p>
+        <img id="lightbox-img" src="" alt="" class="w-full object-contain max-h-[calc(100vh-100px)]" />
+        <p id="lightbox-caption" class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-2"></p>
       </div>
     </div>
   </div>

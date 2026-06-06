@@ -1,5 +1,6 @@
 ---
 name: St. Lucia
+flag: /flags/st-lucia.svg
 continent: Americas
 period_start: 1814
 period_end: 1979

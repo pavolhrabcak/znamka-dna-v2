@@ -1,5 +1,6 @@
 ---
 name: Hong Kong
+flag: /flags/hong-kong.svg
 continent: Asia
 period_start: 1842
 period_end: 1997

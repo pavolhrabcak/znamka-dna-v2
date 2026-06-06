@@ -1,5 +1,6 @@
 ---
 name: Southern Rhodesia
+flag: /flags/southern-rhodesia.svg
 continent: Africa
 period_start: 1888
 period_end: 1964

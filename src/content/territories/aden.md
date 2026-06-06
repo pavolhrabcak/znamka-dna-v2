@@ -1,5 +1,6 @@
 ---
 name: Aden
+flag: /flags/aden.svg
 continent: Asia
 period_start: 1839
 period_end: 1967

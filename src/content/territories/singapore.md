@@ -1,5 +1,6 @@
 ---
 name: Singapore
+flag: /flags/singapore.svg
 continent: Asia
 period_start: 1946
 period_end: 1963
