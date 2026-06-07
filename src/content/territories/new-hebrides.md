@@ -1,5 +1,6 @@
 ---
 name: New Hebrides
+flag: /flags/new-hebrides.svg
 continent: Oceania
 period_start: 1906
 period_end: 1980

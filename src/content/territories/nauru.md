@@ -1,5 +1,6 @@
 ---
 name: Nauru
+flag: /flags/nauru.svg
 continent: Oceania
 period_start: 1914
 period_end: 1968

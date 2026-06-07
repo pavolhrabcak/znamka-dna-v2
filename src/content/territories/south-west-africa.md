@@ -1,5 +1,6 @@
 ---
 name: South West Africa
+flag: /flags/south-west-africa.svg
 
 continent: Africa
 period_start: 1920

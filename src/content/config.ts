@@ -26,6 +26,7 @@ const territories = defineCollection({
       event: z.string(),
     })).optional().default([]),
     flag: z.string().optional(),
+    flags: z.array(z.string()).optional(),
     draft: z.boolean().optional().default(false),
   }),
 });

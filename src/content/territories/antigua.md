@@ -8,57 +8,64 @@ capital: St. John's
 current_country: Antigua and Barbuda
 eras: [KGV, KGVI, QEII]
 printers:
-  - De La Rue
   - Waterlow & Sons
-tags: [caribbean, de-la-rue, waterlow]
+tags: [caribbean, waterlow]
 stamps:
   - image: /stamps/antigua.webp
-    denomination: 1½d
+    denomination: 1/-
     year: 1938
     era: KGVI
-    printer: De La Rue
-    note: English Harbour
+    printer: Waterlow & Sons
   - image: /stamps/antigua2.webp
-    denomination: 2d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-  - image: /stamps/antigua2b.webp
     denomination: 3d
     year: 1938
+    era: KGVI
+    printer: Waterlow & Sons
+  - image: /stamps/antigua2b.webp
+    denomination: 60 cents
+    year: 1953
     era: QEII
-    printer: De La Rue
+    printer: Waterlow & Sons
   - image: /stamps/antigua-3.webp
-    denomination: 6d
+    denomination: 48 cents
     year: 1953
     era: QEII
     printer: Waterlow & Sons
   - image: /stamps/antigua4.webp
-    denomination: 1/-
+    denomination: 12 cents
     year: 1953
     era: QEII
     printer: Waterlow & Sons
+  - image: /stamps/antigua7.webp
+    denomination: 1/2d
+    year: 1932
+    era: KGV
+    printer: Waterlow & Sons
   - image: /stamps/antigua5.webp
-    denomination: 2/6
-    year: 1953
+    denomination: 1/-
+    year: 1932
     era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1632
     event: Anglická kolonizácia ostrova
-  - year: 1860
-    event: Prvé poštové známky — kľúčový typ Crown CA
+  - year: 1862
+    event: Prvé poštové známky kolónie — portrét kráľovnej Viktórie (tlač Perkins, Bacon & Co.).
   - year: 1932
-    event: KGV — trojstoročnica objavia Kolumbom
+    event: KGV — pamätná séria k 300. výročiu britskej kolonizácie ostrova (tlač Waterlow & Sons).
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: KGVI definitívna séria — prvé dvojfarebné obrazové motívy (tlač Waterlow & Sons).
   - year: 1953
-    event: QEII definitívna séria — Waterlow & Sons
+    event: QEII definitívna séria — kontinuita pôvodných motívov s novým portrétom panovníčky (tlač Waterlow & Sons).
   - year: 1981
     event: Nezávislosť
 draft: false
 ---
 
-Antigua, settled by the English in 1632, became one of the most prosperous sugar islands of the British Caribbean. English Harbour on the island's southern coast served as a major Royal Navy base and provided the setting for many of the colony's pictorial stamp designs.
+Antigua, ktorú Angličania osídlili v roku 1632, sa stala jednou z najprosperujúcejších ostrovných kolónií v britskom Karibiku zameraných na pestovanie cukrovej trstiny. Prístav English Harbour na južnom pobreží ostrova slúžil ako hlavná základňa kráľovského námorníctva (Royal Navy). Práve toto historické prostredie sa stalo motívom pre mnohé neskoršie obrazové emisie poštových známok tejto kolónie.
 
-The definitive series issued under George VI in 1938, printed by De La Rue using recess engraving, depicted English Harbour and local scenes in crisp bicolour. The Queen Elizabeth II definitives from 1953, produced by Waterlow & Sons, continued this tradition of high-quality intaglio work.
+Základy tradície miestnych obrazových motívov položila v roku 1932 pamätná séria k 300. výročiu kolónie (Tercentenary) za vlády kráľa Juraja V., vytlačená spoločnosťou Waterlow & Sons, ktorá po prvýkrát predstavila ikonický pohľad na staré lodenice v English Harbour. Bola to prvá ukážka toho, ako dokáže detailná hĺbkotlač zachytiť historický a strategický význam tohto karibského prístavu a spojiť ho s portrétom panovníka.
+
+V roku 1938 bola za vlády kráľa Juraja VI. vydaná nová, rozšírená definitívna séria, ktorú takisto vytlačila spoločnosť Waterlow & Sons. Táto emisia zobrazovala English Harbour a ďalšie miestne výjavy v precíznom dvojfarebnom prevedení. Umelecká kompozícia týchto rytín bola natoľko úspešná, že ju kolónia v nezmenenej podobe prevzala aj po nástupe kráľovnej Alžbety II. v roku 1953. Tlačiareň Waterlow & Sons vtedy iba nahradila portrét panovníka v medailóne a pri viacerých hodnotách upravila farebné kombinácie.
+
+Pre špecializovaných zberateľov hĺbkotlače nastáva zaujímavý zlom v roku 1961, keď spoločnosť De La Rue pohltila tlačiareň Waterlow a prevzala jej pôvodné tlačové dosky. Porovnávanie pôvodných emisií od Waterlow & Sons s neskoršími dotlačami od De La Rue – ktoré sa líšia nielen odtieňmi farieb, ale neskôr aj novým vodoznakom (St. Edward's Crown) – robí z tohto prechodu medzi tromi panovníkmi jednu z najatraktívnejších kapitol karibskej filatelie 20. storočia.

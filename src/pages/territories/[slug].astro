@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { territory } = Astro.props;
 const { Content } = await render(territory);
-const { name, continent, flag, period_start, period_end, capital, current_country, eras, printers, stamps, tags, timeline } = territory.data;
+const { name, continent, flag, flags, period_start, period_end, capital, current_country, eras, printers, stamps, tags, timeline } = territory.data;
 ---
 
 <Base title={name} description={`${name} — britská kolónia ${period_start}–${period_end ?? 'súčasnosť'}. Gravírované poštové známky.`}>
@@ -66,7 +66,16 @@ const { name, continent, flag, period_start, period_end, capital, current_countr
       <aside>
         <div class="bg-white border border-cream-300 p-4 space-y-3">
 
-          {flag && (
+          {flags && flags.length > 0 && (
+            <div class="pb-3 border-b border-cream-200">
+              <div class="flex flex-col gap-1.5">
+                {flags.map((f, i) => (
+                  <img src={f} alt={`Vlajka — ${name} ${i + 1}`} class="w-full border border-cream-200" loading="lazy" />
+                ))}
+              </div>
+            </div>
+          )}
+          {flag && !flags && (
             <div class="pb-3 border-b border-cream-200">
               <img src={flag} alt={`Vlajka — ${name}`} class="w-full border border-cream-200" loading="lazy" />
             </div>

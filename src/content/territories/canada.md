@@ -1,5 +1,6 @@
 ---
 name: Canada
+flag: /flags/canada.svg
 continent: Americas
 period_start: 1867
 period_end: 1931

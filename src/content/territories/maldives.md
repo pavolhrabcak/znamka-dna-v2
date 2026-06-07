@@ -1,5 +1,6 @@
 ---
 name: Maldives
+flag: /flags/maldives.svg
 continent: Asia
 period_start: 1887
 period_end: 1965

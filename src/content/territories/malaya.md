@@ -1,5 +1,6 @@
 ---
 name: Malaya
+flag: /flags/malaya.svg
 continent: Asia
 period_start: 1826
 period_end: 1963
@@ -12,6 +13,12 @@ printers:
 tags: [asia, de-la-rue, waterlow, rubber, tin]
 stamps:
   - image: /stamps/malaya.webp
+    denomination: 10c
+    year: 1957
+    era: QEII
+    printer: De La Rue
+    note: Malayan Tiger
+  - image: /stamps/malaya2.webp
     denomination: 10c
     year: 1957
     era: QEII

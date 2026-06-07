@@ -1,5 +1,6 @@
 ---
 name: Rhodesia
+flag: /flags/rhodesia.svg
 continent: Africa
 period_start: 1964
 period_end: 1979

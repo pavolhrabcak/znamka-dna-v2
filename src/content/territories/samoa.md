@@ -1,5 +1,6 @@
 ---
 name: Samoa
+flag: /flags/samoa.svg
 continent: Oceania
 period_start: 1914
 period_end: 1962

@@ -1,5 +1,9 @@
 ---
 name: British KUT
+flags:
+  - /flags/kenya.svg
+  - /flags/uganda.svg
+  - /flags/tanganyika.svg
 
 continent: Africa
 period_start: 1935

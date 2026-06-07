@@ -1,5 +1,6 @@
 ---
 name: South Africa
+flag: /flags/south-africa.svg
 
 continent: Africa
 period_start: 1910

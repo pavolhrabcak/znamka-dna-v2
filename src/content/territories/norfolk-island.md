@@ -1,5 +1,6 @@
 ---
 name: Norfolk Island
+flag: /flags/norfolk-island.svg
 continent: Oceania
 period_start: 1856
 capital: Kingston

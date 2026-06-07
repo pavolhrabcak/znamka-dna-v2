@@ -93,6 +93,16 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
     <script src="/pagefind/pagefind-ui.js"><\/script>
   `} />
 
+  <!-- Scroll to top -->
+  <button
+    id="scroll-top-btn"
+    aria-label="Späť hore"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    class="hidden fixed bottom-6 right-6 z-40 w-10 h-10 bg-white border border-stone-300 text-stone-500 hover:border-stone-700 hover:text-stone-900 transition-colors items-center justify-center shadow-sm"
+  >
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,10 7,3 13,10"/></svg>
+  </button>
+
   <!-- Search modal -->
   <div
     id="search-modal"
@@ -151,6 +161,19 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
         if (e.key === 'Escape') closeSearch();
         if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
       });
+
+      var scrollBtn = document.getElementById('scroll-top-btn');
+      if (scrollBtn) {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 400) {
+            scrollBtn.classList.remove('hidden');
+            scrollBtn.classList.add('flex');
+          } else {
+            scrollBtn.classList.add('hidden');
+            scrollBtn.classList.remove('flex');
+          }
+        }, { passive: true });
+      }
     })();
   </script>
 

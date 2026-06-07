@@ -1,5 +1,6 @@
 ---
 name: Labuan
+flag: /flags/labuan.svg
 continent: Asia
 period_start: 1846
 period_end: 1946

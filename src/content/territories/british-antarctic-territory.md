@@ -1,5 +1,6 @@
 ---
 name: British Antarctic Territory
+flag: /flags/british-antarctic-territory.svg
 continent: Americas
 period_start: 1962
 capital: Stanley (admin. z Falklandov)

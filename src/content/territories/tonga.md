@@ -1,5 +1,6 @@
 ---
 name: Tonga
+flag: /flags/tonga.svg
 continent: Oceania
 period_start: 1900
 period_end: 1970

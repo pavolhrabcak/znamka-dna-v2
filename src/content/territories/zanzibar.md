@@ -1,5 +1,6 @@
 ---
 name: Zanzibar
+flag: /flags/zanzibar.svg
 
 continent: Africa
 period_start: 1890

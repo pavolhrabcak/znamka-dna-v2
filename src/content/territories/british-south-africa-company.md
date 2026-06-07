@@ -1,5 +1,6 @@
 ---
 name: British South Africa Company
+flag: /flags/british-south-africa-company.svg
 
 continent: Africa
 period_start: 1889

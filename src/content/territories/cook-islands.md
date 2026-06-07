@@ -1,5 +1,6 @@
 ---
 name: Cook Islands
+flag: /flags/cook-islands.svg
 continent: Oceania
 period_start: 1888
 period_end: 1965

@@ -1,5 +1,6 @@
 ---
 name: Bechuanaland
+flag: /flags/bechuanaland.svg
 
 continent: Africa
 period_start: 1885

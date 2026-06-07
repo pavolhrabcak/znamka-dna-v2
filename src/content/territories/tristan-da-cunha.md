@@ -1,5 +1,6 @@
 ---
 name: Tristan da Cunha
+flag: /flags/tristan-da-cunha.svg
 
 continent: Africa
 period_start: 1816

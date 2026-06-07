@@ -1,5 +1,6 @@
 ---
 name: Basutoland
+flag: /flags/basutoland.svg
 
 continent: Africa
 period_start: 1868
