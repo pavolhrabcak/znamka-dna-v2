@@ -6,22 +6,22 @@ period_start: 1625
 period_end: 1966
 capital: Bridgetown
 current_country: Barbados
-eras: [KGV,KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/Barbados.webp
     denomination: ½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Badge of the Colony
   - image: /stamps/Barbados2.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/Barbados3.webp
     denomination: 2/6

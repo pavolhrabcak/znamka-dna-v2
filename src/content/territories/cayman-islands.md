@@ -6,36 +6,36 @@ period_start: 1670
 
 capital: George Town
 current_country: Kajmanské ostrovy (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/cayman.webp
     denomination: ½d
     year: 1935
-    era: KGV
+    era: KGVI
     printer: De La Rue
   - image: /stamps/cayman2.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
   - image: /stamps/cayman2a.webp
     denomination: 2d
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
   - image: /stamps/cayman3.webp
     denomination: 6d
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/cayman4.webp
     denomination: 1/-
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1670

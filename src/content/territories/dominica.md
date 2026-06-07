@@ -6,11 +6,11 @@ period_start: 1763
 period_end: 1978
 capital: Roseau
 current_country: Dominika
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/Dominica.webp
     denomination: ½d
@@ -20,22 +20,22 @@ stamps:
   - image: /stamps/Dominica2.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/Dominica3.webp
     denomination: 2d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/Dominica4.webp
     denomination: 3d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/Dominica5.webp
     denomination: 6d
     year: 1954
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/Dominica6.webp
     denomination: 1/-

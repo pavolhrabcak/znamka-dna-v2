@@ -6,11 +6,11 @@ period_start: 1816
 
 capital: Edinburgh of the Seven Seas
 current_country: Tristan da Cunha (britské zámorské územie)
-eras: [KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
   - Bradbury, Wilkinson
-tags: [south-atlantic,de-la-rue,bradbury-wilkinson,remote]
+tags: [south-atlantic, de-la-rue, bradbury-wilkinson, remote]
 stamps:
   - image: /stamps/tristan.webp
     denomination: ½d

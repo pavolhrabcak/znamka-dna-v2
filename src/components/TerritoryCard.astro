@@ -1,9 +1,11 @@
 ---
 import { continentLabelMap } from '../lib/continentSlug';
-const { territory } = Astro.props;
+const { territory, era: filterEra } = Astro.props;
 const { slug } = territory;
 const { name, continent, period_start, period_end, eras, stamps } = territory.data;
-const firstStamp = stamps[0];
+const firstStamp = filterEra
+  ? (stamps.find((s: any) => s.era === filterEra) ?? stamps[0])
+  : stamps[0];
 ---
 
 <article class="group flex flex-col">

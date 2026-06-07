@@ -4,10 +4,10 @@ continent: Oceania
 period_start: 1856
 capital: Kingston
 current_country: Norfolkov ostrov (austrálske územie)
-eras: [KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
-tags: [oceania,de-la-rue,pacific,norfolk]
+tags: [oceania, de-la-rue, pacific, norfolk]
 stamps:
   - image: /stamps/norfolk.webp
     denomination: 0.5d
@@ -18,17 +18,17 @@ stamps:
   - image: /stamps/norfolk1.webp
     denomination: 1d
     year: 1947
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/norfolk-3.webp
     denomination: 3.5d
     year: 1956
-    era: QEII
+    era: KGVI
     printer: De La Rue
   - image: /stamps/norfolk-4.webp
     denomination: 2s
     year: 1956
-    era: QEII
+    era: KGVI
     printer: De La Rue
 timeline:
   - year: 1788

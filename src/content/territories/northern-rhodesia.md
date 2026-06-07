@@ -6,16 +6,16 @@ period_start: 1911
 period_end: 1964
 capital: Lusaka
 current_country: Zambia
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [southern-africa,waterlow,de-la-rue,copper]
+tags: [southern-africa, waterlow, de-la-rue, copper]
 stamps:
   - image: /stamps/northern-rhodesia.webp
     denomination: ½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Waterlow & Sons
   - image: /stamps/northern-rhodesia-2.webp
     denomination: 5/-

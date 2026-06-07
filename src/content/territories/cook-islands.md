@@ -5,11 +5,11 @@ period_start: 1888
 period_end: 1965
 capital: Avarua
 current_country: Cookove ostrovy
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,pacific]
+tags: [oceania, de-la-rue, waterlow, pacific]
 stamps:
   - image: /stamps/cook-islands.webp
     denomination: 0.5d

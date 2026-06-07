@@ -5,7 +5,7 @@ period_start: 1906
 period_end: 1980
 capital: Vila
 current_country: Vanuatu
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons

@@ -6,7 +6,7 @@ period_start: 1841
 period_end: 1963
 capital: Kuching
 current_country: Malaysia
-eras: [KGV, KGVI, QEII]
+eras: [QEII]
 printers:
   - Bradbury, Wilkinson
   - De La Rue
@@ -34,4 +34,4 @@ draft: false
 
 Sarawak was one of the most unusual colonial entities in the British Empire. From 1841 to 1946 it was the personal kingdom of the Brooke family — the "White Rajahs". James Brooke, an English adventurer, obtained the territory from the Sultan of Brunei as a reward for helping suppress a rebellion, and governed it as a sovereign state in close relationship with Britain.
 
-The territory was ceded to the British Crown in 1946 and joined the Federation of Malaysia in 1963. Sarawak issued its own stamps from 1869, first under the White Rajahs and later as a Crown Colony. The QEII definitives of the 1950s, printed by Bradbury, Wilkinson & Co., feature ethnographic motifs of the indigenous peoples of Borneo. The Kayan warrior dancer — holding a *mandau*, the traditional sword — is among the most admired designs in British colonial recess printing.
+The territory was ceded to the British Crown in 1946 and joined the Federation of Malaysia in 1963. Sarawak issued its own stamps from 1869, first under the White Rajahs and later as a Crown Colony. The QEII definitives of the 1950s, printed by Bradbury, Wilkinson & Co., feature ethnographic motifs of the indigenous peoples of Borneo. The Kayan warrior dancer — holding a _mandau_, the traditional sword — is among the most admired designs in British colonial recess printing.

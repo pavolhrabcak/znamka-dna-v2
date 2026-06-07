@@ -4,11 +4,11 @@ continent: Africa
 period_start: 1815
 capital: Georgetown
 current_country: Ascension (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [south-atlantic,de-la-rue,waterlow,wildlife]
+tags: [south-atlantic, de-la-rue, waterlow, wildlife]
 stamps:
   - image: /stamps/ascension.webp
     denomination: 0.5d
@@ -25,7 +25,7 @@ stamps:
   - image: /stamps/ascension3.webp
     denomination: 1.5d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/ascension4.webp
     denomination: 3d
@@ -36,7 +36,7 @@ stamps:
   - image: /stamps/ascension5.webp
     denomination: 1s
     year: 1956
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1815

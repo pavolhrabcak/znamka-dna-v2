@@ -13,7 +13,7 @@ stamps:
   - image: /stamps/bat.webp
     denomination: 1½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: English Harbour
 timeline:

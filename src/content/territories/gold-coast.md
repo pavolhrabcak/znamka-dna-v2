@@ -6,22 +6,22 @@ period_start: 1821
 period_end: 1957
 capital: Accra
 current_country: Ghana
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [west-africa,waterlow,de-la-rue,cocoa]
+tags: [west-africa, waterlow, de-la-rue, cocoa]
 stamps:
   - image: /stamps/gold-coast.webp
     denomination: ½d
     year: 1928
-    era: KGV
+    era: QEII
     printer: Waterlow & Sons
     note: Christiansborg Castle
   - image: /stamps/gold-coast2.webp
     denomination: 1d
     year: 1928
-    era: KGV
+    era: QEII
     printer: Waterlow & Sons
   - image: /stamps/gold-coast3.webp
     denomination: 3d

@@ -6,7 +6,7 @@ period_start: 1839
 period_end: 1967
 capital: Aden
 current_country: Yemen
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - Waterlow & Sons
   - De La Rue
@@ -15,7 +15,7 @@ stamps:
   - image: /stamps/aden.webp
     denomination: 4c
     year: 1939
-    era: KGV
+    era: KGVI
     printer: Waterlow & Sons
     note: Dhow in Aden harbour
 timeline:

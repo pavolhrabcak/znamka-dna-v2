@@ -6,16 +6,16 @@ period_start: 1884
 period_end: 1975
 capital: Port Moresby
 current_country: Papua Nová Guinea
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,pacific,wildlife]
+tags: [oceania, de-la-rue, waterlow, pacific, wildlife]
 stamps:
   - image: /stamps/papua.webp
     denomination: 0.5d
     year: 1932
-    era: KGV
+    era: KGVI
     printer: De La Rue
     note: Motuan Canoe
 timeline:

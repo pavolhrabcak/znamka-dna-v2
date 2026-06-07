@@ -87,6 +87,10 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
           data-continent={t.data.continent}
           data-printers={t.data.printers.join('|')}
           data-period={t.data.period_start}
+          data-stamp-default={t.data.stamps[0]?.image ?? ''}
+          data-stamp-kgv={t.data.stamps.find(s => s.era === 'KGV')?.image ?? ''}
+          data-stamp-kgvi={t.data.stamps.find(s => s.era === 'KGVI')?.image ?? ''}
+          data-stamp-qeii={t.data.stamps.find(s => s.era === 'QEII')?.image ?? ''}
         >
           <div class="gallery-card">
             <TerritoryCard territory={t} />
@@ -203,6 +207,18 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       if (current && !eligible.includes(current)) territorySel.value = '';
     }
 
+    function updateThumbnails(era: string) {
+      items.forEach(item => {
+        const img = item.querySelector<HTMLImageElement>('.gallery-card img');
+        if (!img) return;
+        const src = (era === 'KGV'  && item.dataset.stampKgv)  ? item.dataset.stampKgv  :
+                    (era === 'KGVI' && item.dataset.stampKgvi) ? item.dataset.stampKgvi :
+                    (era === 'QEII' && item.dataset.stampQeii) ? item.dataset.stampQeii :
+                    item.dataset.stampDefault;
+        if (src) img.src = src;
+      });
+    }
+
     function applyFilters() {
       const era       = eraSel.value;
       const cont      = contSel.value;
@@ -251,6 +267,8 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       resetBtn.classList.toggle('border-transparent', !hasFilter);
       resetBtn.classList.toggle('text-cream-900', !!hasFilter);
       resetBtn.classList.toggle('border-cream-700', !!hasFilter);
+
+      updateThumbnails(era);
     }
 
     galleryBtn.addEventListener('click', () => applyView('gallery'));
@@ -277,16 +295,49 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       applyFilters();
     });
 
-    // Pre-select filters from URL params (e.g. ?printer=De+La+Rue)
-    const params = new URLSearchParams(window.location.search);
-    const printerParam = params.get('printer');
-    const eraParam     = params.get('era');
-    const contParam    = params.get('continent');
-    if (printerParam) printerSel.value = printerParam;
-    if (eraParam)     eraSel.value     = eraParam;
-    if (contParam)    contSel.value    = contParam;
+    // ── State persistence: save on leave, restore on back navigation ──────
+    function saveNavState() {
+      sessionStorage.setItem('t-vc',   String(visibleCount));
+      sessionStorage.setItem('t-era',  eraSel.value);
+      sessionStorage.setItem('t-cont', contSel.value);
+      sessionStorage.setItem('t-pr',   printerSel.value);
+      sessionStorage.setItem('t-tr',   territorySel.value);
+      sessionStorage.setItem('t-sort', sortSel.value);
+    }
+    window.addEventListener('pagehide', saveNavState);
 
-    rebuildTerritoryOptions();
+    const navEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    const isBackNav = navEntry?.type === 'back_forward';
+
+    if (isBackNav) {
+      // Non-bfcache back navigation: restore full state from sessionStorage
+      const vc = sessionStorage.getItem('t-vc');
+      if (vc) visibleCount  = parseInt(vc, 10) || BATCH;
+      eraSel.value          = sessionStorage.getItem('t-era')  || '';
+      contSel.value         = sessionStorage.getItem('t-cont') || '';
+      printerSel.value      = sessionStorage.getItem('t-pr')   || '';
+      sortSel.value         = sessionStorage.getItem('t-sort') || 'az';
+      if (sortSel.value !== 'az') applySort();
+      rebuildTerritoryOptions();
+      const savedTerr = sessionStorage.getItem('t-tr');
+      if (savedTerr) territorySel.value = savedTerr;
+    } else {
+      // Fresh load or reload: use URL params, start at BATCH
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('printer'))   printerSel.value = params.get('printer')!;
+      if (params.get('era'))       eraSel.value     = params.get('era')!;
+      if (params.get('continent')) contSel.value    = params.get('continent')!;
+      rebuildTerritoryOptions();
+    }
     applyFilters();
+
+    // bfcache restore: JS heap is preserved so visibleCount is already correct —
+    // just re-apply DOM filtering to unhide the right items
+    window.addEventListener('pageshow', (e) => {
+      if (e.persisted) {
+        rebuildTerritoryOptions();
+        applyFilters();
+      }
+    });
   </script>
 </Base>

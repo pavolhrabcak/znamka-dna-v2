@@ -6,11 +6,11 @@ period_start: 1874
 period_end: 1970
 capital: Suva
 current_country: Fidži
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,pacific]
+tags: [oceania, de-la-rue, waterlow, pacific]
 stamps:
   - image: /stamps/fiji.webp
     denomination: 0.5d
@@ -26,7 +26,7 @@ stamps:
   - image: /stamps/fiji3.webp
     denomination: 2d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Sugar Cane
   - image: /stamps/fiji4.webp
@@ -37,17 +37,17 @@ stamps:
   - image: /stamps/fiji5.webp
     denomination: 6d
     year: 1954
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/fiji6.webp
     denomination: 1s
     year: 1954
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/fji-7.webp
     denomination: 5s
     year: 1954
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1874

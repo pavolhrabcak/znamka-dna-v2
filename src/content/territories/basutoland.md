@@ -21,19 +21,19 @@ stamps:
   - image: /stamps/basutoland1.webp
     denomination: 1½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: English Harbour
   - image: /stamps/basutoland2.webp
     denomination: 1½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: English Harbour
   - image: /stamps/basutoland3.webp
     denomination: 1½d
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
     note: English Harbour
 timeline:

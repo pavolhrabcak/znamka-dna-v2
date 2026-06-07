@@ -6,26 +6,26 @@ period_start: 1891
 period_end: 1964
 capital: Zomba
 current_country: Malawi
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [east-africa,waterlow,de-la-rue]
+tags: [east-africa, waterlow, de-la-rue]
 stamps:
   - image: /stamps/nyasaland.webp
     denomination: ½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Waterlow & Sons
   - image: /stamps/nyasaland1.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Waterlow & Sons
   - image: /stamps/nyasaland2.webp
     denomination: 2d
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1891

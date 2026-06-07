@@ -1,12 +1,12 @@
 ---
-name: St Vincent
+name: St. Vincent
 flag: /flags/saint-vincent.svg
 continent: Americas
 period_start: 1763
 period_end: 1979
 capital: Kingstown
 current_country: Svätý Vincent a Grenadíny
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons

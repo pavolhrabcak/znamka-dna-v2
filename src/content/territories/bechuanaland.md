@@ -6,10 +6,10 @@ period_start: 1885
 period_end: 1966
 capital: Mafeking
 current_country: Botswana
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - De La Rue
-tags: [southern-africa,de-la-rue]
+tags: [southern-africa, de-la-rue]
 stamps:
   - image: /stamps/bechuanaland.webp
     denomination: 1d

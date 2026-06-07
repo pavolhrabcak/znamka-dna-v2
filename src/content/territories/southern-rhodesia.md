@@ -15,7 +15,7 @@ stamps:
   - image: /stamps/s-rhodesia.webp
     denomination: 1s
     year: 1935
-    era: KGV
+    era: KGVI
     printer: De La Rue
     note: Victoria Falls (Mosi-oa-Tunya)
   - image: /stamps/s-rhodesia-1.webp
@@ -27,13 +27,13 @@ stamps:
   - image: /stamps/s-rhodesia-2.webp
     denomination: 1s
     year: 1935
-    era: KGV
+    era: QEII
     printer: De La Rue
     note: Victoria Falls (Mosi-oa-Tunya)
   - image: /stamps/s-rhodesia-3.webp
     denomination: 1s
     year: 1935
-    era: KGV
+    era: QEII
     printer: De La Rue
     note: Victoria Falls (Mosi-oa-Tunya)
 timeline:

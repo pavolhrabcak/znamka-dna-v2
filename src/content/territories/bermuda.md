@@ -6,28 +6,28 @@ period_start: 1684
 
 capital: Hamilton
 current_country: Bermuda (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
   - Bradbury, Wilkinson
-tags: [atlantic,de-la-rue,waterlow,bradbury-wilkinson]
+tags: [atlantic, de-la-rue, waterlow, bradbury-wilkinson]
 stamps:
   - image: /stamps/Bermuda.webp
     denomination: 1d
     year: 1936
-    era: KGV
+    era: KGVI
     printer: De La Rue
   - image: /stamps/Bermuda2.webp
     denomination: 2d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Hamilton Harbour
   - image: /stamps/Bermuda3.webp
     denomination: 1/-
     year: 1953
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1684

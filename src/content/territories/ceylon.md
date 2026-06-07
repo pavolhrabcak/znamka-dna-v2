@@ -6,23 +6,23 @@ period_start: 1815
 period_end: 1948
 capital: Colombo
 current_country: Srí Lanka
-eras: [KGV,KGVI]
+eras: [KGV, KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
   - Bradbury, Wilkinson
-tags: [asia,de-la-rue,waterlow,bradbury-wilkinson,tea]
+tags: [asia, de-la-rue, waterlow, bradbury-wilkinson, tea]
 stamps:
   - image: /stamps/ceylon.webp
     denomination: 2c
     year: 1935
-    era: KGV
+    era: KGVI
     printer: De La Rue
     note: Temple of the Tooth
   - image: /stamps/ceylon2.webp
     denomination: 3c
     year: 1935
-    era: KGV
+    era: KGVI
     printer: De La Rue
   - image: /stamps/ceylon3.webp
     denomination: 6c
@@ -32,7 +32,7 @@ stamps:
   - image: /stamps/ceylon3a.webp
     denomination: 9c
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
   - image: /stamps/ceylon4.webp
     denomination: 20c

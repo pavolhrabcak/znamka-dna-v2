@@ -6,28 +6,28 @@ period_start: 1893
 period_end: 1978
 capital: Honiara
 current_country: Šalamúnove ostrovy
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [oceania,waterlow,de-la-rue,pacific]
+tags: [oceania, waterlow, de-la-rue, pacific]
 stamps:
   - image: /stamps/solomon.webp
     denomination: 1d
     year: 1939
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Artificial Island, Malaita
   - image: /stamps/solomon-2.webp
     denomination: 3d
     year: 1956
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
     note: Malaita Canoe
   - image: /stamps/solomon-3.webp
     denomination: 2s
     year: 1956
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1893

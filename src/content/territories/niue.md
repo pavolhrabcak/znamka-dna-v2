@@ -5,7 +5,7 @@ period_start: 1901
 period_end: 1974
 capital: Alofi
 current_country: Niue
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - De La Rue
 tags: [oceania, de-la-rue, pacific, new-zealand]

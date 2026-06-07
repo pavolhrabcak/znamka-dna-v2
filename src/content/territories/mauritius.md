@@ -6,7 +6,7 @@ period_start: 1810
 period_end: 1968
 capital: Port Louis
 current_country: Maurícius
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons

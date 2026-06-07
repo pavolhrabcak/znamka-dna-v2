@@ -6,16 +6,16 @@ period_start: 1833
 
 capital: Stanley
 current_country: Falklandské ostrovy (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Bradbury, Wilkinson
-tags: [south-atlantic,de-la-rue,bradbury-wilkinson,wildlife]
+tags: [south-atlantic, de-la-rue, bradbury-wilkinson, wildlife]
 stamps:
   - image: /stamps/falkland0-islands.webp
     denomination: ½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Bradbury, Wilkinson
     note: Black-necked Swan
   - image: /stamps/falkland-islands.webp
@@ -32,7 +32,7 @@ stamps:
   - image: /stamps/falkland-islands2.webp
     denomination: 6d
     year: 1955
-    era: QEII
+    era: KGVI
     printer: Bradbury, Wilkinson
 timeline:
   - year: 1833

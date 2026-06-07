@@ -5,11 +5,11 @@ continent: Oceania
 period_start: 1838
 capital: Adamstown
 current_country: Pitcairnove ostrovy (britské zámorské územie)
-eras: [KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,pacific,bounty]
+tags: [oceania, de-la-rue, waterlow, pacific, bounty]
 stamps:
   - image: /stamps/pitcairn.webp
     denomination: 0.5d
@@ -20,7 +20,7 @@ stamps:
   - image: /stamps/pitcairn2.webp
     denomination: 1d
     year: 1940
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Fletcher Christian
   - image: /stamps/pitcairn3.webp

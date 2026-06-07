@@ -6,16 +6,16 @@ period_start: 1903
 period_end: 1968
 capital: Mbabane
 current_country: Svazijsko (Eswatini)
-eras: [KGV,KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [southern-africa,de-la-rue,waterlow]
+tags: [southern-africa, de-la-rue, waterlow]
 stamps:
   - image: /stamps/swaziland.webp
     denomination: ½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/swaziland-2.webp
     denomination: 1/-

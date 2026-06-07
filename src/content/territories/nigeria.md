@@ -6,22 +6,22 @@ period_start: 1914
 period_end: 1960
 capital: Lagos
 current_country: Nigéria
-eras: [KGV,KGVI]
+eras: [KGV, KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [west-africa,de-la-rue,waterlow]
+tags: [west-africa, de-la-rue, waterlow]
 stamps:
   - image: /stamps/NIgeria.webp
     denomination: ½d
     year: 1936
-    era: KGV
+    era: QEII
     printer: De La Rue
     note: River Niger
   - image: /stamps/nigeria2.webp
     denomination: 1d
     year: 1936
-    era: KGV
+    era: KGVI
     printer: De La Rue
     note: Fishing Village
   - image: /stamps/nigeria3.webp
@@ -32,7 +32,7 @@ stamps:
   - image: /stamps/Nigeria-7.webp
     denomination: 5/-
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
     note: Timber
 timeline:

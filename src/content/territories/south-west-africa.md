@@ -6,16 +6,16 @@ period_start: 1920
 period_end: 1990
 capital: Windhoek
 current_country: Namíbia
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - Bradbury, Wilkinson
   - Waterlow & Sons
-tags: [southern-africa,bradbury-wilkinson,waterlow,mandate]
+tags: [southern-africa, bradbury-wilkinson, waterlow, mandate]
 stamps:
   - image: /stamps/sw-africa.webp
     denomination: 1d
     year: 1931
-    era: KGV
+    era: KGVI
     printer: Bradbury, Wilkinson
     note: Bogenfels Arch
 timeline:

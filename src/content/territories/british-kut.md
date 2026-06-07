@@ -6,11 +6,11 @@ period_start: 1935
 period_end: 1963
 capital: Nairobi
 current_country: Keňa / Uganda / Tanzánia
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [east-africa,waterlow,de-la-rue,wildlife]
+tags: [east-africa, waterlow, de-la-rue, wildlife]
 stamps:
   - image: /stamps/kut.webp
     denomination: 5c
@@ -26,29 +26,29 @@ stamps:
   - image: /stamps/kut3.webp
     denomination: 20c
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
     note: Mount Kenya
   - image: /stamps/kut4.webp
     denomination: 30c
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/kut4a.webp
     denomination: 50c
     year: 1941
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/kut5.webp
     denomination: 1/-
     year: 1954
-    era: QEII
+    era: KGVI
     printer: De La Rue
     note: Owen Falls Dam
   - image: /stamps/kut6.webp
     denomination: 5/-
     year: 1954
-    era: QEII
+    era: KGV
     printer: De La Rue
 timeline:
   - year: 1920

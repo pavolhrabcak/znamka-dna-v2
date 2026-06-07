@@ -5,15 +5,15 @@ period_start: 1887
 period_end: 1965
 capital: Malé
 current_country: Maldivy
-eras: [KGV,KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
-tags: [asia,de-la-rue,indian-ocean]
+tags: [asia, de-la-rue, indian-ocean]
 stamps:
   - image: /stamps/Maldives.webp
     denomination: 2L
     year: 1933
-    era: KGV
+    era: QEII
     printer: De La Rue
 timeline:
   - year: 1887

@@ -6,11 +6,11 @@ period_start: 1862
 period_end: 1973
 capital: Belize City
 current_country: Belize
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [central-america,waterlow,de-la-rue]
+tags: [central-america, waterlow, de-la-rue]
 stamps:
   - image: /stamps/br-honduras.webp
     denomination: 1c
@@ -25,7 +25,7 @@ stamps:
   - image: /stamps/br-honduras-4.webp
     denomination: 25c
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1862

@@ -5,11 +5,11 @@ period_start: 1826
 period_end: 1963
 capital: Kuala Lumpur
 current_country: Malajzia
-eras: [KGV,KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [asia,de-la-rue,waterlow,rubber,tin]
+tags: [asia, de-la-rue, waterlow, rubber, tin]
 stamps:
   - image: /stamps/malaya.webp
     denomination: 10c

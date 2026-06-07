@@ -14,7 +14,7 @@ stamps:
   - image: /stamps/south-africa.webp
     denomination: ½a
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
     note: Berbera Blackhead Sheep
 timeline:

@@ -5,11 +5,11 @@ continent: Europe
 period_start: 1704
 capital: Gibraltar
 current_country: Gibraltár (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [mediterranean,de-la-rue,waterlow,europe,rock]
+tags: [mediterranean, de-la-rue, waterlow, europe, rock]
 stamps:
   - image: /stamps/Gibraltar.webp
     denomination: 0.5d
@@ -25,7 +25,7 @@ stamps:
   - image: /stamps/Gibraltar23.webp
     denomination: 2s
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1704

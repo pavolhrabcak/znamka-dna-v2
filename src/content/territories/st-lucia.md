@@ -6,7 +6,7 @@ period_start: 1814
 period_end: 1979
 capital: Castries
 current_country: St. Lucia
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - Bradbury, Wilkinson
   - De La Rue

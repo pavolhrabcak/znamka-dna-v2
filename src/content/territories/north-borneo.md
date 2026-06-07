@@ -6,11 +6,11 @@ period_start: 1881
 period_end: 1963
 capital: Jesselton
 current_country: Malajzia (Sabah)
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - Waterlow & Sons
   - De La Rue
-tags: [asia,waterlow,de-la-rue,wildlife]
+tags: [asia, waterlow, de-la-rue, wildlife]
 stamps:
   - image: /stamps/borneo.webp
     denomination: 1c

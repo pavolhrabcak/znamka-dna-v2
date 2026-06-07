@@ -6,11 +6,11 @@ period_start: 1632
 
 capital: Brades
 current_country: Montserrat (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/Montserrat.webp
     denomination: ½d
@@ -40,12 +40,12 @@ stamps:
   - image: /stamps/Montserrat4.webp
     denomination: 6d
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/Montserrat5.webp
     denomination: 1/-
     year: 1953
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1632

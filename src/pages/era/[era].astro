@@ -46,7 +46,7 @@ const info = eraInfo[era];
 
     {territories.length > 0 ? (
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
-        {territories.map(t => <TerritoryCard territory={t} />)}
+        {territories.map(t => <TerritoryCard territory={t} era={era} />)}
       </div>
     ) : (
       <p class="font-serif italic text-cream-400 text-lg py-16 text-center">

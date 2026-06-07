@@ -6,11 +6,11 @@ period_start: 1718
 period_end: 1973
 capital: Nassau
 current_country: Bahamas
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/Bahamas.webp
     denomination: 1d

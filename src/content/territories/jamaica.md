@@ -6,11 +6,11 @@ period_start: 1655
 period_end: 1962
 capital: Kingston
 current_country: Jamajka
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/Jamaica.webp
     denomination: ½d
@@ -31,7 +31,7 @@ stamps:
   - image: /stamps/Jamaica-7.webp
     denomination: 1/-
     year: 1956
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1655

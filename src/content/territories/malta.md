@@ -6,11 +6,11 @@ period_start: 1800
 period_end: 1964
 capital: Valletta
 current_country: Malta
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [mediterranean,de-la-rue,waterlow,europe]
+tags: [mediterranean, de-la-rue, waterlow, europe]
 stamps:
   - image: /stamps/Malta.webp
     denomination: 0.25d
@@ -26,13 +26,13 @@ stamps:
   - image: /stamps/malta-3.webp
     denomination: 2.5d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Palace, Valletta
   - image: /stamps/Malta-6.webp
     denomination: 2s
     year: 1956
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1800

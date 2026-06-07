@@ -6,7 +6,7 @@ period_start: 1946
 period_end: 1963
 capital: Singapore
 current_country: Singapore
-eras: [KGVI, QEII]
+eras: [QEII]
 printers:
   - Bradbury, Wilkinson
   - De La Rue

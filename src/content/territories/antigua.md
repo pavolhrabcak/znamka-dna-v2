@@ -6,11 +6,11 @@ period_start: 1632
 period_end: 1981
 capital: St. John's
 current_country: Antigua and Barbuda
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/antigua.webp
     denomination: 1½d
@@ -26,7 +26,7 @@ stamps:
   - image: /stamps/antigua2b.webp
     denomination: 3d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/antigua-3.webp
     denomination: 6d
@@ -41,7 +41,7 @@ stamps:
   - image: /stamps/antigua5.webp
     denomination: 2/6
     year: 1953
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1632

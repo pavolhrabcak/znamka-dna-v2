@@ -6,16 +6,16 @@ period_start: 1884
 period_end: 1960
 capital: Berbera
 current_country: Somálsko
-eras: [KGV,KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [east-africa,de-la-rue,waterlow]
+tags: [east-africa, de-la-rue, waterlow]
 stamps:
   - image: /stamps/somaliland.webp
     denomination: ½a
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
     note: Berbera Blackhead Sheep
 timeline:

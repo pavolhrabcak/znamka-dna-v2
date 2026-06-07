@@ -16,13 +16,13 @@ stamps:
   - image: /stamps/bsa-company.webp
     denomination: 1½d
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
     note: English Harbour
   - image: /stamps/bsa-company1.webp
     denomination: 1½d
     year: 1938
-    era: KGVI
+    era: KGV
     printer: De La Rue
     note: English Harbour
 timeline:

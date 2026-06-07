@@ -6,11 +6,11 @@ period_start: 1672
 
 capital: Road Town
 current_country: Britské Panenské ostrovy (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/virgin-islands.webp
     denomination: ½d
@@ -20,7 +20,7 @@ stamps:
   - image: /stamps/virgin-islands2.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/virgin-islands3.webp
     denomination: 3d

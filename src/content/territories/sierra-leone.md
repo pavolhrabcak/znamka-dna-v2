@@ -6,42 +6,42 @@ period_start: 1808
 period_end: 1961
 capital: Freetown
 current_country: Sierra Leone
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [west-africa,de-la-rue,waterlow]
+tags: [west-africa, de-la-rue, waterlow]
 stamps:
   - image: /stamps/sierra-leone.webp
     denomination: ½d
     year: 1932
-    era: KGV
+    era: KGVI
     printer: Waterlow & Sons
     note: Rice Harvesting
   - image: /stamps/sierra-leone2.webp
     denomination: 1d
     year: 1932
-    era: KGV
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/sierra-leone3.webp
     denomination: 2d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/sierra-leone4.webp
     denomination: 3d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/sierra-leone5.webp
     denomination: 6d
     year: 1956
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
   - image: /stamps/sierra-leone6.webp
     denomination: 1/-
     year: 1956
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1808

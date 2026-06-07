@@ -6,7 +6,7 @@ period_start: 1890
 period_end: 1964
 capital: Zanzibar City
 current_country: Tanzánia
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - De La Rue
 tags: [east-africa, de-la-rue, spices, sultan]

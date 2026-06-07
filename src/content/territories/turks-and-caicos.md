@@ -6,11 +6,11 @@ period_start: 1766
 
 capital: Cockburn Town
 current_country: Ostrovy Turks a Caicos (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow,salt]
+tags: [caribbean, de-la-rue, waterlow, salt]
 stamps:
   - image: /stamps/turks.webp
     denomination: ¼d
@@ -26,7 +26,7 @@ stamps:
   - image: /stamps/turks3.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/turks4.webp
     denomination: 2d
@@ -41,22 +41,22 @@ stamps:
   - image: /stamps/turks6.webp
     denomination: 3d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/turks-7.webp
     denomination: 6d
     year: 1950
-    era: KGVI
+    era: QEII
     printer: De La Rue
   - image: /stamps/turks-8.webp
     denomination: 1/-
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/turks-8a.webp
     denomination: 2/-
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/turks-9.webp
     denomination: 10/-

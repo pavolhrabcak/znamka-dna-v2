@@ -6,11 +6,11 @@ period_start: 1649
 period_end: 1974
 capital: St. George's
 current_country: Grenada
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/grenada.webp
     denomination: 1d

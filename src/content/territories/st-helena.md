@@ -1,37 +1,37 @@
 ---
-name: St Helena
+name: St. Helena
 flag: /flags/saint-helena.svg
 continent: Africa
 period_start: 1659
 
 capital: Jamestown
 current_country: Svätá Helena (britské zámorské územie)
-eras: [KGV,KGVI,QEII]
+eras: [KGV, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [south-atlantic,de-la-rue,waterlow,napoleon]
+tags: [south-atlantic, de-la-rue, waterlow, napoleon]
 stamps:
   - image: /stamps/st-helena.webp
     denomination: ½d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Waterlow & Sons
     note: Jamestown
   - image: /stamps/st-helena2.webp
     denomination: 1d
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Waterlow & Sons
   - image: /stamps/st-helena3.webp
     denomination: 3d
     year: 1953
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
   - image: /stamps/st-helena4.webp
     denomination: 1/-
     year: 1953
-    era: QEII
+    era: KGV
     printer: Waterlow & Sons
 timeline:
   - year: 1659

@@ -5,16 +5,16 @@ period_start: 1914
 period_end: 1968
 capital: Yaren
 current_country: Nauru
-eras: [KGV,KGVI,QEII]
+eras: [QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,pacific,phosphate]
+tags: [oceania, de-la-rue, waterlow, pacific, phosphate]
 stamps:
   - image: /stamps/nauru.webp
     denomination: 0.5d
     year: 1937
-    era: KGV
+    era: QEII
     printer: De La Rue
 timeline:
   - year: 1914

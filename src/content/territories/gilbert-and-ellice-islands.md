@@ -6,11 +6,11 @@ period_start: 1892
 period_end: 1971
 capital: Tarawa
 current_country: Kiribati / Tuvalu
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [oceania,de-la-rue,waterlow,pacific]
+tags: [oceania, de-la-rue, waterlow, pacific]
 stamps:
   - image: /stamps/gilbert-ellice.webp
     denomination: 0.5d

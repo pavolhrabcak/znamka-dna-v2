@@ -6,22 +6,22 @@ period_start: 1878
 period_end: 1960
 capital: Nicosia
 current_country: Cyprus
-eras: [KGV,KGVI,QEII]
+eras: [KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [mediterranean,de-la-rue,waterlow,europe]
+tags: [mediterranean, de-la-rue, waterlow, europe]
 stamps:
   - image: /stamps/cyprus.webp
     denomination: 0.25pi
     year: 1934
-    era: KGV
+    era: KGVI
     printer: Waterlow & Sons
     note: Kyrenia Harbour
   - image: /stamps/cyprus2.webp
     denomination: 0.5pi
     year: 1934
-    era: KGV
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/cyprus3.webp
     denomination: 1pi
@@ -32,13 +32,13 @@ stamps:
   - image: /stamps/cyprus4.webp
     denomination: 4pi
     year: 1938
-    era: KGVI
+    era: QEII
     printer: Waterlow & Sons
     note: Kolossi Castle
   - image: /stamps/cyprus5.webp
     denomination: 9pi
     year: 1955
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/cyprus6.webp
     denomination: 45pi

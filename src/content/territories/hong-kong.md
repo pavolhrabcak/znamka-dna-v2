@@ -6,7 +6,7 @@ period_start: 1842
 period_end: 1997
 capital: Victoria
 current_country: Čína
-eras: [KGV, KGVI, QEII]
+eras: [KGVI]
 printers:
   - Bradbury, Wilkinson
 tags: [far-east, china, bradbury-wilkinson, opium-war, centenary]

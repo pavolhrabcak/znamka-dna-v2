@@ -6,11 +6,11 @@ period_start: 1797
 period_end: 1962
 capital: Port of Spain
 current_country: Trinidad a Tobago
-eras: [KGV,KGVI,QEII]
+eras: [KGVI]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
+tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/trinidad-tobago.webp
     denomination: 1c
@@ -21,7 +21,7 @@ stamps:
   - image: /stamps/trinidad-tobago1.webp
     denomination: 24c
     year: 1953
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1797
