@@ -37,7 +37,21 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
             </div>
           </div>
         </li>
-        <li><a href="/imprints" class="hover:text-stone-900 transition-colors">Imprinty</a></li>
+        <li class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+            Tlačiarne
+            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
+          </button>
+          <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
+            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[160px]">
+              <a href="/printer/waterlow-and-sons"   class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Waterlow &amp; Sons</a>
+              <a href="/printer/de-la-rue"           class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">De La Rue</a>
+              <a href="/printer/bradbury-wilkinson"  class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Bradbury Wilkinson</a>
+              <div class="border-t border-stone-100 my-1"></div>
+              <a href="/imprints" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Imprinty</a>
+            </div>
+          </div>
+        </li>
         <li><a href="/glosar" class="hover:text-stone-900 transition-colors">Glosár</a></li>
         <li><a href="/o-blogu" class="hover:text-stone-900 transition-colors">O projekte</a></li>
       </ul>
