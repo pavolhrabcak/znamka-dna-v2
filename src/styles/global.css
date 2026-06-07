@@ -41,3 +41,12 @@
 #search .pagefind-ui__result-title {
   font-family: 'Playfair Display', serif !important;
 }
+
+/* Flash-free list-view restore on back navigation (head script sets these attributes) */
+html[data-t-view="list"] #territory-grid { display: flex !important; flex-direction: column !important; }
+html[data-t-view="list"] #territory-grid .gallery-card { display: none !important; }
+html[data-t-view="list"] #territory-grid .list-row { display: block !important; }
+
+html[data-s-view="list"] #sets-grid { display: flex !important; flex-direction: column !important; }
+html[data-s-view="list"] #sets-grid .gallery-card { display: none !important; }
+html[data-s-view="list"] #sets-grid .list-row { display: block !important; }

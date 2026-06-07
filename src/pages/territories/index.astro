@@ -11,6 +11,15 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
 ---
 
 <Base title="Teritóriá — Britské kolónie" description="Prehľad britských koloniálnych území s gravírovanými poštovými známkami. Filtrovanie podľa kontinentu, éry (KGV, KGVI, QEII) a tlačiarne.">
+  <script is:inline slot="head">
+    (function(){
+      try {
+        var nav = performance.getEntriesByType('navigation')[0];
+        if (nav && nav.type === 'back_forward' && sessionStorage.getItem('t-view') === 'list')
+          document.documentElement.setAttribute('data-t-view', 'list');
+      } catch(e) {}
+    })();
+  </script>
   <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
 
     <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
@@ -143,11 +152,13 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
 
     const BATCH = 15;
     let visibleCount = BATCH;
+    let currentView: 'gallery' | 'list' = 'gallery';
 
     const GALLERY_CLS = ['grid','grid-cols-2','md:grid-cols-3','lg:grid-cols-5','gap-x-6','gap-y-10'];
     const LIST_CLS    = ['flex','flex-col'];
 
     function applyView(view: 'gallery' | 'list') {
+      document.documentElement.removeAttribute('data-t-view');
       if (view === 'gallery') {
         grid.classList.remove(...LIST_CLS);
         grid.classList.add(...GALLERY_CLS);
@@ -271,8 +282,8 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       updateThumbnails(era);
     }
 
-    galleryBtn.addEventListener('click', () => applyView('gallery'));
-    listBtn.addEventListener('click',    () => applyView('list'));
+    galleryBtn.addEventListener('click', () => { currentView = 'gallery'; applyView('gallery'); });
+    listBtn.addEventListener('click',    () => { currentView = 'list';    applyView('list');    });
     sortSel.addEventListener('change',   () => { visibleCount = BATCH; applySort(); applyFilters(); });
 
     [eraSel, contSel, printerSel].forEach(sel => sel.addEventListener('change', () => {
@@ -298,6 +309,7 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
     // ── State persistence: save on leave, restore on back navigation ──────
     function saveNavState() {
       sessionStorage.setItem('t-vc',   String(visibleCount));
+      sessionStorage.setItem('t-view', currentView);
       sessionStorage.setItem('t-era',  eraSel.value);
       sessionStorage.setItem('t-cont', contSel.value);
       sessionStorage.setItem('t-pr',   printerSel.value);
@@ -311,13 +323,16 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
 
     if (isBackNav) {
       // Non-bfcache back navigation: restore full state from sessionStorage
-      const vc = sessionStorage.getItem('t-vc');
-      if (vc) visibleCount  = parseInt(vc, 10) || BATCH;
-      eraSel.value          = sessionStorage.getItem('t-era')  || '';
-      contSel.value         = sessionStorage.getItem('t-cont') || '';
-      printerSel.value      = sessionStorage.getItem('t-pr')   || '';
-      sortSel.value         = sessionStorage.getItem('t-sort') || 'az';
+      const vc   = sessionStorage.getItem('t-vc');
+      const view = sessionStorage.getItem('t-view') as 'gallery' | 'list' | null;
+      if (vc)   visibleCount = parseInt(vc, 10) || BATCH;
+      if (view) currentView  = view;
+      eraSel.value     = sessionStorage.getItem('t-era')  || '';
+      contSel.value    = sessionStorage.getItem('t-cont') || '';
+      printerSel.value = sessionStorage.getItem('t-pr')   || '';
+      sortSel.value    = sessionStorage.getItem('t-sort') || 'az';
       if (sortSel.value !== 'az') applySort();
+      if (currentView !== 'gallery') applyView(currentView);
       rebuildTerritoryOptions();
       const savedTerr = sessionStorage.getItem('t-tr');
       if (savedTerr) territorySel.value = savedTerr;
@@ -331,10 +346,10 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
     }
     applyFilters();
 
-    // bfcache restore: JS heap is preserved so visibleCount is already correct —
-    // just re-apply DOM filtering to unhide the right items
+    // bfcache restore: JS heap is preserved, just re-apply DOM state
     window.addEventListener('pageshow', (e) => {
       if (e.persisted) {
+        applyView(currentView);
         rebuildTerritoryOptions();
         applyFilters();
       }

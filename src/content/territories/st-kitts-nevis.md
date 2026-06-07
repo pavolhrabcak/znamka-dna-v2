@@ -1,18 +1,17 @@
 ---
-name: St Kitts-Nevis
+name: St. Kitts-Nevis
 flag: /flags/saint-christopher-nevis-anguilla.svg
 continent: Americas
 period_start: 1623
 period_end: 1983
 capital: Basseterre
 current_country: Svätý Krištof a Nevis
-eras: [KGV,KGVI,QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
   - Waterlow & Sons
-tags: [caribbean,de-la-rue,waterlow]
-stamps:
-  []
+tags: [caribbean, de-la-rue, waterlow]
+stamps: []
 timeline:
   - year: 1623
     event: Prvá britská kolónia v Karibiku
