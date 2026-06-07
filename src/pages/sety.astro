@@ -1,0 +1,586 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { CONTINENTS, continentLabelMap } from '../lib/continentSlug';
+
+// ── Read all set images from public/sets ──────────────────────────────────
+const setsDir = join(process.cwd(), 'public', 'sets');
+const rawFiles = readdirSync(setsDir).filter(f => f.endsWith('.webp')).sort();
+
+// ── Parse filename → metadata ─────────────────────────────────────────────
+function parseFilename(filename: string) {
+  const base  = filename.replace('.webp', '');
+  const parts = base.split('-');
+
+  // Detect era token (kgvi before kgv to avoid partial match)
+  let era: 'KGV' | 'KGVI' | 'QEII' | null = null;
+  let eraIdx = -1;
+  for (let i = 0; i < parts.length; i++) {
+    const t = parts[i].toLowerCase();
+    if (t === 'kgvi')               { era = 'KGVI'; eraIdx = i; break; }
+    if (t === 'kgv')                { era = 'KGV';  eraIdx = i; break; }
+    if (t === 'qeii' || t === 'qe') { era = 'QEII'; eraIdx = i; break; }
+  }
+
+  // First 4-digit year
+  let year = 0;
+  let yearIdx = -1;
+  for (let i = 0; i < parts.length; i++) {
+    const n = parseInt(parts[i]);
+    if (n >= 1900 && n <= 2100) { year = n; yearIdx = i; break; }
+  }
+
+  // Colony slug = tokens before era (or before year if no era)
+  const colonyEnd = eraIdx > 0 ? eraIdx : yearIdx > 0 ? yearIdx : parts.length;
+  const colonySlug = parts.slice(0, colonyEnd).join('-');
+
+  // Optional part label (e.g. "part-I" → "I")
+  const partIdx = parts.findIndex(p => p.toLowerCase() === 'part');
+  const partLabel = partIdx >= 0 ? parts[partIdx + 1] ?? null : null;
+
+  return { filename, src: `/sets/${filename}`, colonySlug, era, year, partLabel };
+}
+
+// ── Cross-reference with territories collection ───────────────────────────
+const ALIASES: Record<string, string> = {
+  'acension':          'ascension-island',
+  'bat':               'british-antarctic-territory',
+  'br-guiana':         'british-guiana',
+  'br-honduras':       'british-honduras',
+  'br-solomon':        'solomon-islands',
+  'br-virgin-islands': 'british-virgin-islands',
+  'babrbados':         'barbados',
+  'norfolk':           'norfolk-island',
+};
+
+const territories = await getCollection('territories', t => !t.data.draft);
+const bySlug = new Map(territories.map(t => [t.slug, t]));
+
+function titleCase(slug: string) {
+  return slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+const sets = rawFiles.map(parseFilename).map(s => {
+  const resolved  = ALIASES[s.colonySlug] ?? s.colonySlug;
+  const territory = bySlug.get(resolved);
+  const baseName  = territory?.data.name ?? titleCase(s.colonySlug);
+  const displayName = s.partLabel ? `${baseName} (${s.partLabel})` : baseName;
+  return {
+    ...s,
+    territorySlug: resolved,
+    territory,
+    baseName,
+    displayName,
+    continent: territory?.data.continent ?? null,
+    printers:  territory?.data.printers  ?? [],
+  };
+});
+
+// ── Unique filter values ──────────────────────────────────────────────────
+const allPrinters = [...new Set(sets.flatMap(s => s.printers))].sort();
+const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName])).entries()]
+  .sort((a, b) => a[1].localeCompare(b[1]));
+---
+
+<Base
+  title="Sety — Kompletné definitívne série"
+  description="Kompletné definitívne série gravírovaných poštových známok britských kolónií. Obrazové definitívy éry KGV, KGVI a QEII tlačené hĺbkotlačou."
+>
+  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <span class="text-cream-600">Sety</span>
+    </nav>
+
+    <div class="mb-8 pb-8 border-b border-cream-200">
+      <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-3">Galéria · Hĺbkotlač</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Sety</h1>
+      <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic">
+        Kompletné definitívne série britských koloniálnych emisií
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="mb-6 flex flex-wrap items-center gap-3">
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Teritórium</label>
+        <select id="filter-territory" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[160px]">
+          <option value="">Všetky</option>
+          {allTerritories.map(([slug, name]) => <option value={slug}>{name}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Panovník</label>
+        <select id="filter-era" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[110px]">
+          <option value="">Všetky</option>
+          <option value="KGV">KGV</option>
+          <option value="KGVI">KGVI</option>
+          <option value="QEII">QEII</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Kontinent</label>
+        <select id="filter-continent" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[140px]">
+          <option value="">Všetky</option>
+          {CONTINENTS.map(c => <option value={c}>{continentLabelMap[c]}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5">
+        <label class="text-[9px] tracking-widest uppercase text-cream-400">Tlačiareň</label>
+        <select id="filter-printer" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[150px]">
+          <option value="">Všetky</option>
+          {allPrinters.map(p => <option value={p}>{p}</option>)}
+        </select>
+      </div>
+      <div class="flex flex-col gap-0.5 self-end">
+        <span class="text-[9px] tracking-widest uppercase text-cream-400 invisible">_</span>
+        <button id="filter-reset" class="text-[10px] tracking-widest uppercase text-cream-400 hover:text-cream-900 border border-transparent hover:border-cream-300 px-2 py-1.5 transition-colors">
+          Zrušiť filtre
+        </button>
+      </div>
+    </div>
+
+    <!-- Toolbar: count + sort + view toggle -->
+    <div class="mb-5 flex items-end justify-between">
+      <div class="flex items-end gap-4">
+        <div class="flex flex-col gap-0.5">
+          <label class="text-[9px] tracking-widest uppercase text-cream-400">Zoradiť</label>
+          <select id="sort-sel" class="text-xs border border-cream-300 bg-white px-2 py-1.5 text-cream-700 focus:outline-none focus:border-cream-600 min-w-[160px]">
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="oldest">Rok vzostupne</option>
+            <option value="newest">Rok zostupne</option>
+          </select>
+        </div>
+        <p id="set-count" class="text-[11px] tracking-widest uppercase text-cream-400 pb-1.5">{sets.length} setov</p>
+      </div>
+      <div class="flex items-center gap-1">
+        <button id="view-gallery" title="Galéria" class="p-1.5 border border-cream-700 bg-cream-100 text-cream-900 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0" y="0" width="6" height="6" fill="currentColor"/><rect x="8" y="0" width="6" height="6" fill="currentColor"/><rect x="0" y="8" width="6" height="6" fill="currentColor"/><rect x="8" y="8" width="6" height="6" fill="currentColor"/></svg>
+        </button>
+        <button id="view-list" title="Zoznam" class="p-1.5 border border-cream-300 text-cream-400 hover:border-cream-600 hover:text-cream-800 transition-colors">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="0" y="1" width="14" height="2" fill="currentColor"/><rect x="0" y="6" width="14" height="2" fill="currentColor"/><rect x="0" y="11" width="14" height="2" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div id="sets-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+      {sets.map(s => (
+        <div
+          class="set-item"
+          data-name={s.baseName}
+          data-era={s.era ?? ''}
+          data-continent={s.continent ?? ''}
+          data-printers={s.printers.join('|')}
+          data-year={s.year}
+          data-territory={s.territorySlug}
+        >
+          <!-- Gallery card: click image to open lightbox -->
+          <div class="gallery-card">
+            <div
+              class="group flex flex-col cursor-zoom-in"
+              onclick="openLightboxAt(this)"
+            >
+              <div class="border border-cream-200 bg-white p-4 mb-3 overflow-hidden transition-all duration-200 group-hover:border-cream-500 group-hover:shadow-lg">
+                <div class="aspect-[4/3] flex items-center justify-center">
+                  <img
+                    src={s.src}
+                    alt={`${s.displayName}${s.era ? ' · ' + s.era : ''} ${s.year || ''}`}
+                    class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="flex items-center justify-center mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span class="text-[9px] tracking-widest uppercase text-cream-400">Zobraziť</span>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <p class="font-serif text-base text-cream-900 leading-snug">{s.displayName}</p>
+                {s.continent
+                  ? <p class="text-[11px] tracking-widest uppercase text-cream-500">{continentLabelMap[s.continent]} · {s.year || ''}</p>
+                  : s.year > 0 && <p class="text-[11px] tracking-widest uppercase text-cream-500">{s.year}</p>
+                }
+                <div class="flex flex-wrap gap-1 mt-0.5">
+                  {s.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+                  {s.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                  {s.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+                </div>
+              </div>
+            </div>
+            {s.territory && (
+              <a
+                href={`/territories/${s.territorySlug}`}
+                class="mt-2 text-[10px] tracking-widest uppercase text-cream-400 hover:text-cream-900 transition-colors self-start block"
+                onclick="event.stopPropagation()"
+              >
+                → Teritórium
+              </a>
+            )}
+          </div>
+
+          <!-- List row -->
+          <div class="list-row hidden">
+            <div class="flex items-center gap-4 py-3 border-b border-cream-100 px-1">
+              <button
+                class="cursor-zoom-in shrink-0"
+                onclick="openLightboxAt(this)"
+              >
+                <img src={s.src} alt={s.displayName} class="w-24 h-14 object-contain border border-cream-100 bg-white p-1 hover:border-cream-400 transition-colors" loading="lazy" />
+              </button>
+              <span class="font-serif text-sm text-cream-900 flex-1 min-w-0 truncate">{s.displayName}</span>
+              {s.continent && <span class="text-[9px] tracking-widest uppercase text-cream-400 whitespace-nowrap shrink-0 hidden sm:block">{continentLabelMap[s.continent]}</span>}
+              <span class="text-[9px] tracking-widest uppercase text-cream-500 whitespace-nowrap shrink-0">{s.year || ''}</span>
+              <div class="flex gap-1 shrink-0">
+                {s.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+                {s.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                {s.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+              </div>
+              {s.territory && (
+                <a href={`/territories/${s.territorySlug}`} class="text-[9px] tracking-widest uppercase text-cream-400 hover:text-cream-900 transition-colors shrink-0 hidden sm:block">→</a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p id="no-results" class="hidden text-center text-cream-400 font-serif italic text-lg py-16">
+      Žiadne sety nevyhovujú filtrom.
+    </p>
+
+    <div class="mt-14 pt-8 border-t border-cream-200">
+      <a href="/" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors">
+        ← Domov
+      </a>
+    </div>
+
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black/95 z-50" onclick="closeLightbox()">
+
+    <!-- Close button — top-right, always visible -->
+    <button
+      onclick="closeLightbox();event.stopPropagation()"
+      class="absolute top-4 right-4 z-30 flex items-center justify-center w-10 h-10 bg-white/15 hover:bg-white/30 text-white transition-colors"
+      aria-label="Zavrieť"
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="1" y1="1" x2="15" y2="15"/><line x1="15" y1="1" x2="1" y2="15"/></svg>
+    </button>
+
+    <!-- Zoom hint — top-center -->
+    <div class="absolute top-4 left-0 right-0 z-30 flex justify-center pointer-events-none">
+      <p id="lb-zoom-hint" class="flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-white/40 transition-opacity duration-500">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="4.5" cy="4.5" r="3.5"/><line x1="7.5" y1="7.5" x2="10" y2="10"/><line x1="4.5" y1="3" x2="4.5" y2="6"/><line x1="3" y1="4.5" x2="6" y2="4.5"/></svg>
+        Pohybom myši nad obrázkom priblížite detail
+      </p>
+    </div>
+
+    <!-- Counter + territory link — top-left -->
+    <div class="absolute top-4 left-4 z-30 flex flex-col gap-1.5" onclick="event.stopPropagation()">
+      <span id="lb-counter" class="text-[11px] tracking-widest text-white/50"></span>
+      <a id="lb-territory-link" href="#" class="hidden text-[10px] tracking-widest uppercase text-white/40 hover:text-white transition-colors">→ Teritórium</a>
+    </div>
+
+    <!-- Prev — left center -->
+    <button
+      id="lb-prev"
+      onclick="lbNav(-1);event.stopPropagation()"
+      class="absolute left-3 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white bg-white/5 hover:bg-white/15 p-3 transition-colors"
+      aria-label="Predchádzajúci"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16,4 8,12 16,20"/></svg>
+    </button>
+
+    <!-- Next — right center -->
+    <button
+      id="lb-next"
+      onclick="lbNav(1);event.stopPropagation()"
+      class="absolute right-3 top-1/2 -translate-y-1/2 z-30 text-white/50 hover:text-white bg-white/5 hover:bg-white/15 p-3 transition-colors"
+      aria-label="Nasledujúci"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="8,4 16,12 8,20"/></svg>
+    </button>
+
+    <!-- Image — fills viewport, click doesn't close -->
+    <div id="lb-img-container" class="absolute inset-0 flex items-center justify-center px-16 py-14" onclick="event.stopPropagation()">
+      <img
+        id="lb-img"
+        src=""
+        alt=""
+        style="max-width: 90vw; max-height: 82vh; object-fit: contain;"
+      />
+    </div>
+
+    <!-- Magnifier lens (follows cursor) -->
+    <div
+      id="lb-lens"
+      class="pointer-events-none"
+      style="display:none;position:fixed;width:300px;height:300px;border-radius:50%;border:2px solid rgba(255,255,255,0.35);box-shadow:0 0 0 1px rgba(0,0,0,0.6),0 8px 40px rgba(0,0,0,0.7);background-repeat:no-repeat;background-color:#111;z-index:50;overflow:hidden;"
+    ></div>
+
+    <!-- Caption — bottom center -->
+    <div class="absolute bottom-3 left-0 right-0 z-30 text-center" onclick="event.stopPropagation()">
+      <p id="lb-caption" class="text-[11px] tracking-widest uppercase text-white/40"></p>
+    </div>
+
+  </div>
+
+  <script>
+    // ── Filters / Sort / View ─────────────────────────────────────────────
+    const terrSel    = document.getElementById('filter-territory') as HTMLSelectElement;
+    const eraSel     = document.getElementById('filter-era')       as HTMLSelectElement;
+    const contSel    = document.getElementById('filter-continent') as HTMLSelectElement;
+    const printerSel = document.getElementById('filter-printer')   as HTMLSelectElement;
+    const resetBtn   = document.getElementById('filter-reset')     as HTMLButtonElement;
+    const sortSel    = document.getElementById('sort-sel')         as HTMLSelectElement;
+    const galleryBtn = document.getElementById('view-gallery')     as HTMLButtonElement;
+    const listBtn    = document.getElementById('view-list')        as HTMLButtonElement;
+    const noResults  = document.getElementById('no-results')       as HTMLParagraphElement;
+    const countEl    = document.getElementById('set-count')        as HTMLParagraphElement;
+    const grid       = document.getElementById('sets-grid')        as HTMLDivElement;
+    const items      = [...document.querySelectorAll<HTMLDivElement>('.set-item')];
+
+    const GALLERY_CLS = ['grid','grid-cols-1','md:grid-cols-2','lg:grid-cols-3','gap-x-6','gap-y-10'];
+    const LIST_CLS    = ['flex','flex-col'];
+
+    function applyView(view: 'gallery' | 'list') {
+      if (view === 'gallery') {
+        grid.classList.remove(...LIST_CLS);
+        grid.classList.add(...GALLERY_CLS);
+      } else {
+        grid.classList.remove(...GALLERY_CLS);
+        grid.classList.add(...LIST_CLS);
+      }
+      document.querySelectorAll<HTMLElement>('.gallery-card').forEach(el =>
+        el.classList.toggle('hidden', view === 'list'));
+      document.querySelectorAll<HTMLElement>('.list-row').forEach(el =>
+        el.classList.toggle('hidden', view === 'gallery'));
+
+      galleryBtn.className = 'p-1.5 border transition-colors ' + (view === 'gallery'
+        ? 'border-cream-700 bg-cream-100 text-cream-900'
+        : 'border-cream-300 text-cream-400 hover:border-cream-600 hover:text-cream-800');
+      listBtn.className = 'p-1.5 border transition-colors ' + (view === 'list'
+        ? 'border-cream-700 bg-cream-100 text-cream-900'
+        : 'border-cream-300 text-cream-400 hover:border-cream-600 hover:text-cream-800');
+    }
+
+    function applySort() {
+      const sort = sortSel.value;
+      [...items].sort((a, b) => {
+        if (sort === 'az')     return (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '');
+        if (sort === 'za')     return (b.dataset.name ?? '').localeCompare(a.dataset.name ?? '');
+        if (sort === 'oldest') return +(a.dataset.year ?? 0) - +(b.dataset.year ?? 0);
+        if (sort === 'newest') return +(b.dataset.year ?? 0) - +(a.dataset.year ?? 0);
+        return 0;
+      }).forEach(item => grid.appendChild(item));
+    }
+
+    function applyFilters() {
+      const terr    = terrSel.value;
+      const era     = eraSel.value;
+      const cont    = contSel.value;
+      const printer = printerSel.value;
+      const hasFilter = terr || era || cont || printer;
+
+      let visible = 0;
+      items.forEach(item => {
+        const printers = item.dataset.printers ? item.dataset.printers.split('|') : [];
+        const match = (!terr    || item.dataset.territory === terr)
+                   && (!era     || item.dataset.era === era)
+                   && (!cont    || item.dataset.continent === cont)
+                   && (!printer || printers.includes(printer));
+        item.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      countEl.textContent = `${visible} setov`;
+      noResults.classList.toggle('hidden', visible > 0);
+
+      [terrSel, eraSel, contSel, printerSel].forEach(sel => {
+        const active = !!sel.value;
+        sel.classList.toggle('bg-cream-900',     active);
+        sel.classList.toggle('text-white',       active);
+        sel.classList.toggle('border-cream-900', active);
+        sel.classList.toggle('bg-white',         !active);
+        sel.classList.toggle('text-cream-700',   !active);
+        sel.classList.toggle('border-cream-300', !active);
+      });
+      resetBtn.classList.toggle('text-cream-400',     !hasFilter);
+      resetBtn.classList.toggle('border-transparent', !hasFilter);
+      resetBtn.classList.toggle('text-cream-900',     !!hasFilter);
+      resetBtn.classList.toggle('border-cream-700',   !!hasFilter);
+    }
+
+    galleryBtn.addEventListener('click', () => applyView('gallery'));
+    listBtn.addEventListener('click',    () => applyView('list'));
+    sortSel.addEventListener('change',   applySort);
+    [terrSel, eraSel, contSel, printerSel].forEach(sel => sel.addEventListener('change', applyFilters));
+    resetBtn.addEventListener('click', () => {
+      terrSel.value = ''; eraSel.value = ''; contSel.value = ''; printerSel.value = '';
+      applyFilters();
+    });
+
+    // Pre-select from URL params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('territory')) terrSel.value     = params.get('territory')!;
+    if (params.get('era'))       eraSel.value      = params.get('era')!;
+    if (params.get('continent')) contSel.value     = params.get('continent')!;
+    if (params.get('printer'))   printerSel.value  = params.get('printer')!;
+    applyFilters();
+
+    // ── Lightbox ──────────────────────────────────────────────────────────
+    interface LbItem { src: string; name: string; era: string; year: string; territoryHref: string | null }
+    let lbItems: LbItem[] = [];
+    let lbIdx = 0;
+
+    function getVisibleItems(): LbItem[] {
+      return [...document.querySelectorAll<HTMLElement>('.set-item')]
+        .filter(item => item.style.display !== 'none')
+        .map(item => {
+          const img = item.querySelector<HTMLImageElement>('img');
+          const link = item.querySelector<HTMLAnchorElement>('.gallery-card a[href^="/territories"]');
+          return {
+            src:           img?.getAttribute('src') ?? '',
+            name:          item.dataset.name ?? '',
+            era:           item.dataset.era  ?? '',
+            year:          item.dataset.year ?? '',
+            territoryHref: link?.getAttribute('href') ?? null,
+          };
+        });
+    }
+
+    function updateLb() {
+      const item = lbItems[lbIdx];
+      if (!item) return;
+      const lb = document.getElementById('lb-img') as HTMLImageElement;
+      lb.src = item.src;
+      lb.alt = item.name;
+      const parts = [item.name];
+      if (item.era) parts.push(item.era);
+      if (item.year && item.year !== '0') parts.push(item.year);
+      (document.getElementById('lb-caption') as HTMLElement).textContent = parts.join(' · ');
+      (document.getElementById('lb-counter') as HTMLElement).textContent = `${lbIdx + 1} / ${lbItems.length}`;
+      (document.getElementById('lb-prev') as HTMLElement).style.visibility = lbIdx === 0 ? 'hidden' : 'visible';
+      (document.getElementById('lb-next') as HTMLElement).style.visibility = lbIdx === lbItems.length - 1 ? 'hidden' : 'visible';
+      const lbLink = document.getElementById('lb-territory-link') as HTMLAnchorElement;
+      if (item.territoryHref) {
+        lbLink.href = item.territoryHref;
+        lbLink.classList.remove('hidden');
+      } else {
+        lbLink.classList.add('hidden');
+      }
+    }
+
+    (window as any).openLightboxAt = function(el: HTMLElement) {
+      lbItems = getVisibleItems();
+      const setItem = el.closest<HTMLElement>('.set-item');
+      const visibleItems = [...document.querySelectorAll<HTMLElement>('.set-item')]
+        .filter(i => i.style.display !== 'none');
+      lbIdx = visibleItems.indexOf(setItem!);
+      if (lbIdx < 0) lbIdx = 0;
+      updateLb();
+      const lb = document.getElementById('lightbox')!;
+      lb.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      hintDismissed = false;
+      zoomHint.style.opacity = '';
+    };
+
+    (window as any).closeLightbox = function() {
+      const lb = document.getElementById('lightbox')!;
+      lb.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+
+    (window as any).lbNav = function(dir: number) {
+      const next = lbIdx + dir;
+      if (next >= 0 && next < lbItems.length) {
+        lbIdx = next;
+        updateLb();
+      }
+    };
+
+    document.addEventListener('keydown', (e) => {
+      const lb = document.getElementById('lightbox')!;
+      if (lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape')      (window as any).closeLightbox();
+      if (e.key === 'ArrowLeft')   (window as any).lbNav(-1);
+      if (e.key === 'ArrowRight')  (window as any).lbNav(1);
+    });
+
+    // ── Magnifier lens ────────────────────────────────────────────────────
+    const lens       = document.getElementById('lb-lens')          as HTMLElement;
+    const lbImgEl    = document.getElementById('lb-img')           as HTMLImageElement;
+    const lbContainer = document.getElementById('lb-img-container') as HTMLElement;
+    const LENS_SIZE  = 300;
+
+    const zoomHint = document.getElementById('lb-zoom-hint') as HTMLElement;
+    let hintDismissed = false;
+
+    function hideLens() {
+      lens.style.display = 'none';
+    }
+
+    function dismissHint() {
+      if (!hintDismissed) {
+        hintDismissed = true;
+        zoomHint.style.opacity = '0';
+      }
+    }
+
+    lbContainer.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = lbImgEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Only show lens when cursor is actually over the rendered image
+      if (x < 0 || y < 0 || x > rect.width || y > rect.height) {
+        hideLens();
+        lbContainer.style.cursor = '';
+        return;
+      }
+      lbContainer.style.cursor = 'none';
+      dismissHint();
+
+      // Zoom to natural resolution or 2.5× rendered size, whichever is bigger
+      const zoom = lbImgEl.naturalWidth > 0
+        ? Math.max(2.5, lbImgEl.naturalWidth / rect.width)
+        : 2.5;
+
+      lens.style.display = 'block';
+      // Centre the lens circle on the cursor
+      lens.style.left = (e.clientX - LENS_SIZE / 2) + 'px';
+      lens.style.top  = (e.clientY - LENS_SIZE / 2) + 'px';
+
+      // Background position so the hovered pixel appears at the lens centre
+      const bgX = LENS_SIZE / 2 - x * zoom;
+      const bgY = LENS_SIZE / 2 - y * zoom;
+      lens.style.backgroundImage    = `url('${lbImgEl.src}')`;
+      lens.style.backgroundSize     = `${rect.width * zoom}px ${rect.height * zoom}px`;
+      lens.style.backgroundPosition = `${bgX}px ${bgY}px`;
+    });
+
+    lbContainer.addEventListener('mouseleave', () => {
+      hideLens();
+      lbContainer.style.cursor = '';
+    });
+
+    // Hide lens when navigating to a new image
+    const origUpdateLb = updateLb;
+    function updateLbWithLensReset() { hideLens(); origUpdateLb(); }
+    // Patch nav to reset lens
+    (window as any).lbNav = function(dir: number) {
+      const next = lbIdx + dir;
+      if (next >= 0 && next < lbItems.length) {
+        lbIdx = next;
+        updateLbWithLensReset();
+      }
+    };
+  </script>
+</Base>
