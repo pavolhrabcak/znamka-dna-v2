@@ -44,7 +44,7 @@ collections:
         name: tags
         widget: list
         required: false
-      - label: Ukážky známok
+      - label: Detail vybraných známok
         name: stamps
         widget: list
         required: false

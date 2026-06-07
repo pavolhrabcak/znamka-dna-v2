@@ -24,11 +24,18 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
       <ul class="hidden md:flex items-center gap-7 text-[13px] tracking-widest uppercase text-stone-600">
         <li><a href="/territories" class="hover:text-stone-900 transition-colors">Teritóriá</a></li>
         <li><a href="/sety" class="hover:text-stone-900 transition-colors">Sety</a></li>
-        <li>
-          <span class="text-stone-400 mr-1">Éra:</span>
-          <a href="/era/kgv"  class="hover:text-stone-900 transition-colors mr-3">KGV</a>
-          <a href="/era/kgvi" class="hover:text-stone-900 transition-colors mr-3">KGVI</a>
-          <a href="/era/qeii" class="hover:text-stone-900 transition-colors">QEII</a>
+        <li class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+            Panovníci
+            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
+          </button>
+          <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
+            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[80px]">
+              <a href="/era/kgv"  class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">KGV</a>
+              <a href="/era/kgvi" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">KGVI</a>
+              <a href="/era/qeii" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">QEII</a>
+            </div>
+          </div>
         </li>
         <li><a href="/imprints" class="hover:text-stone-900 transition-colors">Imprinty</a></li>
         <li><a href="/glosar" class="hover:text-stone-900 transition-colors">Glosár</a></li>

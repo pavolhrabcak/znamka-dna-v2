@@ -113,20 +113,32 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       Žiadne teritória nevyhovujú filtrom.
     </p>
 
+    <div class="mt-10 flex flex-col items-center gap-3">
+      <button id="load-more-btn" class="hidden text-[11px] tracking-widest uppercase text-cream-600 border border-cream-300 hover:border-cream-700 hover:text-cream-900 px-8 py-2.5 transition-colors">
+        Načítať ďalšie
+      </button>
+      <p id="load-more-count" class="hidden text-[10px] tracking-widest uppercase text-cream-400"></p>
+    </div>
+
   </section>
 
   <script>
-    const eraSel       = document.getElementById('filter-era') as HTMLSelectElement;
-    const contSel      = document.getElementById('filter-continent') as HTMLSelectElement;
-    const territorySel = document.getElementById('filter-territory') as HTMLSelectElement;
-    const printerSel   = document.getElementById('filter-printer') as HTMLSelectElement;
-    const resetBtn     = document.getElementById('filter-reset') as HTMLButtonElement;
-    const sortSel      = document.getElementById('sort-sel') as HTMLSelectElement;
-    const galleryBtn   = document.getElementById('view-gallery') as HTMLButtonElement;
-    const listBtn      = document.getElementById('view-list') as HTMLButtonElement;
-    const noResults    = document.getElementById('no-results') as HTMLParagraphElement;
-    const grid         = document.getElementById('territory-grid') as HTMLDivElement;
-    const items        = [...document.querySelectorAll<HTMLDivElement>('.territory-item')];
+    const eraSel        = document.getElementById('filter-era') as HTMLSelectElement;
+    const contSel       = document.getElementById('filter-continent') as HTMLSelectElement;
+    const territorySel  = document.getElementById('filter-territory') as HTMLSelectElement;
+    const printerSel    = document.getElementById('filter-printer') as HTMLSelectElement;
+    const resetBtn      = document.getElementById('filter-reset') as HTMLButtonElement;
+    const sortSel       = document.getElementById('sort-sel') as HTMLSelectElement;
+    const galleryBtn    = document.getElementById('view-gallery') as HTMLButtonElement;
+    const listBtn       = document.getElementById('view-list') as HTMLButtonElement;
+    const noResults     = document.getElementById('no-results') as HTMLParagraphElement;
+    const loadMoreBtn   = document.getElementById('load-more-btn') as HTMLButtonElement;
+    const loadMoreCount = document.getElementById('load-more-count') as HTMLParagraphElement;
+    const grid          = document.getElementById('territory-grid') as HTMLDivElement;
+    const items         = [...document.querySelectorAll<HTMLDivElement>('.territory-item')];
+
+    const BATCH = 15;
+    let visibleCount = BATCH;
 
     const GALLERY_CLS = ['grid','grid-cols-2','md:grid-cols-3','lg:grid-cols-5','gap-x-6','gap-y-10'];
     const LIST_CLS    = ['flex','flex-col'];
@@ -198,19 +210,34 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       const printer   = printerSel.value;
       const hasFilter = era || cont || territory || printer;
 
-      let visible = 0;
-      items.forEach(item => {
+      // Use current DOM order so sort is respected
+      const domOrder = [...grid.querySelectorAll<HTMLDivElement>('.territory-item')];
+      const matched: HTMLDivElement[] = [];
+      domOrder.forEach(item => {
         const eras     = item.dataset.eras!.split(',');
         const printers = item.dataset.printers!.split('|');
         const match = (!era       || eras.includes(era))
                    && (!cont      || item.dataset.continent === cont)
                    && (!territory || item.dataset.name === territory)
                    && (!printer   || printers.includes(printer));
-        item.style.display = match ? '' : 'none';
-        if (match) visible++;
+        item.style.display = 'none';
+        if (match) matched.push(item);
       });
 
-      noResults.classList.toggle('hidden', visible > 0);
+      matched.slice(0, visibleCount).forEach(item => item.style.display = '');
+
+      const total     = matched.length;
+      const showing   = Math.min(visibleCount, total);
+      const remaining = total - showing;
+
+      noResults.classList.toggle('hidden', total > 0);
+      loadMoreBtn.classList.toggle('hidden', remaining === 0);
+      loadMoreCount.classList.toggle('hidden', remaining === 0);
+      if (remaining > 0) {
+        loadMoreBtn.textContent = 'Načítať ďalšie';
+        loadMoreCount.textContent = `${showing} z ${total}`;
+      }
+
       [eraSel, contSel, territorySel, printerSel].forEach(sel => {
         const active = !!sel.value;
         sel.classList.toggle('bg-cream-900', active);
@@ -228,18 +255,25 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
 
     galleryBtn.addEventListener('click', () => applyView('gallery'));
     listBtn.addEventListener('click',    () => applyView('list'));
-    sortSel.addEventListener('change',   applySort);
+    sortSel.addEventListener('change',   () => { visibleCount = BATCH; applySort(); applyFilters(); });
 
     [eraSel, contSel, printerSel].forEach(sel => sel.addEventListener('change', () => {
+      visibleCount = BATCH;
       rebuildTerritoryOptions();
       applyFilters();
     }));
-    territorySel.addEventListener('change', applyFilters);
+    territorySel.addEventListener('change', () => { visibleCount = BATCH; applyFilters(); });
 
     resetBtn.addEventListener('click', () => {
       eraSel.value = ''; contSel.value = ''; printerSel.value = '';
+      visibleCount = BATCH;
       rebuildTerritoryOptions();
       territorySel.value = '';
+      applyFilters();
+    });
+
+    loadMoreBtn.addEventListener('click', () => {
+      visibleCount += BATCH;
       applyFilters();
     });
 
