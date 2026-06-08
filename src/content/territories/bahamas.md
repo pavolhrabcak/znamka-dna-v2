@@ -6,27 +6,32 @@ period_start: 1718
 period_end: 1973
 capital: Nassau
 current_country: Bahamas
-eras: [KGVI, QEII]
+eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
-  - Waterlow & Sons
+  - Bradbury Wilkinson
 tags: [caribbean, de-la-rue, waterlow]
 stamps:
+  - image: /stamps/bahamas4.webp
+    denomination: 8d
+    year: 1935
+    era: KGV
+    printer: De La Rue
   - image: /stamps/Bahamas.webp
-    denomination: 1d
+    denomination: 8d
     year: 1938
     era: KGVI
     printer: De La Rue
   - image: /stamps/Bahamas2.webp
-    denomination: 2d
+    denomination: 4d
     year: 1938
     era: KGVI
     printer: De La Rue
   - image: /stamps/Bahamas3.webp
-    denomination: 1/-
+    denomination: 2/6
     year: 1954
     era: QEII
-    printer: Waterlow & Sons
+    printer: Bradbury Wilkinson
 timeline:
   - year: 1718
     event: Bahamy sa stávajú britskou korunnou kolóniou po zásahu proti pirátom.
