@@ -16,7 +16,7 @@ stamps:
     denomination: 1R
     year: 1937
     era: KGV
-    printer: Waterlow & Sons
+    printer: De La Rue
   - image: /stamps/aden1.webp
     denomination: 5Rs
     year: 1939
