@@ -51,16 +51,22 @@ stamps:
     era: KGV
     printer: De La Rue
 timeline:
-  - year: 1920
-    event: Keňa ako korunná kolónia
+  - year: 1895
+    event: Zriadenie Britskej východoafrickej protektorátnej správy.
+  - year: 1903
+    event: Vznik spoločnej správy Kene a Ugandy — prvé spoločné emisie.
+  - year: 1922
+    event: Tanganyika prechádza pod britský mandát Spoločnosti národov.
   - year: 1935
-    event: Prvé spoločné emisie KUT
+    event: KGV — prvá spoločná obrazová séria KUT, kombinácia recess a typografie (tlač De La Rue).
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: KGVI — definitívna séria s rovnakými motívmi, nový portrét; rozsiahle farebné a perforačné variety (tlač De La Rue).
+  - year: 1952
+    event: Pretlač „ROYAL VISIT 1952" na dvoch hodnotách série 1938.
   - year: 1954
-    event: QEII definitívna séria s Owen Falls Dam
+    event: QEII — nová štrnásťdielna definitívna séria s aktualizovanými motívmi vrátane priehrady Owen Falls Dam, recess (tlač De La Rue).
   - year: 1963
-    event: Nezávislosť Kene a Ugandy — zánik KUT
+    event: Tanganyika získava nezávislosť — KUT emisia pokračuje pre Keňu a Ugandu.
 draft: false
 ---
 
