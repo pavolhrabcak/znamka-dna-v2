@@ -8,36 +8,43 @@ capital: Belize City
 current_country: Belize
 eras: [KGVI]
 printers:
+  - Bradbury, Wilkinson
   - Waterlow & Sons
   - De La Rue
-tags: [central-america, waterlow, de-la-rue]
+tags: [central-america, waterlow, de-la-rue bradbury]
 stamps:
   - image: /stamps/br-honduras.webp
-    denomination: 1c
-    year: 1938
-    era: KGVI
-    printer: Waterlow & Sons
-  - image: /stamps/br-honduras-2.webp
-    denomination: 3c
-    year: 1938
-    era: KGVI
-    printer: Waterlow & Sons
-  - image: /stamps/br-honduras-4.webp
     denomination: 25c
-    year: 1953
+    year: 1938
     era: KGVI
-    printer: Waterlow & Sons
+    printer: Bradbury, Wilkinson
+  - image: /stamps/br-honduras-2.webp
+    denomination: 10c
+    year: 1938
+    era: KGVI
+    printer: Bradbury, Wilkinson
+  - image: /stamps/br-honduras-4.webp
+    denomination: 2$
+    year: 1938
+    era: KGVI
+    printer: Bradbury, Wilkinson
 timeline:
   - year: 1862
-    event: Korunná kolónia
+    event: Britský Honduras sa stáva korunnou kolóniou.
   - year: 1866
     event: Prvé poštové známky
   - year: 1938
-    event: KGVI definitívna séria — Waterlow & Sons
+    event: KGVI — dvanásťdielna definitívna séria s hospodárskymi motívmi v dvojfarebnej hĺbkotlači (tlač Bradbury, Wilkinson & Co.).
+  - year: 1949
+    event: KGVI — šesťdielna pamätná séria k 150. výročiu Bitky pri St. George's Cay s motívmi historických plavidiel, recess (tlač Waterlow & Sons).
   - year: 1953
-    event: QEII definitívna séria
+    event: QEII — dvanásťdielna definitívna séria, recess (tlač Waterlow & Sons); od roku 1961 dotlače De La Rue.
+  - year: 1953
+    event: QEII — trojdielna pamätná emisia k storočnici poštového úradu, recess (tlač Bradbury, Wilkinson & Co.).
   - year: 1973
-    event: Premenovaná na Belize
+    event: Kolónia bola premenovaná z British Honduras na Belize a zmenila štatút na britské závislé územie (British Dependent Territory). Získala väčšiu mieru samosprávy, ale formálne zostala pod britskou korunou — Británia si zachovala zodpovednosť za obranu a zahraničnú politiku.
+  - year: 1981
+    event: Získanie úplnej nezávislosti.
 draft: false
 ---
 

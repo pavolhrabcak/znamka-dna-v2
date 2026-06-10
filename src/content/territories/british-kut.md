@@ -12,46 +12,42 @@ capital: Nairobi
 current_country: Keňa / Uganda / Tanzánia
 eras: [KGV, KGVI, QEII]
 printers:
-  - Waterlow & Sons
   - De La Rue
-tags: [east-africa, waterlow, de-la-rue, wildlife]
+tags: [east-africa, de-la-rue, wildlife]
 stamps:
   - image: /stamps/kut.webp
     denomination: 5c
     year: 1938
     era: KGVI
     printer: De La Rue
-    note: Lake Naivasha
   - image: /stamps/kut2.webp
-    denomination: 10c
+    denomination: 50c
     year: 1938
     era: KGVI
     printer: De La Rue
   - image: /stamps/kut3.webp
-    denomination: 20c
-    year: 1938
+    denomination: 65c
+    year: 1935
     era: KGV
     printer: De La Rue
-    note: Mount Kenya
   - image: /stamps/kut4.webp
-    denomination: 30c
-    year: 1938
+    denomination: 1/30
+    year: 1954
     era: QEII
     printer: De La Rue
   - image: /stamps/kut4a.webp
-    denomination: 50c
-    year: 1941
+    denomination: 5/-
+    year: 1954
     era: QEII
     printer: De La Rue
   - image: /stamps/kut5.webp
-    denomination: 1/-
-    year: 1954
+    denomination: 3/-
+    year: 1938
     era: KGVI
     printer: De La Rue
-    note: Owen Falls Dam
   - image: /stamps/kut6.webp
-    denomination: 5/-
-    year: 1954
+    denomination: 5c
+    year: 1935
     era: KGV
     printer: De La Rue
 timeline:
@@ -68,6 +64,10 @@ timeline:
 draft: false
 ---
 
-The combined Kenya, Uganda and Tanganyika (KUT) postal administration issued joint stamps from 1935 onwards, replacing the separate issues of the individual territories. The combined issue was a practical response to the close economic and administrative links between the three East African territories.
+Spoločná poštová správa Kene, Ugandy a Tanganyiky (KUT) vydávala od roku 1935 jednotné emisie, ktoré nahradili dovtedajšie samostatné vydania jednotlivých území. Spoločná správa bola praktickou odpoveďou na úzke hospodárske a administratívne väzby medzi tromi východoafrickými kolóniami.
 
-The magnificent KGVI definitives of 1938, produced by De La Rue using recess engraving, are among the finest of the colonial era. Subjects include Lake Naivasha, Mount Kenya, the Owen Falls Dam and East African wildlife. The designs are celebrated for their exceptional draftsmanship and printing quality.
+Prvá spoločná obrazová séria za vlády kráľa Juraja V. bola vydaná v roku 1935 (SG 110–123). Štrnásťdielnu emisiu vytlačila spoločnosť De La Rue kombináciou recess a typografie — nízke hodnoty boli tlačené typograficky, kým vyššie hodnoty technikou hĺbkotlače. Séria zachytávala charakteristické scenérie a symboly regiónu: dhow na Viktóriinom jazere, leva, vrch Kilimanjaro, žeriavy korunované, most Jinja Bridge pri Riponových vodopádoch, vrch Keňa a jazero Naivasha. Najvyššia hodnota 1£ zobrazovala leva a bola tlačená typograficky.
+
+Séria kráľa Juraja VI. z roku 1938 (SG 131–150) nadviazala priamo na kompozičné riešenie emisie z roku 1935 — zachovala rovnaké rámy a krajinné výjavy, pričom bol zamenený iba portrét panovníka. Dvadsaťdielnu sériu vytlačila spoločnosť De La Rue; recess tlač sa uplatnila na väčšine hodnôt, pričom najvyššia hodnota 1£ zostala tlačená typograficky. Pre špecialistu predstavuje táto emisia jeden z najkomplexnejších materiálov koloniálnej éry: početné tlačové obdobia podmienené vojnovými okolnosťami priniesli rozsiahle farebné odtiene a perforačné variety, pričom niektoré hodnoty existujú v kombinácii perforácie 14 aj 13¼.
+
+Po nástupe kráľovnej Alžbety II. bola v roku 1954 vydaná nová štrnásťdielna definitívna séria (SG 167–180), opäť v réžii spoločnosti De La Rue technikou recess. Séria priniesla nové motívy zodpovedajúce dobovým zmenám v regióne — vrátane priehrady Owen Falls Dam, dokončenej v roku 1954 — a rozšírila motívový repertoár o ďalšie krajinné a faunistické výjavy východnej Afriky. Portrét kráľovnej bol zakomponovaný do každej hodnoty.
