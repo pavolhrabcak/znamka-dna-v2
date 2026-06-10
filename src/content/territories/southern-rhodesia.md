@@ -6,56 +6,66 @@ period_start: 1888
 period_end: 1964
 capital: Salisbury
 current_country: Zimbabwe
-eras: [KGV, KGVI, QEII]
+eras: [KGV, QEII]
 printers:
-  - De La Rue
+  - Waterlow & Sons
   - Bradbury, Wilkinson
-tags: [africa, victoria-falls, de-la-rue, zimbabwe, rhodes]
+tags: [africa, victoria-falls, waterlow, bradbury, zimbabwe, rhodes]
 stamps:
   - image: /stamps/s-rhodesia.webp
-    denomination: 1s
-    year: 1935
+    denomination: 4d
+    year: 1940
     era: KGVI
-    printer: De La Rue
-    note: Victoria Falls (Mosi-oa-Tunya)
+    printer: Waterlow & Sons
   - image: /stamps/s-rhodesia-1.webp
-    denomination: 1s
+    denomination: 6d
     year: 1935
     era: KGV
-    printer: De La Rue
-    note: Victoria Falls (Mosi-oa-Tunya)
+    printer: Waterlow & Sons
   - image: /stamps/s-rhodesia-2.webp
-    denomination: 1s
-    year: 1935
+    denomination: 1d
+    year: 1953
     era: QEII
-    printer: De La Rue
-    note: Victoria Falls (Mosi-oa-Tunya)
+    printer: Waterlow & Sons
   - image: /stamps/s-rhodesia-3.webp
-    denomination: 1s
-    year: 1935
+    denomination: 6d
+    year: 1953
     era: QEII
-    printer: De La Rue
-    note: Victoria Falls (Mosi-oa-Tunya)
+    printer: Bradbury, Wilinson
 timeline:
-  - year: 1888
-    event: British South Africa Company gains control under Cecil Rhodes
   - year: 1923
-    event: Self-governing British colony established
+    event: Ukončenie správy BSAC — Southern Rhodesia získava status kolónie s vlastnou vládou.
   - year: 1924
-    event: First stamps issued as Southern Rhodesia
+    event: Prvé vlastné známky — Admiral séria, recess (tlač Waterlow & Sons).
+  - year: 1932
+    event: KGV — Victoria Falls, hodnoty 2d a 3d, recess (tlač Waterlow & Sons).
   - year: 1935
-    event: Victoria Falls definitive series printed by De La Rue
+    event: KGV — Silver Jubilee s motívom vodopádov a afrických zvierat, recess (tlač Waterlow & Sons). Dotlač hodnoty 2d Victoria Falls.
+  - year: 1937
+    event: KGVI — Coronation s motívom vodopádov, vlaku a mosta, recess (tlač Waterlow & Sons).
+  - year: 1940
+    event: KGVI — 50. výročie BSAC, recess (tlač Waterlow & Sons).
   - year: 1953
-    event: Joined the Federation of Rhodesia and Nyasaland
+    event: QEII — Birth Centenary of Cecil Rhodes, recess (tlač Waterlow & Sons).
+  - year: 1953
+    event: QEII — definitívna séria, recess (tlač Bradbury, Wilkinson & Co.).
+  - year: 1953
+    event: Southern Rhodesia sa stáva súčasťou Federácie Rhodesia & Nyasaland.
+  - year: 1964
+    event: Zánik federácie — obnovenie vlastných emisií.
   - year: 1965
-    event: Unilateral Declaration of Independence
+    event: Jednostranná deklarácia nezávislosti (UDI)..
   - year: 1980
     event: Independence as Zimbabwe
 draft: false
 ---
 
-Southern Rhodesia was a self-governing British colony in southern Africa, established after the British South Africa Company ended its administration in 1923. The territory was named after Cecil Rhodes, whose company had opened up the region to British settlement from 1888.
+Južná Rodézia (Southern Rhodesia) bola britská kolónia s vlastnou vládou v južnej Afrike, zriadená po ukončení správy Britskej juhoafrickej spoločnosti v roku 1923. Územie bolo pomenované po Cecilovi Rhodesovi, ktorého spoločnosť otvorila región britskému osídleniu od roku 1888. Kolónia vydávala vlastné poštové známky od 1. apríla 1924.
 
-The colony issued its own stamps from 1924, first under the British South Africa Company and then as a Crown Colony. De La Rue printed the pictorial definitives of the KGV era, including the iconic Victoria Falls design. The falls — known locally as _Mosi-oa-Tunya_ ("the smoke that thunders") — became one of the most recognisable images in British colonial philately.
+Prvá recess pictorial emisia Southern Rhodesia bola vydaná v roku 1932 — dvojhodnotová séria s motívom Viktóriiných vodopádov (Victoria Falls), tlačená spoločnosťou Waterlow & Sons. Séria pozostávala z hodnôt 2d a 3d, pričom obe hodnoty zobrazujú panoramatický pohľad na vodopády v dvojfarebnom prevedení. Hodnota 2d bola dotlačená v rokoch 1935 a 1941, hodnota 3d v roku 1938. Farebné odlišnosti medzi jednotlivými tlačami sú predmetom záujmu špecialistov — čoho dokladom sú aj zachované Printer's Samples od Waterlow & Sons v alternatívnych farebných kombináciách.
 
-Southern Rhodesia joined the Federation of Rhodesia and Nyasaland (1953–1963). Following the federation's dissolution, Southern Rhodesia declared UDI (Unilateral Declaration of Independence) in 1965 and eventually became Zimbabwe in 1980.
+Pamätná séria k Striebornému jubileu kráľa Juraja V. (1935) nadviazala na motív Viktóriiných vodopádov a doplnila ho o africké zvieratá. Sériu vyryla a vytlačila technikou recess spoločnosť Waterlow & Sons. Korunovačná emisia z roku 1937 priniesla nový motív — pohľad na Viktóriine vodopády s vlakom a mostom v popredí — opäť v réžii Waterlow & Sons.
+
+V roku 1940 bola vydaná pamätná séria k 50. výročiu BSAC, tlačená Waterlow & Sons technikou recess.
+
+V roku 1953 nasledovala emisia k storočnici narodenia Cecila Rhodesa, opäť od Waterlow & Sons. V tom istom roku bola vydaná aj nová definitívna séria kráľovnej Alžbety II., ktorú tentokrát vyryla a vytlačila technikou recess spoločnosť Bradbury, Wilkinson & Co. — čím sa uzatvorila éra Waterlow pre Southern Rhodesia. Southern Rhodesia sa v roku 1953 stala súčasťou Federácie Rodézie a Ňasanska, po rozpade ktorej v roku 1963 obnovila vydávanie vlastných známok. V roku 1965 vydala jednostrannú deklaráciu nezávislosti (UDI) a v roku 1980 sa stala Zimbabwe.

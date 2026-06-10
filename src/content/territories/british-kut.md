@@ -8,7 +8,7 @@ flags:
 continent: Africa
 period_start: 1935
 period_end: 1963
-capital: Nairobi
+capital: "Nairobi (Keňa) / Kampala (Uganda) / Dar es Salaam (Tanganyika)"
 current_country: Keňa / Uganda / Tanzánia
 eras: [KGV, KGVI, QEII]
 printers:
