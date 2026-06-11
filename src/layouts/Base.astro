@@ -57,7 +57,29 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
           </div>
         </li>
         <li><a href="/glosar" class="hover:text-stone-900 transition-colors">Glosár</a></li>
-        <li><a href="/o-blogu" class="hover:text-stone-900 transition-colors">O projekte</a></li>
+        <li class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+            Zaujímavosti
+            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
+          </button>
+          <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
+            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[160px]">
+              <a href="/falsne-peciatky" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Falošné pečiatky</a>
+            </div>
+          </div>
+        </li>
+        <li class="relative group">
+          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+            Omnibusy
+            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
+          </button>
+          <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
+            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[200px]">
+              <a href="/omnibusy/1935-striebrone-jubileum" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">1935 Strieborné jubileum</a>
+              <a href="/omnibusy/1937-korunovacia" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">1937 Korunovácia</a>
+            </div>
+          </div>
+        </li>
       </ul>
       <div class="hidden md:flex items-center gap-5">
         <button onclick="openSearch()" aria-label="Hľadať" class="flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors group">
@@ -86,7 +108,6 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
         <a href="/era/kgv"  class="hover:text-stone-900 transition-colors">KGV</a>
         <a href="/era/kgvi" class="hover:text-stone-900 transition-colors">KGVI</a>
         <a href="/era/qeii" class="hover:text-stone-900 transition-colors">QEII</a>
-        <a href="/o-blogu" class="hover:text-stone-900 transition-colors">O projekte</a>
       </div>
     </div>
   </footer>
