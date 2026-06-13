@@ -54,7 +54,7 @@ const { name, continent, flag, flags, period_start, period_end, capital, current
       <h1 class="font-serif text-4xl font-normal text-cream-900">{name}</h1>
       <div class="flex flex-wrap gap-1.5 shrink-0">
         {eras.includes('KGV')  && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
-        {eras.includes('KGVI') && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+        {eras.includes('KGVI') && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-teal-50 text-teal-700 border-teal-200">KGVI</span>}
         {eras.includes('QEII') && <span class="text-[10px] tracking-widest uppercase px-2.5 py-1 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
       </div>
     </div>
@@ -183,7 +183,7 @@ const { name, continent, flag, flags, period_start, period_end, capital, current
               <p class="text-[12px] tracking-widest uppercase text-cream-600">{stamp.denomination} · {stamp.year}</p>
               <div class="flex flex-wrap gap-1 mt-1.5">
                 {stamp.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
-                {stamp.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                {stamp.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-teal-50 text-teal-700 border-teal-200">KGVI</span>}
                 {stamp.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
                 {stamp.printer && <span class="text-[11px] tracking-widest px-1.5 py-0.5 border border-cream-200 text-cream-500">{stamp.printer}</span>}
               </div>
@@ -194,8 +194,8 @@ const { name, continent, flag, flags, period_start, period_end, capital, current
       </div>
     )}
 
-    <div class="mt-14 pt-8 border-t border-cream-200">
-      <a href="/territories" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors">
+    <div class="mt-14 pt-8 border-t border-cream-200 flex flex-wrap gap-3">
+      <a href="/territories" class="inline-block border border-cream-900 text-cream-900 text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-900 hover:text-white transition-colors">
         ← Všetky teritóriá
       </a>
     </div>

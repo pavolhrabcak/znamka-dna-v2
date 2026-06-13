@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -23,10 +23,10 @@
   font-family: 'EB Garamond', serif;
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #2a2822;
+  color: #1a2a3a;
 }
 .stamp-prose p   { margin-bottom: 1rem; }
-.stamp-prose h2  { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400; margin: 2rem 0 0.75rem; color: #1a1a18; }
+.stamp-prose h2  { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 400; margin: 2rem 0 0.75rem; color: #0e1e2e; }
 .stamp-prose em  { font-style: italic; }
 .stamp-prose strong { font-weight: 500; }
 

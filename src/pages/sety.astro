@@ -215,7 +215,7 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
                 }
                 <div class="flex flex-wrap gap-1 mt-0.5">
                   {s.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
-                  {s.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                  {s.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-teal-50 text-teal-700 border-teal-200">KGVI</span>}
                   {s.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
                 </div>
               </div>
@@ -245,7 +245,7 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
               <span class="text-[9px] tracking-widest uppercase text-cream-500 whitespace-nowrap shrink-0">{s.year || ''}</span>
               <div class="flex gap-1 shrink-0">
                 {s.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
-                {s.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-blue-50 text-blue-700 border-blue-200">KGVI</span>}
+                {s.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-teal-50 text-teal-700 border-teal-200">KGVI</span>}
                 {s.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
               </div>
               {s.territory && (
@@ -271,8 +271,8 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
       <p id="load-more-count" class="hidden text-[10px] tracking-widest uppercase text-cream-400"></p>
     </div>
 
-    <div class="mt-14 pt-8 border-t border-cream-200">
-      <a href="/" class="text-[11px] tracking-widest uppercase text-cream-500 hover:text-cream-900 transition-colors">
+    <div class="mt-14 pt-8 border-t border-cream-200 flex flex-wrap gap-3">
+      <a href="/" class="inline-block border border-cream-900 text-cream-900 text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-900 hover:text-white transition-colors">
         ← Domov
       </a>
     </div>
@@ -339,7 +339,7 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
     <div
       id="lb-lens"
       class="pointer-events-none"
-      style="display:none;position:fixed;width:300px;height:300px;border-radius:50%;border:2px solid rgba(255,255,255,0.35);box-shadow:0 0 0 1px rgba(0,0,0,0.6),0 8px 40px rgba(0,0,0,0.7);background-repeat:no-repeat;background-color:#111;z-index:50;overflow:hidden;"
+      style="display:none;position:fixed;width:500px;height:500px;border-radius:50%;border:2px solid rgba(255,255,255,0.35);box-shadow:0 0 0 1px rgba(0,0,0,0.6),0 8px 40px rgba(0,0,0,0.7);background-repeat:no-repeat;background-color:#111;z-index:50;overflow:hidden;"
     ></div>
 
     <!-- Caption — bottom center -->

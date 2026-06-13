@@ -9,23 +9,32 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <title>{title} — Britské kolónie</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <slot name="head" />
 </head>
 <body class="min-h-screen flex flex-col">
 
+  <!-- Accent stripe -->
+  <div class="h-[8px] bg-[#1e3a5f]"></div>
+
   <!-- Nav -->
-  <nav class="bg-stone-100 border-b border-stone-300 px-8 md:px-12 py-5">
+  <nav class="bg-[#dce8f5] border-b border-[#b8cfe0] px-8 md:px-12 py-5">
     <div class="max-w-5xl mx-auto flex items-center justify-between">
-      <a href="/" class="hover:text-stone-700 transition-colors flex flex-col leading-tight">
-        <span class="font-serif text-lg tracking-wide text-stone-900">Britské kolónie</span>
-        <span class="text-[11px] tracking-widest uppercase text-stone-500 mt-0.5">v motívoch poštových známok</span>
+      <a href="/" class="flex items-center gap-4 opacity-80 hover:opacity-100 transition-opacity pr-6 border-r border-[#a8c4dc]">
+        <!-- Logo mark — Multiple Crown CA watermark -->
+        <div class="flex-shrink-0 w-11 h-11 overflow-hidden"
+             style="background-image:url('/stamps/watermark-logo.webp'); background-size:cover; background-position:center;"></div>
+        <!-- Logo text -->
+        <div class="flex flex-col leading-tight">
+          <span class="font-serif text-lg tracking-wide text-[#0e1e2e]">Britské kolónie</span>
+          <span class="text-[10px] tracking-widest uppercase text-[#2d5070] mt-0.5">v motívoch poštových známok</span>
+        </div>
       </a>
-      <ul class="hidden md:flex items-center gap-7 text-[13px] tracking-widest uppercase text-stone-600">
+      <ul class="hidden md:flex items-center gap-7 text-[13px] tracking-widest uppercase text-[#1e3a5f]">
         <li><a href="/territories" class="hover:text-stone-900 transition-colors">Teritóriá</a></li>
         <li><a href="/sety" class="hover:text-stone-900 transition-colors">Sety</a></li>
         <li class="relative group">
-          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+          <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
             Panovníci
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
           </button>
@@ -38,7 +47,7 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
           </div>
         </li>
         <li class="relative group">
-          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+          <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
             Tlačiarne
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
           </button>
@@ -58,18 +67,19 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
         </li>
         <li><a href="/glosar" class="hover:text-stone-900 transition-colors">Glosár</a></li>
         <li class="relative group">
-          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+          <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
             Zaujímavosti
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
           </button>
           <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
             <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[160px]">
+              <a href="/essays" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Essays</a>
               <a href="/falsne-peciatky" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Falošné pečiatky</a>
             </div>
           </div>
         </li>
         <li class="relative group">
-          <button class="flex items-center gap-1.5 hover:text-stone-900 transition-colors">
+          <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
             Omnibusy
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
           </button>
@@ -82,12 +92,12 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
         </li>
       </ul>
       <div class="hidden md:flex items-center gap-5">
-        <button onclick="openSearch()" aria-label="Hľadať" class="flex items-center gap-2 text-stone-500 hover:text-stone-900 transition-colors group">
+        <button onclick="openSearch()" aria-label="Hľadať" class="flex items-center gap-2 text-[#1e3a5f] hover:text-[#0a1828] transition-colors group">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
             <circle cx="6.5" cy="6.5" r="5"/>
             <line x1="10.5" y1="10.5" x2="14" y2="14"/>
           </svg>
-          <span id="search-shortcut" class="text-[10px] tracking-widest text-stone-400 group-hover:text-stone-600 transition-colors border border-stone-300 group-hover:border-stone-400 px-1.5 py-0.5">⌘K</span>
+          <span id="search-shortcut" class="text-[10px] tracking-widest text-stone-400 group-hover:text-stone-600 transition-colors border border-stone-300 group-hover:border-stone-400 px-1.5 py-0.5">Ctrl+K</span>
         </button>
       </div>
     </div>
@@ -99,8 +109,8 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
   </main>
 
   <!-- Footer -->
-  <footer class="bg-stone-100 border-t border-stone-300 mt-16 py-10 px-8">
-    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] tracking-widest uppercase text-stone-500">
+  <footer class="bg-[#dce8f5] border-t border-[#b8cfe0] mt-16 py-10 px-8">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-[13px] tracking-widest uppercase text-[#1e3a5f]">
       <span>© {new Date().getFullYear()} Britské kolónie</span>
       <div class="flex gap-6">
         <a href="/territories" class="hover:text-stone-900 transition-colors">Teritóriá</a>
@@ -108,6 +118,7 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
         <a href="/era/kgv"  class="hover:text-stone-900 transition-colors">KGV</a>
         <a href="/era/kgvi" class="hover:text-stone-900 transition-colors">KGVI</a>
         <a href="/era/qeii" class="hover:text-stone-900 transition-colors">QEII</a>
+        <a href="/zdroje" class="hover:text-stone-900 transition-colors">Zdroje</a>
       </div>
     </div>
   </footer>
