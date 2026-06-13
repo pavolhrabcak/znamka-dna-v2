@@ -1,9 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
 
 const allTerritories = await getCollection('territories', t => !t.data.draft);
 const stampCount = allTerritories.reduce((sum, t) => sum + t.data.stamps.length, 0);
+const setCount = readdirSync(join(process.cwd(), 'public', 'sets')).filter(f => f.endsWith('.webp')).length;
 ---
 
 <Base title="Britské kolónie — Gravírované poštové známky" description="Malá encyklopédia gravírovaných poštových známok britského impéria. Teritóriá, tlačiarne, éry KGV, KGVI a QEII — hĺbkotlačové emisie britských kolónií na jednom mieste.">
@@ -11,13 +14,12 @@ const stampCount = allTerritories.reduce((sum, t) => sum + t.data.stamps.length,
 
     <!-- Hero -->
     <div class="mb-14">
-      <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Britské kolónie</h1>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Od Adenu po Zanzibar</h1>
       <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic mb-6">Malá encyklopédia gravírovaných poštových známok britského impéria</p>
       <div class="stamp-prose">
         <p>Británia začala budovať svoje koloniálne impérium neskôr ako Španielsko či Portugalsko, no v priebehu nasledujúcich storočí svoje zaostávanie vyrovnala a v rozsahu koloniálneho panstva nakoniec predstihla všetky ostatné európske veľmoci.</p>
-        <p>Desaťročia pred prvou svetovou vojnou bola Británia veľmocou s najväčším územím. Na vrchole impéria okolo roku 1920 k nej patrila takmer štvrtina celej zemegule a riadila životy vyše 400 miliónov ľudí. V tomto období Británia v rozličnej miere ovplyvňovala všetky svetadiely. Na imperiálnej výstave v roku 1924 vo Wembley bolo koloniálne panstvo prezentované ako impérium, nad ktorým nezapadá slnko.</p>
-        <p>Pre Britániu bolo dôležité vybudovať na rozličných miestach sveta strategické oporné body (napr. Gibraltar, Ascension, Singapur, Aden, Cyprus), ktoré mali strážiť námorné trasy a obchodné prístavy. Tieto prístavy jej často slúžili ako odrazové mostíky ku kolonizácii vnútrozemia. Mimoriadny význam Indie — považovanej za najcennejšiu súčasť impéria — nútil Britániu kontrolovať všetky námorné trasy medzi Indiou a Britskými ostrovmi.</p>
-        <p>Británia rozširovala a upevňovala svoje koloniálne výdobytky aj z prestíže a tiež preto, aby územie nezískal niekto iný. Rozširovaním svojho koloniálneho impéria získavala vplyv na svetové dianie.</p>
+        <p>Desaťročia pred prvou svetovou vojnou bola Británia veľmocou s najväčším územím. Na vrchole impéria okolo roku 1920 k nej patrila takmer štvrtina celej zemegule a riadila životy vyše 400 miliónov ľudí. V tomto období Londýn v rozličnej miere ovplyvňoval všetky svetadiely. Na imperiálnej výstave v roku 1924 vo Wembley bolo koloniálne panstvo prezentované ako impérium, nad ktorým nezapadá slnko.</p>
+        <p>Pre Britov bolo dôležité vybudovať na rozličných miestach sveta strategické oporné body (napr. Gibraltar, Ascension, Singapur, Aden, Cyprus), ktoré mali strážiť námorné trasy a obchodné prístavy. Tieto prístavy jej často slúžili ako odrazové mostíky ku kolonizácii vnútrozemia. A mimoriadny význam Indie — považovanej za najcennejšiu súčasť impéria — nútil Britániu kontrolovať všetky námorné trasy medzi Indiou a Britskými ostrovmi. Británia rozširovala a upevňovala svoje koloniálne výdobytky aj z prestíže a tiež preto, aby územie nezískal niekto iný.</p>
         <p>Túto globálnu dominanciu Británia demonštrovala aj prostredníctvom koloniálnych poštových známok. Najmä v prvej polovici 20. storočia ustúpili strohé dizajny obrazovým emisiám (tzv. pictorials) s detailnými rytinami lokálnych scenérií, fauny a hospodárskeho života kolónií. Tieto emisie boli realizované náročnou a nákladnou polygrafickou technikou tej éry — oceľovou hĺbkotlačou.</p>
       </div>
     </div>
@@ -41,7 +43,10 @@ const stampCount = allTerritories.reduce((sum, t) => sum + t.data.stamps.length,
           <span class="text-[10px] tracking-widest uppercase text-cream-400 ml-1.5">detailov známok</span>
         </div>
         <span class="text-cream-300 hidden sm:inline">·</span>
-        <span class="text-[11px] tracking-widest uppercase text-cream-600">KGV · KGVI · QEII</span>
+        <div>
+          <span class="font-serif text-3xl text-cream-900">{setCount}</span>
+          <span class="text-[10px] tracking-widest uppercase text-cream-400 ml-1.5">setov</span>
+        </div>
         <span class="text-cream-300 hidden sm:inline">·</span>
         <span class="text-[11px] tracking-widest uppercase text-cream-600">Recess printing</span>
       </div>

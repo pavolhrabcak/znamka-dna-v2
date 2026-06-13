@@ -45,14 +45,21 @@ function parseFilename(filename: string) {
 
 // ── Cross-reference with territories collection ───────────────────────────
 const ALIASES: Record<string, string> = {
-  'acension':          'ascension-island',
-  'bat':               'british-antarctic-territory',
-  'br-guiana':         'british-guiana',
-  'br-honduras':       'british-honduras',
-  'br-solomon':        'solomon-islands',
-  'br-virgin-islands': 'british-virgin-islands',
-  'babrbados':         'barbados',
-  'norfolk':           'norfolk-island',
+  'acension':                    'ascension-island',
+  'bat':                         'british-antarctic-territory',
+  'br-guiana':                   'british-guiana',
+  'br-honduras':                 'british-honduras',
+  'br-solomon':                  'solomon-islands',
+  'br-virgin-islands':           'british-virgin-islands',
+  'babrbados':                   'barbados',
+  'norfolk':                     'norfolk-island',
+  'kut':                           'british-kut',
+  'papua':                         'papua-new-guinea',
+  'pitcairn-islands':              'pitcairn-island',
+  'somaliland':                    'somaliland-protectorate',
+  'st-christopher-nevis-anguilla': 'st-kitts-nevis',
+  'malaya-malacca':                'malaya',
+  'malaya-penang':                 'malaya',
 };
 
 const territories = await getCollection('territories', t => !t.data.draft);
@@ -264,12 +271,8 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
       Žiadne sety nevyhovujú filtrom.
     </p>
 
-    <div class="mt-10 flex flex-col items-center gap-3">
-      <button id="load-more-btn" class="hidden text-[11px] tracking-widest uppercase text-cream-600 border border-cream-300 hover:border-cream-700 hover:text-cream-900 px-8 py-2.5 transition-colors">
-        Načítať ďalšie
-      </button>
-      <p id="load-more-count" class="hidden text-[10px] tracking-widest uppercase text-cream-400"></p>
-    </div>
+    <p id="load-more-count" class="hidden text-center text-[10px] tracking-widest uppercase text-cream-400 mt-10"></p>
+    <div id="scroll-sentinel" class="h-16"></div>
 
     <div class="mt-14 pt-8 border-t border-cream-200 flex flex-wrap gap-3">
       <a href="/" class="inline-block border border-cream-900 text-cream-900 text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-900 hover:text-white transition-colors">
@@ -361,13 +364,14 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
     const listBtn     = document.getElementById('view-list')        as HTMLButtonElement;
     const noResults   = document.getElementById('no-results')       as HTMLParagraphElement;
     const countEl     = document.getElementById('set-count')        as HTMLParagraphElement;
-    const grid        = document.getElementById('sets-grid')        as HTMLDivElement;
-    const loadMoreBtn = document.getElementById('load-more-btn')    as HTMLButtonElement;
-    const loadMoreCount = document.getElementById('load-more-count') as HTMLParagraphElement;
+    const grid          = document.getElementById('sets-grid')         as HTMLDivElement;
+    const loadMoreCount = document.getElementById('load-more-count')  as HTMLParagraphElement;
+    const sentinel      = document.getElementById('scroll-sentinel')  as HTMLElement;
     const items       = [...document.querySelectorAll<HTMLDivElement>('.set-item')];
 
     const BATCH = 12;
     let visibleCount = BATCH;
+    let hasMore = false;
     let currentView: 'gallery' | 'list' = 'gallery';
 
     const GALLERY_CLS = ['grid','grid-cols-1','md:grid-cols-2','lg:grid-cols-3','gap-x-6','gap-y-10'];
@@ -426,21 +430,18 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
         if (match) matched.push(item);
       });
 
-      matched.slice(0, visibleCount).forEach(item => item.style.display = '');
-
       const total     = matched.length;
       const showing   = Math.min(visibleCount, total);
       const remaining = total - showing;
+      hasMore = remaining > 0;
+
+      matched.slice(0, showing).forEach(item => item.style.display = '');
 
       countEl.textContent = `${total} setov`;
       noResults.classList.toggle('hidden', total > 0);
 
-      loadMoreBtn.classList.toggle('hidden', remaining === 0);
       loadMoreCount.classList.toggle('hidden', remaining === 0);
-      if (remaining > 0) {
-        loadMoreBtn.textContent = `Načítať ďalšie`;
-        loadMoreCount.textContent = `${showing} z ${total}`;
-      }
+      if (remaining > 0) loadMoreCount.textContent = `${showing} z ${total}`;
 
       [terrSel, eraSel, contSel, printerSel].forEach(sel => {
         const active = !!sel.value;
@@ -459,7 +460,7 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
 
     galleryBtn.addEventListener('click', () => { currentView = 'gallery'; applyView('gallery'); });
     listBtn.addEventListener('click',    () => { currentView = 'list';    applyView('list');    });
-    sortSel.addEventListener('change',   () => { visibleCount = BATCH; applySort(); applyFilters(); });
+    sortSel.addEventListener('change', () => { visibleCount = BATCH; applySort(); applyFilters(); });
     [terrSel, eraSel, contSel, printerSel].forEach(sel => sel.addEventListener('change', () => {
       visibleCount = BATCH;
       applyFilters();
@@ -469,10 +470,13 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
       visibleCount = BATCH;
       applyFilters();
     });
-    loadMoreBtn.addEventListener('click', () => {
+
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || !hasMore) return;
       visibleCount += BATCH;
       applyFilters();
-    });
+    }, { rootMargin: '400px 0px' });
+    io.observe(sentinel);
 
     // ── State persistence across navigation ───────────────────────────────
     function saveNavState() {
@@ -492,8 +496,8 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
     if (isBackNav) {
       const vc   = sessionStorage.getItem('s-vc');
       const view = sessionStorage.getItem('s-view') as 'gallery' | 'list' | null;
-      if (vc)   visibleCount    = parseInt(vc, 10) || BATCH;
-      if (view) currentView     = view;
+      if (vc)   visibleCount = parseInt(vc, 10) || BATCH;
+      if (view) currentView  = view;
       terrSel.value     = sessionStorage.getItem('s-terr') || '';
       eraSel.value      = sessionStorage.getItem('s-era')  || '';
       contSel.value     = sessionStorage.getItem('s-cont') || '';

@@ -9,7 +9,7 @@ current_country: Bahamas
 eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
-  - Bradbury Wilkinson
+  - Bradbury, Wilkinson
 tags: [caribbean, de-la-rue, waterlow]
 stamps:
   - image: /stamps/bahamas4.webp
@@ -31,7 +31,7 @@ stamps:
     denomination: 2/6
     year: 1954
     era: QEII
-    printer: Bradbury Wilkinson
+    printer: Bradbury, Wilkinson
 timeline:
   - year: 1718
     event: Bahamy sa stávajú britskou korunnou kolóniou po zásahu proti pirátom.

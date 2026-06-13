@@ -31,7 +31,7 @@ stamps:
     denomination: 6d
     year: 1953
     era: QEII
-    printer: Bradbury, Wilinson
+    printer: Bradbury, Wilkinson
 timeline:
   - year: 1923
     event: Ukončenie správy BSAC — Southern Rhodesia získava status kolónie s vlastnou vládou.

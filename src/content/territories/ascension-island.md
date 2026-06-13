@@ -8,7 +8,7 @@ current_country: Ascension (britské zámorské územie)
 eras: [KGV, KGVI, QEII]
 printers:
   - De La Rue
-  - Bradbury
+  - Bradbury, Wilkinson
 tags: [south-atlantic, de-la-rue, bradbury, wildlife]
 stamps:
   - image: /stamps/ascension.webp
@@ -30,12 +30,12 @@ stamps:
     denomination: 2/6
     year: 1956
     era: QEII
-    printer: Bradbury
+    printer: Bradbury, Wilkinson
   - image: /stamps/ascension5.webp
     denomination: 1/-
     year: 1934
     era: KGV
-    printer: Bradbury
+    printer: Bradbury, Wilkinson
 timeline:
   - year: 1815
     event: Obsadenie ostrova britským námorníctvom a zriadenie vojenskej posádky.

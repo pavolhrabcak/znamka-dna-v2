@@ -126,12 +126,8 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       Žiadne teritória nevyhovujú filtrom.
     </p>
 
-    <div class="mt-10 flex flex-col items-center gap-3">
-      <button id="load-more-btn" class="hidden text-[11px] tracking-widest uppercase text-cream-600 border border-cream-300 hover:border-cream-700 hover:text-cream-900 px-8 py-2.5 transition-colors">
-        Načítať ďalšie
-      </button>
-      <p id="load-more-count" class="hidden text-[10px] tracking-widest uppercase text-cream-400"></p>
-    </div>
+    <p id="load-more-count" class="hidden text-center text-[10px] tracking-widest uppercase text-cream-400 mt-10"></p>
+    <div id="scroll-sentinel" class="h-16"></div>
 
   </section>
 
@@ -145,13 +141,14 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
     const galleryBtn    = document.getElementById('view-gallery') as HTMLButtonElement;
     const listBtn       = document.getElementById('view-list') as HTMLButtonElement;
     const noResults     = document.getElementById('no-results') as HTMLParagraphElement;
-    const loadMoreBtn   = document.getElementById('load-more-btn') as HTMLButtonElement;
     const loadMoreCount = document.getElementById('load-more-count') as HTMLParagraphElement;
+    const sentinel      = document.getElementById('scroll-sentinel') as HTMLElement;
     const grid          = document.getElementById('territory-grid') as HTMLDivElement;
     const items         = [...document.querySelectorAll<HTMLDivElement>('.territory-item')];
 
     const BATCH = 15;
     let visibleCount = BATCH;
+    let hasMore = false;
     let currentView: 'gallery' | 'list' = 'gallery';
 
     const GALLERY_CLS = ['grid','grid-cols-2','md:grid-cols-3','lg:grid-cols-5','gap-x-6','gap-y-10'];
@@ -251,19 +248,16 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
         if (match) matched.push(item);
       });
 
-      matched.slice(0, visibleCount).forEach(item => item.style.display = '');
-
       const total     = matched.length;
       const showing   = Math.min(visibleCount, total);
       const remaining = total - showing;
+      hasMore = remaining > 0;
+
+      matched.slice(0, showing).forEach(item => item.style.display = '');
 
       noResults.classList.toggle('hidden', total > 0);
-      loadMoreBtn.classList.toggle('hidden', remaining === 0);
       loadMoreCount.classList.toggle('hidden', remaining === 0);
-      if (remaining > 0) {
-        loadMoreBtn.textContent = 'Načítať ďalšie';
-        loadMoreCount.textContent = `${showing} z ${total}`;
-      }
+      if (remaining > 0) loadMoreCount.textContent = `${showing} z ${total}`;
 
       [eraSel, contSel, territorySel, printerSel].forEach(sel => {
         const active = !!sel.value;
@@ -301,10 +295,12 @@ const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].s
       applyFilters();
     });
 
-    loadMoreBtn.addEventListener('click', () => {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting || !hasMore) return;
       visibleCount += BATCH;
       applyFilters();
-    });
+    }, { rootMargin: '400px 0px' });
+    io.observe(sentinel);
 
     // ── State persistence: save on leave, restore on back navigation ──────
     function saveNavState() {
