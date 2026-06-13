@@ -182,8 +182,8 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
       };
 
       const shortcutEl = document.getElementById('search-shortcut');
-      if (shortcutEl) {
-        shortcutEl.textContent = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl+K';
+      if (shortcutEl && /Mac|iPhone|iPad/.test(navigator.platform)) {
+        shortcutEl.textContent = '⌘K';
       }
 
       window.closeSearch = function () {
