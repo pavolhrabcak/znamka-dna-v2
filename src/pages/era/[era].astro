@@ -1,6 +1,5 @@
 ---
 import Base from '../../layouts/Base.astro';
-import TerritoryCard from '../../components/TerritoryCard.astro';
 import { getCollection } from 'astro:content';
 
 const ERAS = ['KGV', 'KGVI', 'QEII'] as const;
@@ -9,28 +8,22 @@ type Era = typeof ERAS[number];
 const eraInfo: Record<Era, { label: string; monarch: string; years: string; color: string }> = {
   KGV:  { label: 'KGV',  monarch: 'King George V',     years: '1910–1936', color: '#92400e' },
   KGVI: { label: 'KGVI', monarch: 'King George VI',    years: '1936–1952', color: '#0f766e' },
-  QEII: { label: 'QEII', monarch: 'Queen Elizabeth II', years: '1952–',    color: '#5b21b6' },
+  QEII: { label: 'QEII', monarch: 'Queen Elizabeth II', years: '1952–2022',    color: '#5b21b6' },
 };
 
 export async function getStaticPaths() {
-  const territories = await getCollection('territories', t => !t.data.draft);
   return (['KGV', 'KGVI', 'QEII'] as Era[]).map(era => ({
     params: { era: era.toLowerCase() },
-    props: {
-      era,
-      territories: territories
-        .filter(t => t.data.eras.includes(era))
-        .sort((a, b) => a.data.name.localeCompare(b.data.name)),
-    },
+    props: { era },
   }));
 }
 
-const { era, territories } = Astro.props as { era: Era; territories: any[] };
+const { era } = Astro.props as { era: Era };
 const info = eraInfo[era];
 ---
 
 <Base title={`Éra ${info.label} — ${info.monarch}`} description={`Britské koloniálne poštové známky éry ${info.label} (${info.years}). Hĺbkotlačové emisie za vlády ${info.monarch} — prehľad teritórií a ich definitívnych sérií.`}>
-  <section class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+  <article class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
 
     <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
       <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
@@ -38,21 +31,105 @@ const info = eraInfo[era];
       <span class="text-cream-600">{info.label}</span>
     </nav>
 
-    <div class="mb-5 pb-5 border-b border-cream-200">
+    <div class="mb-10 pb-8 border-b border-cream-200">
       <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-1">{info.years}</p>
-      <h1 class="font-serif text-4xl font-normal mb-1" style={`color: ${info.color}`}>{info.label}</h1>
-      <p class="text-cream-600 text-sm">{info.monarch}</p>
+      <h1 class="font-serif text-4xl md:text-5xl font-normal mb-2" style={`color: ${info.color}`}>{info.label}</h1>
+      <p class="font-serif text-xl font-normal text-cream-600 italic mb-7">{info.monarch}</p>
+
+      <a href={`/territories?era=${era}`} class="inline-block bg-cream-900 text-white text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-800 transition-colors">
+        Zobraziť teritóriá éry {info.label} →
+      </a>
     </div>
 
-    {territories.length > 0 ? (
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-10">
-        {territories.map(t => <TerritoryCard territory={t} era={era} />)}
+    {era === 'QEII' && (
+      <div class="stamp-prose max-w-3xl space-y-6">
+        <p>
+          Alžbeta II. nastúpila na trón 6. februára 1952 po smrti svojho otca Juraja VI. Korunovácia sa konala
+          2. júna 1953. Zomrela 8. septembra 2022. Jej vláda trvala 70 rokov a 214 dní — najdlhšia v britskej histórii. Éra QEII sa z pohľadu
+          koloniálnej filatelie kryje s obdobím postupného rozpadu Britského impéria: väčšina kolónií získala
+          nezávislosť v 50. a 60. rokoch 20. storočia, niektoré až v neskorších dekádach.
+        </p>
+        <p>
+          Dôležitým medzníkom bol rok 1961, keď{' '}
+          <a href="/printer/de-la-rue" class="underline underline-offset-2 hover:text-cream-900">De La Rue</a>{' '}
+          prevzala bezpečnostnú tlačovú divíziu{' '}
+          <a href="/printer/waterlow-and-sons" class="underline underline-offset-2 hover:text-cream-900">Waterlow &amp; Sons</a>{' '}
+          vrátane matríc a všetkého vybavenia pre recess tlač, a pokračovala v dotlačiach koloniálnych recess sérií
+          z pôvodných platní Waterlow s novým imprintom. Od 60. rokov 20. storočia začali pre zostávajúce kolónie
+          nastupovať nové tlačové techniky — offset litografia a fotogravúra — a do popredia sa dostávali nové
+          tlačiarne, predovšetkým Harrison and Sons a Enschedé, ktoré postupne nahrádzali tradičné recess tlačiarne.
+          Väčšina kolónií medzitým prešla po získaní nezávislosti na vlastné emisie, čím sa koloniálne recess série
+          definitívne uzavreli.
+        </p>
       </div>
-    ) : (
-      <p class="font-serif italic text-cream-400 text-lg py-16 text-center">
-        Žiadne teritória pre túto éru.
-      </p>
     )}
 
-  </section>
+    {era === 'KGVI' && (
+      <div class="stamp-prose max-w-3xl space-y-6">
+        <p>
+          Juraj VI. nastúpil na trón v decembri 1936 za okolností, ktoré nikto nepredpokladal — jeho starší brat
+          Eduard VIII. abdikoval po necelom roku vlády. Tlačiarne už v tom čase pripravovali návrhové výtlačky pre
+          koloniálne série s portrétom Eduarda VIII., ktoré sa však pre abdikáciu nikdy nedostali do ďalších fáz
+          výroby. Korunovácia sa konala 12. mája 1937, v termíne pôvodne plánovanom pre Eduarda VIII. Juraj VI.
+          vládol v jednom z najturbuletnejších období britských dejín — jeho vláda zahŕňala druhú svetovú vojnu,
+          povojnovú obnovu a začiatok rozpadu koloniálnej ríše. Zomrel 6. februára 1952.
+        </p>
+        <p>
+          Z filatelistického hľadiska je éra KGVI obdobím rozsiahlej obnovy koloniálnych definitívnych sérií.
+          Mnohé kolónie vydali počas tejto éry nové recess pictorial série s miestnymi motívmi — krajinou, faunou,
+          hospodárskymi aktivitami. Éra sa začína{' '}
+          <a href="/omnibusy/1937-korunovacia" class="underline underline-offset-2 hover:text-cream-900">korunováciou omnibus emisiou 1937</a>{' '}
+          a zahŕňa aj omnibus Victory 1946.
+        </p>
+      </div>
+    )}
+
+    {era === 'KGV' && (
+      <div class="stamp-prose max-w-3xl space-y-6">
+        <p>
+          Juraj V. nastúpil na trón 6. mája 1910 po smrti svojho otca Eduarda VII. Vládol v období hlbokých premien
+          britského impéria — jeho vláda zahŕňala prvú svetovú vojnu, vznik írského slobodného štátu, postupnú
+          transformáciu impéria na Commonwealth a vrchol koloniálnej správy v Afrike a Ázii. Zomrel 20. januára 1936.
+        </p>
+        <p>
+          Juraj V. bol vášnivým filatelistom — jeho zbierka britských a koloniálnych známok patrila k najvýznamnejším
+          svojej doby a je dnes uchovávaná ako súčasť Kráľovskej zbierky. Jeho záujem o filateliu sa priamo odrazil
+          aj v koloniálnych emisiách: pri príležitosti jeho strieborného jubilea v roku 1935 bola na jeho výslovné
+          prianie vydaná spoločná omnibus emisia pre 44 kolónií, pričom kráľ podmienil svoju účasť tým, aby bola
+          emisia cenovo dostupná pre bežného zberateľa.
+        </p>
+        <p>
+          Éra KGV predstavuje pre zberateľov recess pictorials obdobie prvých obrazových sérií pre mnohé kolónie.
+          Kľúčovú úlohu zohrávali tlačiarne{' '}
+          <a href="/printer/waterlow-and-sons" class="underline underline-offset-2 hover:text-cream-900">Waterlow &amp; Sons</a>,{' '}
+          <a href="/printer/de-la-rue" class="underline underline-offset-2 hover:text-cream-900">De La Rue</a>{' '}
+          a{' '}
+          <a href="/printer/bradbury-wilkinson" class="underline underline-offset-2 hover:text-cream-900">Bradbury, Wilkinson</a>.
+          Záverom éry je{' '}
+          <a href="/omnibusy/1935-striebrone-jubileum" class="underline underline-offset-2 hover:text-cream-900">omnibus emisia Silver Jubilee 1935</a>{' '}
+          — jedna z filatelisticky najbohatšie zdokumentovaných koloniálnych emisií vôbec.
+        </p>
+      </div>
+    )}
+
+    <div class="mt-14 pt-8 border-t border-cream-200 flex flex-wrap gap-3">
+      <a href="/" class="inline-block border border-cream-900 text-cream-900 text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-900 hover:text-white transition-colors">
+        ← Domov
+      </a>
+      {era !== 'KGV'  && <a href="/era/kgv"  class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-6 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">KGV →</a>}
+      {era !== 'KGVI' && <a href="/era/kgvi" class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-6 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">KGVI →</a>}
+      {era !== 'QEII' && <a href="/era/qeii" class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-6 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">QEII →</a>}
+      {era === 'KGV' && (
+        <a href="/omnibusy/1935-striebrone-jubileum" class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-6 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">
+          Omnibus 1935 — Silver Jubilee →
+        </a>
+      )}
+      {era === 'KGVI' && (
+        <a href="/omnibusy/1937-korunovacia" class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-6 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">
+          Omnibus 1937 — Korunovácia →
+        </a>
+      )}
+    </div>
+
+  </article>
 </Base>
