@@ -14,7 +14,14 @@ const setCount = readdirSync(join(process.cwd(), 'public', 'sets')).filter(f => 
 
     <!-- Hero -->
     <div class="mb-14">
-      <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Od Adenu po Zanzibar</h1>
+      <div class="flex items-center justify-between gap-6 mb-3">
+        <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900">Od Adenu po Zanzibar</h1>
+        <div class="hidden md:flex gap-3 flex-shrink-0">
+          <img src="/monarchs/medailon-kgv-black-400.png"    alt="King George V"      class="w-20 h-20 object-contain opacity-90" />
+          <img src="/monarchs/medailon-kgvi-2-black-400.png" alt="King George VI"     class="w-20 h-20 object-contain opacity-90" />
+          <img src="/monarchs/medailon-qe-black-400.png"     alt="Queen Elizabeth II" class="w-20 h-20 object-contain opacity-90" />
+        </div>
+      </div>
       <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic mb-6">Malá encyklopédia gravírovaných poštových známok britského impéria</p>
       <div class="stamp-prose">
         <p>Británia začala budovať svoje koloniálne impérium neskôr ako Španielsko či Portugalsko, no v priebehu nasledujúcich storočí svoje zaostávanie vyrovnala a v rozsahu koloniálneho panstva nakoniec predstihla všetky ostatné európske veľmoci.</p>
@@ -79,6 +86,9 @@ const setCount = readdirSync(join(process.cwd(), 'public', 'sets')).filter(f => 
         </span>
       </div>
     </a>
+    <p class="text-[10px] text-cream-400 mt-1.5">
+      Mapa: <a href="https://commons.wikimedia.org/wiki/File:The_British_Empire_5.png" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-cream-700">RedStorm1368</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-cream-700">CC BY-SA 4.0</a>, Wikimedia Commons
+    </p>
 
   </section>
 </Base>
