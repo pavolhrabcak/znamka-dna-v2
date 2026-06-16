@@ -28,6 +28,8 @@ const setCount = readdirSync(join(process.cwd(), 'public', 'sets')).filter(f => 
         <p>Desaťročia pred prvou svetovou vojnou bola Británia veľmocou s najväčším územím. Na vrchole impéria okolo roku 1920 k nej patrila takmer štvrtina celej zemegule a riadila životy vyše 400 miliónov ľudí. V tomto období Londýn v rozličnej miere ovplyvňoval všetky svetadiely. Na imperiálnej výstave v roku 1924 vo Wembley bolo koloniálne panstvo prezentované ako impérium, nad ktorým nezapadá slnko.</p>
         <p>Pre Britov bolo dôležité vybudovať na rozličných miestach sveta strategické oporné body (napr. Gibraltar, Ascension, Singapur, Aden, Cyprus), ktoré mali strážiť námorné trasy a obchodné prístavy. Tieto prístavy jej často slúžili ako odrazové mostíky ku kolonizácii vnútrozemia. A mimoriadny význam Indie — považovanej za najcennejšiu súčasť impéria — nútil Britániu kontrolovať všetky námorné trasy medzi Indiou a Britskými ostrovmi. Británia rozširovala a upevňovala svoje koloniálne výdobytky aj z prestíže a tiež preto, aby územie nezískal niekto iný.</p>
         <p>Túto globálnu dominanciu Británia demonštrovala aj prostredníctvom koloniálnych poštových známok. Najmä v prvej polovici 20. storočia ustúpili strohé dizajny obrazovým emisiám (tzv. pictorials) s detailnými rytinami lokálnych scenérií, fauny a hospodárskeho života kolónií. Tieto emisie boli realizované náročnou a nákladnou polygrafickou technikou tej éry — oceľovou hĺbkotlačou.</p>
+        <div class="text-sm text-cream-500 border-l-2 border-cream-200 pl-4 italic mt-4">Poznámka: Tieto stránky sa venujú výlučne známkam tlačeným technikou hĺbkotlače (recess / intaglio) z období vlády kráľa Juraja V. (KGV), kráľa Juraja VI. (KGVI) a kráľovnej Alžbety II. (QEII). Emisie iných panovníkov ani iné tlačové techniky nie sú predmetom tohto projektu. V rámci hĺbkotlače sa pozornosť sústreďuje predovšetkým na obrazové definitívne série (pictorials) — s niekoľkými výnimkami, ako sú významné omnibus emisie alebo pamätné série tlačené rovnakou technikou.</div>
+        <div class="h-4"></div>
       </div>
     </div>
 
@@ -73,19 +75,14 @@ const setCount = readdirSync(join(process.cwd(), 'public', 'sets')).filter(f => 
 
     </div>
 
-    <!-- British Empire map — single clickable area to /territories -->
-    <a href="/territories" class="block group relative overflow-hidden border border-cream-200 hover:border-cream-400 transition-colors duration-300">
+    <!-- British Empire map -->
+    <div class="border border-cream-200">
       <img
         src="/stamps/The_British_Empire.png"
         alt="Mapa Britského impéria"
-        class="w-full block transition-transform duration-500 group-hover:scale-[1.04]"
+        class="w-full block"
       />
-      <div class="absolute inset-0 flex items-end justify-end p-4 pointer-events-none">
-        <span class="text-white text-[10px] tracking-widest uppercase px-3 py-1.5 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          Preskúmať všetky kolónie →
-        </span>
-      </div>
-    </a>
+    </div>
     <p class="text-[10px] text-cream-400 mt-1.5">
       Mapa: <a href="https://commons.wikimedia.org/wiki/File:The_British_Empire_5.png" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-cream-700">RedStorm1368</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-cream-700">CC BY-SA 4.0</a>, Wikimedia Commons
     </p>
