@@ -1,5 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { getCollection } from 'astro:content';
+import { printerMap } from '../data/imprints-gallery';
+
+const territories = await getCollection('territories');
+const territoryNames = Object.fromEntries(territories.map(t => [t.slug, t.data.name]));
+
+const ERA_MAP: Record<string, 'KGV' | 'KGVI' | 'QEII'> = {
+  kgv: 'KGV', kgvi: 'KGVI', qeii: 'QEII', qe: 'QEII',
+};
+
+const validSlugs = new Set(territories.map(t => t.slug));
+
+const imprintFiles = readdirSync(join(process.cwd(), 'public', 'imprints'))
+  .filter(f => f.endsWith('.webp'))
+  .sort();
+
+const imprintGallery = imprintFiles.flatMap(filename => {
+  const parts = filename.replace('.webp', '').split('-');
+  const eraIdx = parts.findIndex(p => p in ERA_MAP);
+  if (eraIdx < 1) return [];
+  const territorySlug = parts.slice(0, eraIdx).join('-');
+  const era = ERA_MAP[parts[eraIdx]];
+  const year = parseInt(parts[eraIdx + 1]) || 0;
+  const printerKey = parts.slice(eraIdx + 2).join('-');
+  return [{
+    image: `/imprints/${filename}`,
+    territory: territoryNames[territorySlug] ?? territorySlug.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' '),
+    territorySlug,
+    hasTerritory: validSlugs.has(territorySlug),
+    printer: printerMap[printerKey] ?? printerKey,
+    era,
+    year,
+  }];
+});
+
+const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
 ---
 
 <Base
@@ -139,6 +177,57 @@ import Base from '../layouts/Base.astro';
       </div>
     </div>
 
+    <!-- Section 4: Gallery -->
+    <div class="mb-10 pb-10 border-b border-cream-200">
+      <h2 class="font-serif text-2xl font-normal text-cream-900 mb-2">Galéria imprintov</h2>
+      <p class="text-sm text-cream-500 italic mb-6">Dokumentárne fotografie blokových kusov s tlačiarenskými značkami</p>
+
+      {imprintGallery.length === 0 ? (
+        <p class="text-sm text-cream-400 italic">Galéria bude čoskoro doplnená.</p>
+      ) : (
+        <div>
+          {galleryPrinters.length > 1 && (
+            <div class="flex flex-wrap gap-2 mb-6">
+              <button data-filter="all" class="imprint-filter text-[11px] tracking-widest uppercase px-4 py-2 border border-cream-900 bg-cream-900 text-white transition-colors">Všetky</button>
+              {galleryPrinters.map(p => (
+                <button data-filter={p} class="imprint-filter text-[11px] tracking-widest uppercase px-4 py-2 border border-cream-300 text-cream-700 hover:border-cream-700 hover:text-cream-900 transition-colors">{p}</button>
+              ))}
+            </div>
+          )}
+          <div id="imprint-grid" class="grid grid-cols-2 md:grid-cols-3 gap-5">
+            {imprintGallery.map((item, i) => (
+              <div class="imprint-card flex flex-col" data-printer={item.printer}>
+                <div
+                  class="border border-cream-200 bg-white p-3 mb-2 cursor-zoom-in hover:border-cream-500 hover:shadow-lg transition-all duration-200"
+                  onclick={`openGalleryLb(${i})`}
+                >
+                  <div class="aspect-[4/3] flex items-center justify-center overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={`${item.territory} ${item.year} imprint block — ${item.printer}`}
+                      class="w-full h-full object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                {item.hasTerritory
+                  ? <a href={`/territories/${item.territorySlug}`} class="text-[11px] tracking-widest uppercase text-cream-700 hover:text-cream-950 transition-colors hover:underline underline-offset-2">{item.territory}</a>
+                  : <span class="text-[11px] tracking-widest uppercase text-cream-700">{item.territory}</span>
+                }
+                <p class="text-sm text-cream-500 mt-0.5">{item.series ? `${item.series} · ` : ''}{item.year}</p>
+                <div class="mt-1 flex flex-wrap gap-1">
+                  <span class="text-[9px] tracking-widest uppercase px-1.5 py-0.5 border border-cream-200 text-cream-400">{item.printer}</span>
+                  {item.era === 'KGV'  && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-amber-50 text-amber-700 border-amber-200">KGV</span>}
+                  {item.era === 'KGVI' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-teal-50 text-teal-700 border-teal-200">KGVI</span>}
+                  {item.era === 'QEII' && <span class="text-[9px] tracking-widest px-1.5 py-0.5 border bg-violet-50 text-violet-700 border-violet-200">QEII</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+
     <!-- Collector's tip -->
     <div class="mb-12">
       <div class="border-l-2 border-cream-300 pl-6">
@@ -229,6 +318,93 @@ import Base from '../layouts/Base.astro';
       if (e.key === 'Escape') window.closeLightbox();
       if (e.key === 'ArrowLeft') window.lightboxNav(-1);
       if (e.key === 'ArrowRight') window.lightboxNav(1);
+    });
+  </script>
+
+  <!-- Gallery lightbox -->
+  <div id="gallery-lightbox" class="hidden fixed inset-0 bg-black/90 z-50 flex-col items-center justify-center px-8 py-3" onclick="closeGalleryLb()">
+    <div class="w-full max-w-3xl flex items-center justify-between mb-2 flex-shrink-0" onclick="event.stopPropagation()">
+      <span id="gallery-lb-counter" class="text-[11px] tracking-widest text-white/40"></span>
+      <button onclick="closeGalleryLb()" class="text-white/60 hover:text-white text-2xl leading-none px-2 transition-colors">&#215;</button>
+    </div>
+    <div class="relative max-w-3xl w-full flex items-center" onclick="event.stopPropagation()">
+      <button id="gallery-lb-prev" onclick="galleryLbNav(-1)" class="absolute left-0 -translate-x-10 text-white/50 hover:text-white text-5xl leading-none px-2 py-6 transition-colors z-10">&#8249;</button>
+      <button id="gallery-lb-next" onclick="galleryLbNav(1)" class="absolute right-0 translate-x-10 text-white/50 hover:text-white text-5xl leading-none px-2 py-6 transition-colors z-10">&#8250;</button>
+      <div class="w-full">
+        <img id="gallery-lb-img" src="" alt="" class="w-full object-contain max-h-[calc(100vh-100px)]" />
+        <p id="gallery-lb-caption" class="text-center text-[11px] tracking-widest uppercase text-white/40 mt-2"></p>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ galleryItems: imprintGallery.map(i => ({ src: i.image, caption: `${i.territory} · ${i.printer} · ${i.year}`, printer: i.printer })) }}>
+    var galIdx = 0;
+    var activeGalleryItems = galleryItems.slice();
+
+    function updateGalleryLb() {
+      var item = activeGalleryItems[galIdx];
+      document.getElementById('gallery-lb-img').src = item.src;
+      document.getElementById('gallery-lb-img').alt = item.caption;
+      document.getElementById('gallery-lb-caption').textContent = item.caption;
+      document.getElementById('gallery-lb-counter').textContent = (galIdx + 1) + ' / ' + activeGalleryItems.length;
+      document.getElementById('gallery-lb-prev').style.visibility = galIdx === 0 ? 'hidden' : 'visible';
+      document.getElementById('gallery-lb-next').style.visibility = galIdx === activeGalleryItems.length - 1 ? 'hidden' : 'visible';
+    }
+
+    window.openGalleryLb = function(originalIndex) {
+      var item = galleryItems[originalIndex];
+      var idx = activeGalleryItems.indexOf(item);
+      galIdx = idx !== -1 ? idx : 0;
+      updateGalleryLb();
+      var lb = document.getElementById('gallery-lightbox');
+      lb.classList.remove('hidden');
+      lb.classList.add('flex', 'flex-col');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.galleryLbNav = function(dir) {
+      var next = galIdx + dir;
+      if (next >= 0 && next < activeGalleryItems.length) {
+        galIdx = next;
+        updateGalleryLb();
+      }
+    };
+
+    window.closeGalleryLb = function() {
+      var lb = document.getElementById('gallery-lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex', 'flex-col');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('keydown', function(e) {
+      var lb = document.getElementById('gallery-lightbox');
+      if (!lb || lb.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeGalleryLb();
+      if (e.key === 'ArrowLeft') galleryLbNav(-1);
+      if (e.key === 'ArrowRight') galleryLbNav(1);
+    });
+
+    document.querySelectorAll('.imprint-filter').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.imprint-filter').forEach(function(b) {
+          b.classList.remove('bg-cream-900', 'text-white', 'border-cream-900');
+          b.classList.add('border-cream-300', 'text-cream-700', 'hover:border-cream-700', 'hover:text-cream-900');
+        });
+        this.classList.remove('border-cream-300', 'text-cream-700', 'hover:border-cream-700', 'hover:text-cream-900');
+        this.classList.add('bg-cream-900', 'text-white', 'border-cream-900');
+        document.querySelectorAll('.imprint-card').forEach(function(card) {
+          if (filter === 'all' || card.getAttribute('data-printer') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        activeGalleryItems = filter === 'all'
+          ? galleryItems.slice()
+          : galleryItems.filter(function(item) { return item.printer === filter; });
+      });
     });
   </script>
 </Base>

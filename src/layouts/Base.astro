@@ -33,16 +33,20 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
       <ul class="hidden md:flex items-center gap-7 text-[13px] tracking-widest uppercase text-[#1e3a5f]">
         <li><a href="/territories" class="hover:text-stone-900 transition-colors">Teritóriá</a></li>
         <li><a href="/sety" class="hover:text-stone-900 transition-colors">Sety</a></li>
+        <li><a href="/imprints" class="hover:text-stone-900 transition-colors">Imprinty</a></li>
         <li class="relative group">
           <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
             Panovníci
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
           </button>
           <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
-            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[80px]">
+            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[200px]">
               <a href="/era/kgv"  class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">KGV</a>
               <a href="/era/kgvi" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">KGVI</a>
               <a href="/era/qeii" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">QEII</a>
+              <div class="border-t border-stone-100 my-1"></div>
+              <a href="/omnibusy/1935-striebrone-jubileum" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">1935 Strieborné jubileum</a>
+              <a href="/omnibusy/1937-korunovacia"         class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">1937 Korunovácia</a>
             </div>
           </div>
         </li>
@@ -53,40 +57,27 @@ const { title = 'Britské kolónie', description = 'Encyklopédia gravírovanýc
           </button>
           <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
             <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[160px]">
-              <a href="/printer/waterlow-and-sons"   class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Waterlow &amp; Sons</a>
-              <a href="/printer/de-la-rue"           class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">De La Rue</a>
-              <a href="/printer/bradbury-wilkinson"  class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Bradbury Wilkinson</a>
+              <a href="/printer/waterlow-and-sons"  class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Waterlow &amp; Sons</a>
+              <a href="/printer/de-la-rue"          class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">De La Rue</a>
+              <a href="/printer/bradbury-wilkinson" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Bradbury Wilkinson</a>
               <div class="border-t border-stone-100 my-1"></div>
-              <a href="/postup-tlace" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Postup tlače</a>
-              <a href="/imprints" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Imprinty</a>
-              <a href="/tlaciarenske-vzorky" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Tlačiarenské vzorky</a>
-              <a href="/vzorkovnik-farieb" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Vzorkovník farieb</a>
+              <a href="/postup-tlace"         class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Postup tlače</a>
+              <a href="/tlaciarenske-vzorky"  class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Tlačiarenské vzorky</a>
+              <a href="/vzorkovnik-farieb"    class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Vzorkovník farieb</a>
               <a href="/identifikacia-farieb" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Identifikácia farieb</a>
             </div>
           </div>
         </li>
-        <li><a href="/glosar" class="hover:text-stone-900 transition-colors">Glosár</a></li>
         <li class="relative group">
           <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
-            Zaujímavosti
+            Ďalšie
             <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
           </button>
           <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
             <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[160px]">
-              <a href="/essays" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Essays</a>
+              <a href="/glosar"          class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Glosár</a>
+              <a href="/essays"          class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Essays</a>
               <a href="/falsne-peciatky" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">Falošné pečiatky</a>
-            </div>
-          </div>
-        </li>
-        <li class="relative group">
-          <button type="button" class="flex items-center gap-1.5 hover:text-stone-900 transition-colors focus:outline-none">
-            Omnibusy
-            <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="currentColor" stroke-width="1.5" class="opacity-50 group-hover:opacity-100 transition-opacity"><polyline points="0.5,0.5 4.5,5.5 8.5,0.5"/></svg>
-          </button>
-          <div class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute top-full left-1/2 -translate-x-1/2 z-50 pt-2">
-            <div class="bg-white border border-stone-200 shadow-lg py-1.5 min-w-[200px]">
-              <a href="/omnibusy/1935-striebrone-jubileum" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">1935 Strieborné jubileum</a>
-              <a href="/omnibusy/1937-korunovacia" class="block px-4 py-1.5 text-[12px] tracking-widest uppercase text-stone-600 hover:text-stone-900 hover:bg-stone-50 transition-colors">1937 Korunovácia</a>
             </div>
           </div>
         </li>
