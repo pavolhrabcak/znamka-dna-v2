@@ -58,7 +58,7 @@ const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
       <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic mb-7">
         Odvrátená strana archu: tlačiarenské značky a príbeh fúzie storočia
       </p>
-      <div class="flex flex-wrap items-baseline gap-x-7 gap-y-2">
+      <div class="flex flex-wrap items-baseline gap-x-7 gap-y-2 mb-6">
         <span class="text-[11px] tracking-widest uppercase text-cream-600">Waterlow &amp; Sons</span>
         <span class="text-cream-300 hidden sm:inline">·</span>
         <span class="text-[11px] tracking-widest uppercase text-cream-600">De La Rue</span>
@@ -67,6 +67,9 @@ const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
         <span class="text-cream-300 hidden sm:inline">·</span>
         <span class="text-[11px] tracking-widest uppercase text-cream-600">QEII</span>
       </div>
+      <a href="#galeria" class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-5 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">
+        Pozrieť galériu →
+      </a>
     </div>
 
     <!-- Intro -->
@@ -177,9 +180,24 @@ const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
       </div>
     </div>
 
+    <!-- Collector's tip -->
+    <div class="mb-10 pb-10 border-b border-cream-200">
+      <div class="border-l-2 border-cream-300 pl-6">
+        <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-3">Tip pre zberateľov</p>
+        <div class="stamp-prose">
+          <p>
+            Ak nájdete známky z tejto éry bez okrajov, dotlače od De La Rue z rokov 1961–1965 sa dajú
+            identifikovať aj podľa papiera. Waterlow používal v 50. rokoch o niečo mäkší, krémovejší papier.
+            De La Rue naopak dotlač realizovala na čistejšom, žiarivo bielom papieri. Tieto rozdiely sú
+            pri porovnaní oboch verzií pod lupou zreteľne viditeľné.
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- Section 4: Gallery -->
     <div class="mb-10 pb-10 border-b border-cream-200">
-      <h2 class="font-serif text-2xl font-normal text-cream-900 mb-2">Galéria imprintov</h2>
+      <h2 id="galeria" class="font-serif text-2xl font-normal text-cream-900 mb-2">Galéria imprintov</h2>
       <p class="text-sm text-cream-500 italic mb-6">Dokumentárne fotografie blokových kusov s tlačiarenskými značkami</p>
 
       {imprintGallery.length === 0 ? (
@@ -226,21 +244,6 @@ const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
           </div>
         </div>
       )}
-    </div>
-
-    <!-- Collector's tip -->
-    <div class="mb-12">
-      <div class="border-l-2 border-cream-300 pl-6">
-        <p class="text-[10px] tracking-widest uppercase text-cream-400 mb-3">Tip pre zberateľov</p>
-        <div class="stamp-prose">
-          <p>
-            Ak nájdete známky z tejto éry bez okrajov, dotlače od De La Rue z rokov 1961–1965 sa dajú
-            identifikovať aj podľa papiera. Waterlow používal v 50. rokoch o niečo mäkší, krémovejší papier.
-            De La Rue naopak dotlač realizovala na čistejšom, žiarivo bielom papieri. Tieto rozdiely sú
-            pri porovnaní oboch verzií pod lupou zreteľne viditeľné.
-          </p>
-        </div>
-      </div>
     </div>
 
     <div class="mt-14 pt-8 border-t border-cream-200 flex flex-wrap gap-3">

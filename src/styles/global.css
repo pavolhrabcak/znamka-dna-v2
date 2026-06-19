@@ -8,6 +8,7 @@
   html {
     font-size: 18px;
     scrollbar-gutter: stable;
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-cream-50 text-cream-900 font-sans;
