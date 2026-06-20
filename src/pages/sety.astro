@@ -330,7 +330,7 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
         id="lb-img"
         src=""
         alt=""
-        style="max-width: 90vw; max-height: 82vh; object-fit: contain; transform-origin: center center; user-select: none; -webkit-user-drag: none; transition: transform 0.25s ease;"
+        style="max-width: 90vw; max-height: 82vh; object-fit: contain; transform-origin: center center; user-select: none; -webkit-user-drag: none; transition: transform 0.25s ease, opacity 0.15s ease;"
       />
     </div>
 
@@ -536,6 +536,9 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
       const item = lbItems[lbIdx];
       if (!item) return;
       const lb = document.getElementById('lb-img') as HTMLImageElement;
+      lb.style.opacity = '0';
+      lb.onload = () => { lb.style.opacity = '1'; lb.onload = null; };
+      lb.onerror = () => { lb.style.opacity = '1'; lb.onerror = null; };
       lb.src = item.src;
       lb.alt = item.name;
       const parts = [item.name];
@@ -654,9 +657,40 @@ const allTerritories = [...new Map(sets.map(s => [s.territorySlug, s.baseName]))
     document.addEventListener('mouseup', () => {
       if (isDragging) {
         isDragging = false;
-        lbImgEl.style.transition = 'transform 0.25s ease';
+        lbImgEl.style.transition = 'transform 0.25s ease, opacity 0.15s ease';
         if (currentScale > 1) lbImgEl.style.cursor = 'grab';
       }
     });
+
+    // Mouse wheel zoom (cursor-aware)
+    let wheelTimer: ReturnType<typeof setTimeout> | null = null;
+
+    lbContainer.addEventListener('wheel', (e: WheelEvent) => {
+      e.preventDefault();
+
+      // Instant response during wheel — disable transform transition
+      lbImgEl.style.transition = 'opacity 0.15s ease';
+
+      const rect = lbImgEl.getBoundingClientRect();
+      const rcx = rect.left + rect.width / 2;
+      const rcy = rect.top + rect.height / 2;
+
+      const factor = e.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
+      const newScale = Math.min(ZOOM_MAX, Math.max(1, currentScale * factor));
+      if (newScale === currentScale) return;
+
+      // Adjust pan so the point under the cursor stays fixed
+      panX = panX + (e.clientX - rcx) * (1 - newScale / currentScale);
+      panY = panY + (e.clientY - rcy) * (1 - newScale / currentScale);
+      if (newScale <= 1) { panX = 0; panY = 0; }
+      currentScale = newScale;
+      applyTransform();
+
+      // Restore transition after wheel stops
+      if (wheelTimer) clearTimeout(wheelTimer);
+      wheelTimer = setTimeout(() => {
+        lbImgEl.style.transition = 'transform 0.25s ease, opacity 0.15s ease';
+      }, 200);
+    }, { passive: false });
   </script>
 </Base>

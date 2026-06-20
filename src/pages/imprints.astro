@@ -38,6 +38,7 @@ const imprintGallery = imprintFiles.flatMap(filename => {
 });
 
 const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
+const printerCounts = Object.fromEntries(galleryPrinters.map(p => [p, imprintGallery.filter(i => i.printer === p).length]));
 ---
 
 <Base
@@ -206,9 +207,9 @@ const galleryPrinters = [...new Set(imprintGallery.map(i => i.printer))].sort();
         <div>
           {galleryPrinters.length > 1 && (
             <div class="flex flex-wrap gap-2 mb-6">
-              <button data-filter="all" class="imprint-filter text-[11px] tracking-widest uppercase px-4 py-2 border border-cream-900 bg-cream-900 text-white transition-colors">Všetky</button>
+              <button data-filter="all" class="imprint-filter text-[11px] tracking-widest uppercase px-4 py-2 border border-cream-900 bg-cream-900 text-white transition-colors">Všetky ({imprintGallery.length})</button>
               {galleryPrinters.map(p => (
-                <button data-filter={p} class="imprint-filter text-[11px] tracking-widest uppercase px-4 py-2 border border-cream-300 text-cream-700 hover:border-cream-700 hover:text-cream-900 transition-colors">{p}</button>
+                <button data-filter={p} class="imprint-filter text-[11px] tracking-widest uppercase px-4 py-2 border border-cream-300 text-cream-700 hover:border-cream-700 hover:text-cream-900 transition-colors">{p} ({printerCounts[p]})</button>
               ))}
             </div>
           )}
