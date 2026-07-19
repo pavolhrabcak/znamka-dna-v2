@@ -9,57 +9,57 @@ current_country: Srí Lanka
 eras: [KGV, KGVI]
 printers:
   - De La Rue
-  - Waterlow & Sons
-  - Bradbury, Wilkinson
-tags: [asia, de-la-rue, waterlow, bradbury-wilkinson, tea]
+  - Bradbury Wilkinson
+tags: [asia, de-la-rue, bradbury-wilkinson, tea]
 stamps:
   - image: /stamps/ceylon.webp
     denomination: 2c
-    year: 1935
+    year: 1938
     era: KGVI
     printer: De La Rue
-    note: Temple of the Tooth
   - image: /stamps/ceylon2.webp
-    denomination: 3c
-    year: 1935
+    denomination: 30c
+    year: 1938
     era: KGVI
-    printer: De La Rue
+    printer: Bradbury Wilkinson
   - image: /stamps/ceylon3.webp
-    denomination: 6c
+    denomination: 1R
     year: 1938
     era: KGVI
-    printer: De La Rue
+    printer: Bradbury Wilkinson
   - image: /stamps/ceylon3a.webp
-    denomination: 9c
-    year: 1938
+    denomination: 1R
+    year: 1935
     era: KGV
-    printer: De La Rue
+    printer: Bradbury Wilkinson
   - image: /stamps/ceylon4.webp
     denomination: 20c
     year: 1938
     era: KGVI
-    printer: De La Rue
-    note: Adam's Peak
+    printer: Bradbury Wilkinson
   - image: /stamps/ceylon5.webp
-    denomination: 1R
+    denomination: 50c
     year: 1938
     era: KGVI
     printer: De La Rue
-    note: Coconut Palms
 timeline:
   - year: 1815
-    event: Britská správa celého ostrova
+    event: Britská správa celého ostrova po dobytí Kandyjského kráľovstva.
   - year: 1857
-    event: Prvé poštové známky
+    event: Prvá známka Cejlónu (6d, portrét Viktórie) — hĺbkotlač, Perkins Bacon & Co.
   - year: 1935
-    event: KGV Silver Jubilee — obrázkové vydanie
+    event: Obrazová séria Juraja V. (11 hodnôt) — De La Rue (2c, 3c, 20c, 50c) a Bradbury Wilkinson (zvyšné hodnoty vrátane 1R Trincomalee). Súbežne aj Strieborné jubileum (4 hodnoty).
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: Obrazová séria Juraja VI. (13 hodnôt, rozšírená o 2 hodnoty) — Bradbury Wilkinson (6c, 10c, 15c, 20c, 25c, 30c, 1R, 2R) a De La Rue (2c, 3c, 50c, 5R, 10R).
+  - year: 1940
+    event: Po bombardovaní tlačiarne De La Rue v Londýne (december) prechádza tlač hodnôt 2c, 3c a 50c na Bradbury Wilkinson.
   - year: 1948
-    event: Nezávislosť — dominion
+    event: Cejlón získava štatút dominia.
 draft: false
 ---
 
-Ceylon (moderné Srí Lanka) sa stalo plne britským v roku 1815, keď bolo dobyté Kandyjské kráľovstvo. Ostrovná ekonomika bola transformovaná plantážnym poľnohospodárstvom — najprv kávou a potom čajom — a cejlónsky čaj sa stal jedným z najslávnejších vývozných artiklů na svete.
+Cejlón (dnešná Srí Lanka) sa stal plne britským v roku 1815, keď bolo dobyté Kandyjské kráľovstvo. Prvá vlastná známka ostrova vyšla 1. apríla 1857 — hodnota 6 pencí s portrétom kráľovnej Viktórie, ktorú vytlačila hĺbkotlačou spoločnosť Perkins Bacon & Co.
 
-KGVI definitívna séria z roku 1938, gravírovaná a tlačená spoločnosťou De La Rue, tvorí jednu z najkrajších sérií koloniálneho obdobia. Námety zahŕňajú Chrám zuba v Kandy, Adamov vrchol, prístav Trincomalee a kokosové palmy. Tieto krásne recess-tlačené vzory v bohatých farbách sú celosvetovo cenené špecialistami na Cejlón.
+Za vlády Juraja V. vyšla v rokoch 1935–1936 obrazová (pictorial) séria jedenástich hĺbkotlačových známok s miestnymi motívmi — napríklad ťažba kaučuku, čajové plantáže či zátoka Trincomalee. Tlač si rozdelili dve firmy: De La Rue vyrobila hodnoty 2c, 3c, 20c a 50c, zvyšné hodnoty (vrátane 1 rupie s motívom Trincomalee) vytlačila spoločnosť Bradbury Wilkinson. V roku 1935 Cejlón vydal aj spoločnú štvorznámkovú emisiu Strieborného jubilea.
+
+Po nástupe Juraja VI. vyšla v roku 1938 nová, rozšírená obrazová séria trinástich hodnôt — v podstate rovnaké motívy ako v predchádzajúcej sérii, len s portrétom nového panovníka a bez nápisu „Postage & Revenue". Tlač si opäť rozdelili dve firmy: Bradbury Wilkinson vyrobila hodnoty 6c, 10c, 15c, 20c, 25c, 30c, 1R a 2R, De La Rue hodnoty 2c, 3c, 50c, 5R a 10R (vysoké hodnoty 5R a 10R boli navyše tlačené typografiou, nie hĺbkotlačou). Po bombardovaní tlačiarne De La Rue v Londýne v decembri 1940 prevzala výrobu hodnôt 2c, 3c a 50c spoločnosť Bradbury Wilkinson. Cejlón zostal súčasťou tejto známkovej tradície až do roku 1948, keď získal štatút dominia.

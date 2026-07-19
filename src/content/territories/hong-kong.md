@@ -8,48 +8,51 @@ capital: Victoria
 current_country: Čína
 eras: [KGVI]
 printers:
-  - Bradbury, Wilkinson
+  - Bradbury Wilkinson
 tags: [far-east, china, bradbury-wilkinson, opium-war, centenary]
 stamps:
   - image: /stamps/hk1.webp
     denomination: 4c
     year: 1941
     era: KGVI
-    printer: Bradbury, Wilkinson
-    note: Victoria Harbour
-  - image: /stamps/hk2.webp
-    denomination: 4c
-    year: 1941
-    era: KGVI
-    printer: Bradbury, Wilkinson
+    printer: Bradbury Wilkinson
   - image: /stamps/hk.webp
-    denomination: 4c
+    denomination: 5c
     year: 1941
     era: KGVI
-    printer: Bradbury, Wilkinson
+    printer: Bradbury Wilkinson
   - image: /stamps/hk5.webp
-    denomination: 4c
+    denomination: 15c
     year: 1941
     era: KGVI
-    printer: Bradbury, Wilkinson
+    printer: Bradbury Wilkinson
+  - image: /stamps/hk2.webp
+    denomination: $1
+    year: 1941
+    era: KGVI
+    printer: Bradbury Wilkinson
 timeline:
   - year: 1842
-    event: Ceded to Britain by Treaty of Nanking after the First Opium War
+    event: Postúpenie Británii Nankinskou zmluvou po prvej ópiovej vojne.
   - year: 1860
-    event: Kowloon Peninsula annexed after the Second Opium War
+    event: Pripojenie polostrova Kowloon po druhej ópiovej vojne.
+  - year: 1862
+    event: Prvé poštové známky.
   - year: 1898
-    event: New Territories leased for 99 years
+    event: Prenájom Nových teritórií na 99 rokov.
   - year: 1941
-    event: Séria Storočnica britskej správy — Bradbury, Wilkinson; japonská okupácia
+    event: Séria k storočnici britskej správy (26. február) — hĺbkotlač, Bradbury Wilkinson.
   - year: 1945
-    event: Liberation; British administration restored
+    event: Oslobodenie, obnovenie britskej správy po japonskej okupácii.
   - year: 1997
-    event: Returned to China as a Special Administrative Region
+    event: Odovzdanie Číne.
 draft: false
 ---
 
-Hong Kong became a British Crown Colony following the Treaty of Nanking in 1842, which concluded the First Opium War. Britain had been importing opium from India into China on a vast scale; after China moved to suppress the trade, Britain sent a naval expedition that forced China to cede the island of Hong Kong. The Kowloon Peninsula was added in 1860, and the New Territories were leased for 99 years in 1898.
+Hongkong sa stal britskou korunnou kolóniou po Nankinskej zmluve z roku 1842, ktorou sa skončila prvá ópiová vojna. Británia vo veľkom dovážala ópium z Indie do Číny, a keď sa Čína pokúsila tento obchod potlačiť, Británia vyslala námornú výpravu, ktorá si vynútila postúpenie ostrova Hongkong. Polostrov Kowloon pribudol v roku 1860 po druhej ópiovej vojne a v roku 1898 boli na 99 rokov prenajaté takzvané Nové teritóriá.
 
-Kolónia bola v rokoch 1941 až 1945 obsadená Japonskom. Séria KGVI z roku 1941 bola vydaná pri príležitosti storočnice britskej správy nad Hongkongom. Tlač zabezpečila londýnska tlačiareň Bradbury, Wilkinson metódou hĺbkotlače (recess printing). Papier s vodoznakom Multiple Script CA. Zúbkovanie 13,5 × 13 (hodnoty 2c a 25c) alebo 13 × 13,5 (ostatné hodnoty). Katalógové čísla SG 163–168.
+Vlastné poštové známky vydal Hongkong prvýkrát v roku 1862.
 
-Hongkong bol v roku 1997 vrátený Číne na základe podmienok nájomnej zmluvy z roku 1898 a stal sa osobitnou administratívnou oblasťou.
+Pri príležitosti 100. výročia britskej správy vyšla 26. februára 1941 obrazová séria Juraja VI. — prvá hongkonská emisia, ktorá namiesto všeobecného koloniálneho "Key Plate" dizajnu zobrazovala konkrétne miestne motívy. Šesť hodnôt vytlačila hĺbkotlačou londýnska tlačiareň Bradbury Wilkinson na papieri s vodoznakom Multiple Script CA, so zúbkovaním 13,5 × 13 (hodnoty 2c a 25c) alebo 13 × 13,5 (ostatné hodnoty). Medzi motívy patrí prístavná loď a čínska džunka (4c), budova univerzity (5c), pohľad na prístav (15c) i čínsky klipper spolu s hydroplánom ($1).
+
+Táto storočná pripomienková séria vyšla len niekoľko mesiacov pred japonskou okupáciou Hongkongu (1941–1945). Po oslobodení v roku 1945 sa vrátila britská správa, ktorá trvala až do roku 1997, keď bol Hongkong na základe podmienok zmluvy z roku 1898 odovzdaný Číne.

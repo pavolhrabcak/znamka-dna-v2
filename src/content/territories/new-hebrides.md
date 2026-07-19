@@ -7,49 +7,22 @@ period_end: 1980
 capital: Vila
 current_country: Vanuatu
 eras: [KGVI]
-printers:
-  - De La Rue
-  - Waterlow & Sons
-tags: [oceania, de-la-rue, waterlow, condominium, pacific]
+portrait: false
+printers: []
+tags: [oceania, condominium, pacific, bilingual]
 stamps:
   - image: /stamps/hebrides.webp
-    denomination: 1½d
+    denomination: 50c
     year: 1938
     era: KGVI
-    printer: De La Rue
-    note: English Harbour
-  - image: /stamps/hebrides-1.webp
-    denomination: 1½d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-    note: English Harbour
-  - image: /stamps/hebrides-2.webp
-    denomination: 1½d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-    note: English Harbour
-  - image: /stamps/hebrides-3.webp
-    denomination: 1½d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-    note: English Harbour
 timeline:
   - year: 1906
-    event: Anglo-francúzske kondominíum
-  - year: 1908
-    event: Prvé poštové známky kondominíum
+    event: Anglo-francúzske kondomínium — spoločná britsko-francúzska správa.
   - year: 1938
-    event: KGVI definitívna séria (britská verzia)
-  - year: 1957
-    event: QEII definitívna séria
+    event: Obrazová séria "Condominium" — hĺbkotlač, bez portrétu panovníka, súbežne anglická a francúzska verzia.
   - year: 1980
-    event: Nezávislosť — Vanuatu
+    event: Nezávislosť — Vanuatu.
 draft: false
 ---
 
-Nové Hebridy (dnes Vanuatu) boli nezvyčajným anglo-francúzskym kondominátom od roku 1906 — spoločne spravované Britániou a Francúzskom s duálnymi poštovými systémami vydávajúcimi oddelené poštové známky. Britské poštové známky boli denominované v šterlingoch a neskôr v austrálskej mene.
-
-Tento duálny systém vytvoril fascinujúcu filatelistickú situáciu: dve kompletné sady poštových známok pre to isté územie, obe súčasne platné. Britské novohebridské poštové známky, vyrobené spoločnosťou De La Rue, sa zbierajú spolu s ich francúzskymi náprotivkami.
+Nové Hebridy (dnes Vanuatu) boli od roku 1906 nezvyčajným anglo-francúzskym kondomíniom — jediným svojho druhu na svete —, spoločne spravovaným Britániou a Francúzskom, pričom obe mocnosti vydávali aj vlastné poštové známky s monogramami GR (Georgius Rex) a RF (République Française). Obrazová séria "Condominium" z roku 1938 zjednotila menu oboch administratív na "gold francs/centimes" a zobrazovala výjavy z ostrovného života — vydlabané kánoe, plachetnice s výložníkom, pobrežné dediny so sopkou v pozadí — vytlačené hĺbkotlačou súbežne v anglickej ("New Hebrides") aj francúzskej ("Nouvelles Hébrides") jazykovej verzii, bez portrétu panovníka. Nové Hebridy získali nezávislosť v roku 1980 ako Vanuatu.

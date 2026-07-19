@@ -5,7 +5,7 @@ import { continentLabelMap, continentToSlug } from '../../lib/continentSlug';
 import { slugify } from '../../lib/slugify';
 
 export async function getStaticPaths() {
-  const territories = await getCollection('territories', t => !t.data.draft);
+  const territories = await getCollection('territories', t => !t.data.draft && t.data.portrait !== false);
   const sorted = territories.sort((a, b) => a.data.name.localeCompare(b.data.name));
   return sorted.map((t, i) => ({
     params: { slug: t.slug },

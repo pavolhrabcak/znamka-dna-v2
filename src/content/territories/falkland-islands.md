@@ -8,44 +8,40 @@ capital: Stanley
 current_country: Falklandské ostrovy (britské zámorské územie)
 eras: [KGVI, QEII]
 printers:
-  - De La Rue
-  - Bradbury, Wilkinson
-tags: [south-atlantic, de-la-rue, bradbury-wilkinson, wildlife]
+  - Bradbury Wilkinson
+tags: [south-atlantic, bradbury-wilkinson, wildlife]
 stamps:
-  - image: /stamps/falkland0-islands.webp
-    denomination: ½d
-    year: 1938
-    era: QEII
-    printer: Bradbury, Wilkinson
-    note: Black-necked Swan
-  - image: /stamps/falkland-islands.webp
-    denomination: 1d
-    year: 1938
-    era: KGVI
-    printer: Bradbury, Wilkinson
-    note: Battle Memorial
-  - image: /stamps/falkland-islands1.webp
+  - image: /stamps/falkland-islands2.webp
     denomination: 2d
     year: 1938
     era: KGVI
-    printer: Bradbury, Wilkinson
-  - image: /stamps/falkland-islands2.webp
-    denomination: 6d
-    year: 1955
+    printer: Bradbury Wilkinson
+  - image: /stamps/falkland-islands.webp
+    denomination: 9d
+    year: 1938
     era: KGVI
-    printer: Bradbury, Wilkinson
+    printer: Bradbury Wilkinson
+  - image: /stamps/falkland0-islands.webp
+    denomination: 1/-
+    year: 1952
+    era: QEII
+    printer: Bradbury Wilkinson
 timeline:
   - year: 1833
-    event: Britská správa obnovená
+    event: Britská správa obnovená.
   - year: 1878
-    event: Prvé poštové známky
+    event: Prvé poštové známky.
   - year: 1938
-    event: KGVI definitívna séria zvierat — Bradbury, Wilkinson
-  - year: 1955
-    event: QEII definitívna séria
+    event: Obrazová séria zvierat Juraja VI. (12 motívov, ½d až £1) — hĺbkotlač, Bradbury Wilkinson.
+  - year: 1952
+    event: Nová séria Alžbety II. s rovnakými motívmi zvierat — Bradbury Wilkinson.
 draft: false
 ---
 
-The Falkland Islands in the South Atlantic have been under continuous British administration since 1833. The islands' isolation and unique wildlife — penguins, seals, albatrosses and black-necked swans — have made them a favoured subject for some of the most beautiful wildlife stamp designs in the colonial era.
+Falklandské ostrovy v južnom Atlantiku sú nepretržite pod britskou správou od roku 1833. Prvé vlastné poštové známky vydali v roku 1878. Odľahlosť ostrovov a jedinečná fauna — tučniaky, tulene, albatrosy a čiernokrké labute — sa stali obľúbeným motívom jedných z najkrajších koloniálnych známok venovaných voľne žijúcim živočíchom.
 
-The celebrated KGVI wildlife definitives of 1938, engraved and printed by Bradbury, Wilkinson & Co., are regarded as classics of recess engraving. Each value depicts a different species of Falklands wildlife with exceptional detail and naturalism.
+Obrazová séria Juraja VI. z roku 1938 pozostávala z dvanástich hodnôt (od ½d do £1), pričom každá zobrazovala iný druh miestnej fauny alebo miestnu scénu. Celú sériu vyryla a hĺbkotlačou vytlačila spoločnosť Bradbury Wilkinson.
+
+Medzi motívmi série vynikajú napríklad zásobovacia loď R.R.S. William Scoresby (9d) alebo čiernokrká labuť (2d) — obe vyobrazenia patria k technicky najprepracovanejším ukážkam hĺbkotlače tohto obdobia.
+
+Po nástupe kráľovnej Alžbety II. boli od roku 1952 tie isté motívy — vrátane tučniakov generálskych (1/-) — znovu vydané s jej portrétom, opäť vytlačené spoločnosťou Bradbury Wilkinson.

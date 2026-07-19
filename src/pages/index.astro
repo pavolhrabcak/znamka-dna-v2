@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const allTerritories = await getCollection('territories', t => !t.data.draft);
+const allTerritories = await getCollection('territories', t => !t.data.draft && t.data.portrait !== false);
 const stampCount = allTerritories.reduce((sum, t) => sum + t.data.stamps.length, 0);
 const setCount = readdirSync(join(process.cwd(), 'public', 'sets')).filter(f => f.endsWith('.webp')).length;
 ---

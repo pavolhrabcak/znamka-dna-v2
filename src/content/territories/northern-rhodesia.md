@@ -9,34 +9,36 @@ current_country: Zambia
 eras: [KGVI, QEII]
 printers:
   - Waterlow & Sons
-  - De La Rue
-tags: [southern-africa, waterlow, de-la-rue, copper]
+tags: [southern-africa, waterlow, wildlife]
 stamps:
-  - image: /stamps/northern-rhodesia.webp
-    denomination: ½d
-    year: 1938
-    era: QEII
-    printer: Waterlow & Sons
   - image: /stamps/northern-rhodesia-2.webp
-    denomination: 5/-
+    denomination: 10/-
     year: 1938
     era: KGVI
     printer: Waterlow & Sons
-    note: Victoria Falls
+  - image: /stamps/northern-rhodesia.webp
+    denomination: 2/6
+    year: 1953
+    era: QEII
+    printer: Waterlow & Sons
 timeline:
   - year: 1911
-    event: Britský protektorát Severná Rhodézia
+    event: Britský protektorát Severná Rhodézia — zlúčenie Severovýchodnej a Severozápadnej Rhodézie.
   - year: 1925
-    event: Prvé poštové známky
+    event: Prvé poštové známky — motív "Giraffe and Elephants" (žirafa a slony) s portrétom Juraja V., 17 hodnôt — hĺbkotlač, Waterlow & Sons.
   - year: 1938
-    event: KGVI definitívna séria — Waterlow & Sons
+    event: Ten istý motív s portrétom Juraja VI. — hĺbkotlač, Waterlow & Sons.
   - year: 1953
-    event: Federácia Rhodézie a Ňasalandu
+    event: Ten istý motív s portrétom Alžbety II. — hĺbkotlač, Waterlow & Sons; federácia Rhodézie a Ňasalandu.
   - year: 1964
-    event: Nezávislosť — Zambia
+    event: Nezávislosť — Zambia.
 draft: false
 ---
 
-Northern Rhodesia, named after Cecil Rhodes, became a British protectorate in 1911. The territory's economy was transformed by the discovery of vast copper deposits on the Copperbelt in the 1920s, making it one of the world's leading copper producers.
+Severná Rhodézia, pomenovaná po Cecilovi Rhodesovi, sa stala britským protektorátom v roku 1911 zlúčením Severovýchodnej a Severozápadnej Rhodézie. Hospodárstvo územia zásadne zmenil objav rozsiahlych ložísk medi na Copperbelte v 20. rokoch 20. storočia, vďaka čomu sa stalo jedným z popredných svetových producentov medi.
 
-The KGVI definitives of 1938, produced by Waterlow & Sons using recess engraving, depict the iconic Victoria Falls on the Zambezi River and the colonial badge. The Victoria Falls design is particularly celebrated for its dramatic rendering of one of the world's natural wonders.
+Prvé poštové známky vydala kolónia v roku 1925 — sedemnásťhodnotová séria s portrétom Juraja V. a motívom žirafy a slonov na pozadí buša, vytlačená hĺbkotlačou spoločnosťou Waterlow & Sons. Tento dizajn sa stal jedným z najdlhšie používaných v histórii britskej koloniálnej filatelie.
+
+Presne ten istý motív, len s portrétom nového panovníka, sa objavil znova v definitívnej sérii Juraja VI. z roku 1938 — opäť hĺbkotlač, Waterlow & Sons.
+
+Po nástupe kráľovnej Alžbety II. vyšla v roku 1953 tretia definitívna séria s nezmeneným motívom žirafy a slonov, tentoraz s jej portrétom — vzácny prípad, keď rovnaký obrazový návrh sprevádzal až troch panovníkov po sebe. V tom istom roku vznikla Federácia Rhodézie a Ňasalandu. Severná Rhodézia získala nezávislosť v roku 1964 ako Zambia.

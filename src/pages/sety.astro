@@ -70,9 +70,11 @@ function titleCase(slug: string) {
 }
 
 const sets = rawFiles.map(parseFilename).map(s => {
-  const resolved  = ALIASES[s.colonySlug] ?? s.colonySlug;
-  const territory = bySlug.get(resolved);
-  const baseName  = territory?.data.name ?? titleCase(s.colonySlug);
+  const resolved      = ALIASES[s.colonySlug] ?? s.colonySlug;
+  const rawTerritory  = bySlug.get(resolved);
+  const hasTerritory  = !!rawTerritory && rawTerritory.data.portrait !== false;
+  const territory     = hasTerritory ? rawTerritory : undefined;
+  const baseName  = rawTerritory?.data.name ?? titleCase(s.colonySlug);
   const displayName = s.partLabel ? `${baseName} (${s.partLabel})` : baseName;
   return {
     ...s,
@@ -80,8 +82,8 @@ const sets = rawFiles.map(parseFilename).map(s => {
     territory,
     baseName,
     displayName,
-    continent: territory?.data.continent ?? null,
-    printers:  territory?.data.printers  ?? [],
+    continent: rawTerritory?.data.continent ?? null,
+    printers:  rawTerritory?.data.printers  ?? [],
   };
 });
 

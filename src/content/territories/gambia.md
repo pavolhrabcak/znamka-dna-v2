@@ -7,36 +7,35 @@ period_end: 1965
 capital: Bathurst
 current_country: Gambia
 eras: [KGVI, QEII]
-printers:
-  - De La Rue
-  - Waterlow & Sons
-tags: [west-africa, de-la-rue, waterlow]
+printers: []
+tags: [west-africa]
 stamps:
-  - image: /stamps/gambia.webp
-    denomination: ½d
-    year: 1938
-    era: QEII
-    printer: De La Rue
-    note: Elephant and Badge
   - image: /stamps/gambia-2.webp
-    denomination: 1/-
-    year: 1953
+    denomination: 5/-
+    year: 1938
     era: KGVI
-    printer: Waterlow & Sons
+  - image: /stamps/gambia.webp
+    denomination: 6d
+    year: 1953
+    era: QEII
 timeline:
   - year: 1821
-    event: Britský protektorát nad riekou Gambia
+    event: Britský protektorát nad riekou Gambia.
   - year: 1869
-    event: Prvé poštové známky
+    event: Prvé poštové známky.
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: Obrazová séria "Elephants" Juraja VI. (16 hodnôt, do 10 šilingov) — hĺbkotlač.
   - year: 1953
-    event: QEII definitívna séria — Waterlow & Sons
+    event: Obrazová séria Alžbety II. — hĺbkotlač.
   - year: 1965
-    event: Nezávislosť
+    event: Nezávislosť.
 draft: false
 ---
 
-The Gambia, a narrow strip of territory surrounding the Gambia River in West Africa, became a British protectorate in 1821. Bathurst (now Banjul) served as the colonial capital. The Gambia is surrounded on three sides by Senegal.
+Gambia, úzke územie okolo rieky Gambia v západnej Afrike, sa stala britským protektorátom v roku 1821. Sídlom kolónie bol Bathurst (dnešný Banjul). Gambiu z troch strán obklopuje Senegal.
 
-The KGVI definitives of 1938, engraved by De La Rue, depict an elephant and the colonial badge. Despite the small size of the colony, its stamps are notable for the quality of their recess engraving.
+Prvé vlastné poštové známky vydala Gambia v roku 1869, v čase ešte pred vyhlásením plného protektorátneho usporiadania nad celým územím pri rieke.
+
+Obrazová séria Juraja VI. z roku 1938, známa ako "Elephants", zahŕňala 16 hodnôt až do 10 šilingov s motívom afrického slona. Napriek malej rozlohe kolónie patrí táto hĺbkotlačová séria ku kvalitne spracovaným koloniálnym emisiám.
+
+Po nástupe kráľovnej Alžbety II. vyšla v roku 1953 nová obrazová séria zobrazujúca miestne remeslá, napríklad ťažbu palmového vína (palm wine tapping). Gambia získala nezávislosť v roku 1965.

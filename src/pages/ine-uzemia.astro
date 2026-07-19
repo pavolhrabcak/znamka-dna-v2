@@ -1,0 +1,119 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import { continentLabelMap } from '../lib/continentSlug';
+
+const territories = await getCollection('territories', t => !t.data.draft && t.data.portrait === false);
+territories.sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const CATEGORY_LABELS: Record<string, string> = {
+  'condominium':          'Kondomínium',
+  'chartered-company':    'Charterová spoločnosť',
+  'own-ruler':            'Vlastný panovník',
+  'au-nz-administered':   'Správa Austráliou/NZ',
+  'military-administration': 'Vojenská správa',
+};
+
+const entries = await Promise.all(territories.map(async t => {
+  const { Content } = await render(t);
+  const category = t.data.tags.find(tag => tag in CATEGORY_LABELS);
+  return { t, Content, category };
+}));
+---
+
+<Base
+  title="Iné územia — mimo klasických kolónií"
+  description="Britom ovplyvnené územia, ktoré neboli klasickými korunnými kolóniami — kondomíniá, charterové spoločnosti, protektoráty s vlastným panovníkom a ostrovy spravované Austráliou či Novým Zélandom. Ich známky preto nikdy nezobrazovali britského panovníka."
+>
+  <article data-pagefind-body class="max-w-5xl mx-auto px-8 md:px-12 pt-7 pb-16">
+
+    <nav class="text-[10px] tracking-widest uppercase text-cream-400 mb-4 flex gap-2 items-center">
+      <a href="/" class="hover:text-cream-900 transition-colors">Domov</a>
+      <span>/</span>
+      <span class="text-cream-600">Iné územia</span>
+    </nav>
+
+    <!-- Hero -->
+    <div class="mb-10 pb-8 border-b border-cream-200">
+      <h1 class="font-serif text-4xl md:text-5xl font-normal text-cream-900 mb-3">Iné územia</h1>
+      <p class="font-serif text-xl md:text-2xl font-normal text-cream-600 italic mb-7">
+        Pod britským vplyvom, no bez portrétu britského panovníka
+      </p>
+      <div class="stamp-prose">
+        <p>
+          Hlavný zoznam teritórií tejto encyklopédie sa venuje klasickým korunným kolóniám a protektorátom —
+          územiam, ktorých obrazové (pictorial) známky niesli portrét vládnuceho britského panovníka (Juraj V.,
+          Juraj VI., Alžbeta II.). Nižšie uvedené územia boli síce pod britským vplyvom a vydávali podobne
+          kvalitné hĺbkotlačové obrazové známky, ich administratívne usporiadanie však bolo iné, a preto sa na
+          známkach britský panovník nikdy neobjavil:
+        </p>
+        <ul>
+          <li><strong>Kondomínium</strong> — spoločná správa s inou mocnosťou (New Hebrides, spravované Britániou a Francúzskom).</li>
+          <li><strong>Charterová spoločnosť</strong> — správu vykonávala súkromná spoločnosť s kráľovskou chartou, nie priamo Koruna (North Borneo).</li>
+          <li><strong>Protektorát s vlastným panovníkom</strong> — krajina si zachovala svojho sultána či kráľa (Maldivy, Zanzibar, Tonga).</li>
+          <li><strong>Správa Austráliou/Novým Zélandom</strong> — tichomorské a indickooceánske ostrovy spravované z Canberry alebo Wellingtonu namiesto Londýna (Cook Islands, Nauru, Niue, Norfolk Island, Christmas Island, Cocos Islands).</li>
+          <li><strong>Vojenská správa</strong> — dočasné územie pod British Military Administration bez štandardného koloniálneho štatútu (Cyrenaica).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    {entries.length === 0 ? (
+      <p class="font-serif italic text-cream-400 text-lg py-16 text-center">Táto sekcia sa čoskoro naplní obsahom.</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+        {entries.map(({ t, Content, category }) => {
+          const { name, continent, period_start, period_end, stamps } = t.data;
+          const stamp = stamps[0];
+          return (
+            <div class="flex flex-col sm:flex-row gap-5 pb-8 border-b border-cream-200">
+              <div class="w-full sm:w-36 shrink-0">
+                <div class="border border-cream-200 bg-white p-3">
+                  <div class="aspect-[4/3] flex items-center justify-center">
+                    {stamp ? (
+                      <img src={stamp.image} alt={name} class="w-full h-full object-contain" loading="lazy" />
+                    ) : (
+                      <div class="text-cream-200 text-3xl select-none">▦</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-baseline justify-between gap-3 flex-wrap mb-1">
+                  <h2 class="font-serif text-xl text-cream-900">{name}</h2>
+                  <span class="text-[11px] tracking-widest uppercase text-cream-400 whitespace-nowrap">
+                    {period_start}–{period_end ?? ''}
+                  </span>
+                </div>
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                  <span class="text-[9px] tracking-widest uppercase text-cream-500">{continentLabelMap[continent]}</span>
+                  {category && (
+                    <>
+                      <span class="text-cream-300">·</span>
+                      <span class="text-[9px] tracking-widest uppercase px-1.5 py-0.5 border border-cream-300 text-cream-600">
+                        {CATEGORY_LABELS[category]}
+                      </span>
+                    </>
+                  )}
+                </div>
+                <div class="stamp-prose text-[0.95rem]">
+                  <Content />
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    )}
+
+    <div class="mt-14 pt-8 border-t border-cream-200 flex flex-wrap gap-3">
+      <a href="/" class="inline-block border border-cream-900 text-cream-900 text-[11px] tracking-widest uppercase px-6 py-3 hover:bg-cream-900 hover:text-white transition-colors">
+        ← Domov
+      </a>
+      <a href="/territories" class="inline-block border border-cream-300 text-cream-700 text-[11px] tracking-widest uppercase px-6 py-3 hover:border-cream-900 hover:text-cream-900 transition-colors">
+        Teritóriá →
+      </a>
+    </div>
+
+  </article>
+</Base>

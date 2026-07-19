@@ -12,57 +12,52 @@ printers:
   - Waterlow & Sons
 tags: [oceania, de-la-rue, waterlow, pacific]
 stamps:
-  - image: /stamps/fiji.webp
-    denomination: 0.5d
+  - image: /stamps/fiji5.webp
+    denomination: ½d
     year: 1938
     era: KGVI
-    printer: De La Rue
-    note: Canoe and Arms
-  - image: /stamps/fiji2.webp
+  - image: /stamps/fiji.webp
     denomination: 1d
     year: 1938
     era: KGVI
-    printer: De La Rue
-  - image: /stamps/fiji3.webp
-    denomination: 2d
-    year: 1938
-    era: QEII
-    printer: De La Rue
-    note: Sugar Cane
   - image: /stamps/fiji4.webp
-    denomination: 3d
+    denomination: 1/-
     year: 1938
     era: KGVI
-    printer: De La Rue
-  - image: /stamps/fiji5.webp
+  - image: /stamps/fiji6.webp
+    denomination: 2/6
+    year: 1938
+    era: KGVI
+  - image: /stamps/fji-7.webp
+    denomination: 5/-
+    year: 1938
+    era: KGVI
+  - image: /stamps/fiji2.webp
+    denomination: 3d
+    year: 1954
+    era: QEII
+  - image: /stamps/fiji3.webp
     denomination: 6d
     year: 1954
-    era: KGVI
-    printer: Waterlow & Sons
-  - image: /stamps/fiji6.webp
-    denomination: 1s
-    year: 1954
-    era: KGVI
-    printer: Waterlow & Sons
-  - image: /stamps/fji-7.webp
-    denomination: 5s
-    year: 1954
-    era: KGVI
-    printer: Waterlow & Sons
+    era: QEII
 timeline:
   - year: 1874
-    event: Cession — Ratu Seru Cakobau odovzdal ostrovy Británii
+    event: Cession — Ratu Seru Cakobau odovzdal ostrovy Británii.
   - year: 1870
-    event: Prvé poštové známky (pred anexiou)
+    event: Prvé poštové známky (pred cesiou).
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: Obrazová séria Juraja VI. (18 hodnôt, 1938–55) — hĺbkotlač, De La Rue a Waterlow & Sons.
   - year: 1954
-    event: QEII definitívna séria — Waterlow & Sons
+    event: Obrazová séria Alžbety II. — hĺbkotlač.
   - year: 1970
-    event: Nezávislosť
+    event: Nezávislosť.
 draft: false
 ---
 
-Fidži, súostrovie viac ako 300 ostrovov v južnom Tichom oceáne, bolo postúpené Británii v roku 1874 najvyšším náčelníkom Ratu Seru Cakobauom. Ostrovy sa stali dôležitou kolóniou produkujúcou cukor, pričom indentúrovaní pracovníci z Indie boli privádzaní od 70. rokov 19. storočia.
+Fidži, súostrovie viac ako 300 ostrovov v južnom Tichom oceáne, bolo postúpené Británii v roku 1874 najvyšším náčelníkom Ratu Seru Cakobauom. Vlastné poštové známky vydávalo už pred touto cesiou, od roku 1870.
 
-KGVI definitívne série z roku 1938, gravírované a tlačené spoločnosťou De La Rue, tvoria jednu z najkompletnejších a najrozmanitejších sád Tichomoria. Zobrazujú kánoe, cukrovú trstinu, domorodé scény a fidžianský erb. Vzory kombinujúce polynézske a koloniálne motívy patria medzi najsugestívnejšie emisie južného Tichomoria.
+Ostrovy sa stali dôležitou kolóniou produkujúcou cukor, pričom indentúrovaní pracovníci z Indie boli privádzaní od 70. rokov 19. storočia — táto hospodárska premena sa neskôr odrazila aj v motívoch koloniálnych známok.
+
+Obrazová séria Juraja VI. z roku 1938, hĺbkotlačová a tlačená striedavo spoločnosťami De La Rue a Waterlow & Sons, patrí medzi najrozsiahlejšie tichomorské emisie — celkovo 18 hodnôt vydávaných postupne až do polovice 50. rokov. Zobrazuje kánoe s výložníkom, dedinské scény, rybára s pochodňou a osvetlenou oštepom, i vidiecke scenérie s riekami a chatrčami (bure).
+
+Po nástupe kráľovnej Alžbety II. vyšla v roku 1954 nová obrazová séria zachytávajúca miestne hospodárstvo a zvyky — napríklad nakladanie kopry alebo tradičné bubnovanie na lali.

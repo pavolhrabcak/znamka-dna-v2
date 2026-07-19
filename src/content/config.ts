@@ -11,6 +11,7 @@ const territories = defineCollection({
     capital: z.string().optional(),
     current_country: z.string().optional(),
     eras: z.array(z.enum(['KGV', 'KGVI', 'QEII'])),
+    portrait: z.boolean().default(true),
     printers: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
     stamps: z.array(z.object({

@@ -8,61 +8,62 @@ capital: Nicosia
 current_country: Cyprus
 eras: [KGVI, QEII]
 printers:
-  - De La Rue
   - Waterlow & Sons
-tags: [mediterranean, de-la-rue, waterlow, europe]
+  - Bradbury Wilkinson
+tags: [mediterranean, waterlow, bradbury-wilkinson, europe]
 stamps:
-  - image: /stamps/cyprus.webp
-    denomination: 0.25pi
-    year: 1934
-    era: KGVI
-    printer: Waterlow & Sons
-    note: Kyrenia Harbour
-  - image: /stamps/cyprus2.webp
-    denomination: 0.5pi
-    year: 1934
+  - image: /stamps/cyprus5.webp
+    denomination: ½pi
+    year: 1938
     era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/cyprus3.webp
-    denomination: 1pi
+    denomination: 1½pi
     year: 1938
     era: KGVI
     printer: Waterlow & Sons
-    note: Map of Cyprus
-  - image: /stamps/cyprus4.webp
-    denomination: 4pi
+  - image: /stamps/cyprus2.webp
+    denomination: 3pi
     year: 1938
-    era: QEII
+    era: KGVI
     printer: Waterlow & Sons
-    note: Kolossi Castle
-  - image: /stamps/cyprus5.webp
+  - image: /stamps/cyprus.webp
     denomination: 9pi
-    year: 1955
+    year: 1938
     era: KGVI
     printer: Waterlow & Sons
   - image: /stamps/cyprus6.webp
-    denomination: 45pi
+    denomination: 30 mils
     year: 1955
     era: QEII
-    printer: Waterlow & Sons
+    printer: Bradbury Wilkinson
+  - image: /stamps/cyprus4.webp
+    denomination: 35 mils
+    year: 1955
+    era: QEII
+    printer: Bradbury Wilkinson
 timeline:
   - year: 1878
-    event: Britská správa — prenájom od Osmanskej ríše
+    event: Britská správa Cypru na základe Cyperského dohovoru s Osmanskou ríšou.
   - year: 1880
-    event: Prvé poštové známky
-  - year: 1881
-    event: Annexia Cypru
+    event: Prvé poštové známky Cypru.
+  - year: 1914
+    event: Formálna anexia Cypru Britániou po vypuknutí prvej svetovej vojny.
   - year: 1934
-    event: KGV definitívna séria — Waterlow & Sons
+    event: Prvá obrazová séria Juraja V. — hĺbkotlač, Waterlow & Sons.
   - year: 1938
-    event: KGVI definitívna séria
+    event: Obrazová séria Juraja VI. — rovnaké motívy s novým portrétom, Waterlow & Sons.
   - year: 1955
-    event: QEII definitívna séria
+    event: Nová séria Alžbety II. a menová reforma na mils — Bradbury Wilkinson.
   - year: 1960
-    event: Nezávislosť
+    event: Nezávislosť.
 draft: false
 ---
 
-Cyprus, tretí najväčší ostrov Stredozemného mora, bol prevzatý pod britskú správu v roku 1878 ako súčasť Cyperskej konvencie s Osmanskou ríšou. Británia ostrov formálne anektovala v roku 1914 na začiatku prvej svetovej vojny.
+Cyprus, tretí najväčší ostrov Stredozemného mora, prešiel pod britskú správu v roku 1878 na základe Cyperského dohovoru s Osmanskou ríšou. Británia ostrov formálne anektovala v roku 1914 na začiatku prvej svetovej vojny.
 
-KGV obrazové definitívy z roku 1934, gravírované spoločnosťou Waterlow & Sons, sú považované za najkrajšie cyperské koloniálne emisie. Zobrazujú prístav Kyrenia, mapu Cypru, hrad Kolossi a ďalšie klasické a byzantské pamiatky. Dvojfarebné recess gravírovanie je vykonané s výnimočnou jasnosťou a detailom.
+Prvá obrazová (pictorial) séria vyšla v roku 1934 za vlády Juraja V. — hĺbkotlačové známky zobrazujúce hrad Kolossi, prístav Kyrenia, staroveké Salamis a pevnosť Citadel (Othellova veža) vo Famaguste, ktoré vytlačila spoločnosť Waterlow & Sons.
+
+Po nástupe Juraja VI. boli v roku 1938 tie isté motívy znovu vydané s portrétom nového panovníka, opäť hĺbkotlačou u Waterlow & Sons.
+
+V roku 1955 nahradila sériu nová emisia s portrétom kráľovnej Alžbety II., ktorá sa časovo zhodovala s menovou reformou — pôvodné piastre nahradili mils. Novú sériu s motívmi ako žatva v Mesaorii či prístav Kyrenia vytlačila hĺbkotlačou spoločnosť Bradbury Wilkinson. Cyprus získal nezávislosť v roku 1960.

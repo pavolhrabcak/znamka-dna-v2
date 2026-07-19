@@ -9,46 +9,47 @@ current_country: Jamajka
 eras: [KGV, KGVI]
 printers:
   - De La Rue
-  - Waterlow & Sons
-tags: [caribbean, de-la-rue, waterlow]
+tags: [caribbean, de-la-rue]
 stamps:
-  - image: /stamps/Jamaica.webp
-    denomination: ½d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-    note: Coco Palms
-  - image: /stamps/Jamaica2.webp
-    denomination: 1d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-  - image: /stamps/Jamaica3.webp
-    denomination: 2d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
   - image: /stamps/Jamaica-7.webp
-    denomination: 1/-
-    year: 1956
+    denomination: 2d
+    year: 1932
     era: KGV
-    printer: Waterlow & Sons
+  - image: /stamps/Jamaica3.webp
+    denomination: 6d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+  - image: /stamps/Jamaica2.webp
+    denomination: 9d
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+  - image: /stamps/Jamaica.webp
+    denomination: 1/-
+    year: 1938
+    era: KGVI
+    printer: De La Rue
 timeline:
   - year: 1655
     event: Britské dobytie od Španielska
   - year: 1858
     event: Prvé poštové známky
-  - year: 1919
-    event: Výstavná emisia — Llandovery Falls
+  - year: 1932
+    event: Obrazová séria Juraja V. (napr. Coco Palms at Columbus Cove) — hĺbkotlač.
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: Obrazová séria Juraja VI. (14 hodnôt) — hĺbkotlač, De La Rue.
   - year: 1956
-    event: QEII definitívna séria
+    event: QEII definitívna séria.
   - year: 1962
-    event: Nezávislosť
+    event: Nezávislosť.
 draft: false
 ---
 
-Jamaica, Britain's largest Caribbean possession, was captured from Spain in 1655 and remained a British colony for over three centuries. Kingston became the capital after the destruction of Port Royal by earthquake in 1692.
+Jamaica, najväčšie britské karibské územie, bola dobytá od Španielska v roku 1655 a zostala britskou kolóniou vyše troch storočí. Kingston sa stal hlavným mestom po zničení Port Royal zemetrasením v roku 1692. Vlastné poštové známky vydáva od roku 1858.
 
-Jamaica has a distinguished philatelic history: it was one of the first British colonies to issue pictorial definitives, beginning with the Llandovery Falls series in 1900. The KGVI definitives of 1938, engraved and printed by De La Rue, depict tropical scenery including coco palms, the House of Assembly and Priestman's River in exceptionally fine recess work.
+Obrazová séria Juraja V. z roku 1932 obsahovala okrem iného motív "Coco Palms at Columbus Cove" (2d) — kokosové palmy pri pobreží — vydaný ešte bez portrétu panovníka, len s dekoratívnym rámovaním.
+
+Obrazová séria Juraja VI. z roku 1938, pozostávajúca zo 14 hodnôt, bola vytlačená hĺbkotlačou spoločnosťou De La Rue. Zobrazuje miestne scenérie ako rieku Priestman's River v Portlande (6d), prístav Kingston Harbour (9d) alebo cukrovarnícky priemysel na známke Sugar Industry (1/-).
+
+Po nástupe kráľovnej Alžbety II. vyšla v roku 1956 nová obrazová definitívna séria. Jamajka získala nezávislosť v roku 1962.

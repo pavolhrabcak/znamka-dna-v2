@@ -4,7 +4,7 @@ import TerritoryCard from '../../components/TerritoryCard.astro';
 import { getCollection } from 'astro:content';
 import { CONTINENTS, continentLabelMap } from '../../lib/continentSlug';
 
-const allTerritories = await getCollection('territories', t => !t.data.draft);
+const allTerritories = await getCollection('territories', t => !t.data.draft && t.data.portrait !== false);
 allTerritories.sort((a, b) => a.data.name.localeCompare(b.data.name));
 
 const allPrinters = [...new Set(allTerritories.flatMap(t => t.data.printers))].sort();

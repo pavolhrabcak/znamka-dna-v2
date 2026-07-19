@@ -7,65 +7,26 @@ period_end: 1963
 capital: Jesselton
 current_country: Malajzia (Sabah)
 eras: [KGVI]
+portrait: false
 printers:
   - Waterlow & Sons
-  - De La Rue
-tags: [asia, waterlow, de-la-rue, wildlife]
+tags: [asia, waterlow, pictorial, chartered-company]
 stamps:
   - image: /stamps/borneo.webp
-    denomination: 1c
-    year: 1939
-    era: KGVI
-    printer: Waterlow & Sons
-    note: Proboscis Monkey
-  - image: /stamps/borneo2.webp
-    denomination: 2c
-    year: 1939
-    era: KGVI
-    printer: Waterlow & Sons
-    note: Sun Bear
-  - image: /stamps/borneo3.webp
-    denomination: 3c
-    year: 1939
-    era: KGVI
-    printer: Waterlow & Sons
-    note: Clouded Leopard
-  - image: /stamps/borneo4.webp
-    denomination: 4c
-    year: 1939
-    era: KGVI
-    printer: Waterlow & Sons
-    note: Sumatran Rhinoceros
-  - image: /stamps/borneo5.webp
     denomination: 6c
-    year: 1939
-    era: KGVI
-    printer: Waterlow & Sons
-    note: Orangutan
-  - image: /stamps/borneo6.webp
-    denomination: 8c
-    year: 1939
-    era: KGVI
-    printer: Waterlow & Sons
-  - image: /stamps/borneo7.webp
-    denomination: 10c
     year: 1939
     era: KGVI
     printer: Waterlow & Sons
 timeline:
   - year: 1881
-    event: Britská Severoborneoská spoločnosť — kráľovská charta
-  - year: 1883
-    event: Prvé poštové známky
+    event: Kráľovská charta — Britská severoborneoská spoločnosť.
+  - year: 1931
+    event: Zlaté výročie charty, osemznámková séria — hĺbkotlač, Waterlow & Sons.
   - year: 1939
-    event: KGVI definitívna séria zvierat — Waterlow & Sons
-  - year: 1946
-    event: Korunná kolónia po 2. svetovej vojne
+    event: Nová obrazová séria (15 hodnôt) — hĺbkotlač, Waterlow & Sons.
   - year: 1963
-    event: Súčasť Malajzie — Sabah
+    event: Súčasť Malajzie — Sabah.
 draft: false
 ---
 
-Severné Borneo bolo spravované Britskou severoborneoskou spoločnosťou od roku 1881 do roku 1946, kedy sa stalo korunnou kolóniou. Územie je preslávené výnimočnou biodiverzitou fauny — orangutany, chobotnaté opice, oblačné leopardy, slnečné medvede a sumatranské nosorožce — všetky zobrazené na jeho poštových známkach.
-
-Veľkolepé KGVI definitívne série s faunou z roku 1939, gravírované a tlačené spoločnosťou Waterlow & Sons, sú považované za jedny z najkrajších spomedzi všetkých britských koloniálnych poštových známok. Každá nominálna hodnota zobrazuje iný druh borneoského zvieraťa s výnimočným naturalistickým detailom.
+Severné Borneo spravovala od roku 1881 na základe kráľovskej charty súkromná Britská severoborneoská spoločnosť — nešlo teda o klasickú korunnú kolóniu, a preto sa na jeho známkach nikdy neobjavil portrét britského panovníka, len erb spoločnosti a neskôr štátu. Pri 50. výročí charty vyšla v roku 1931 osemznámková hĺbkotlačová séria (Waterlow & Sons, rám a stred tlačené samostatne v odlišných farbách), po nej nasledovala rozsiahlejšia obrazová séria z roku 1939 (15 hodnôt, takisto Waterlow & Sons) zachytávajúca pestrú etnografiu a krajinu územia — jazdcov kmeňa Bajau na koňoch, bojovníka Dyaka, poľovníka s fúkačkou, mapu regiónu, čínsku plachetnicu džunku či oblačného leoparda. Severné Borneo sa stalo korunnou kolóniou v roku 1946 a v roku 1963 sa spolu so zvyškom Malajska stalo súčasťou Malajzie ako štát Sabah.

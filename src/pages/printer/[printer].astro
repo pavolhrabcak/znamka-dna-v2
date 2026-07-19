@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 import { slugify } from '../../lib/slugify';
 
 export async function getStaticPaths() {
-  const territories = await getCollection('territories', t => !t.data.draft);
+  const territories = await getCollection('territories', t => !t.data.draft && t.data.portrait !== false);
   const printerMap = new Map<string, typeof territories>();
 
   for (const t of territories) {

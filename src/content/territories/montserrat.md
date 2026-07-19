@@ -9,56 +9,56 @@ current_country: Montserrat (britské zámorské územie)
 eras: [KGV, KGVI]
 printers:
   - De La Rue
-  - Waterlow & Sons
-tags: [caribbean, de-la-rue, waterlow]
+tags: [caribbean, de-la-rue]
 stamps:
-  - image: /stamps/Montserrat.webp
-    denomination: ½d
-    year: 1938
-    era: KGVI
+  - image: /stamps/Montserrat5.webp
+    denomination: 2/6
+    year: 1932
+    era: KGV
     printer: De La Rue
-  - image: /stamps/Montserrat2.webp
-    denomination: 1d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-  - image: /stamps/Montserrat2a.webp
+  - image: /stamps/Montserrat3.webp
     denomination: 1½d
     year: 1938
     era: KGVI
     printer: De La Rue
-  - image: /stamps/Montserrat3.webp
-    denomination: 2d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
-  - image: /stamps/Montserrat3b.webp
-    denomination: 2½d
-    year: 1938
-    era: KGVI
-    printer: De La Rue
   - image: /stamps/Montserrat4.webp
-    denomination: 6d
-    year: 1953
+    denomination: 3d
+    year: 1938
     era: KGVI
-    printer: Waterlow & Sons
-  - image: /stamps/Montserrat5.webp
-    denomination: 1/-
-    year: 1953
-    era: KGV
-    printer: Waterlow & Sons
+    printer: De La Rue
+  - image: /stamps/Montserrat2.webp
+    denomination: 2/6
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+  - image: /stamps/Montserrat2a.webp
+    denomination: 10/-
+    year: 1938
+    era: KGVI
+    printer: De La Rue
+  - image: /stamps/Montserrat.webp
+    denomination: £1
+    year: 1938
+    era: KGVI
+    printer: De La Rue
 timeline:
   - year: 1632
-    event: Britská kolonizácia
+    event: Britská kolonizácia.
   - year: 1876
-    event: Prvé poštové známky
+    event: Prvé poštové známky.
+  - year: 1932
+    event: Trojstoročnica kolonizácie (1632–1932), desaťznámková séria — hĺbkotlač, De La Rue.
   - year: 1938
-    event: KGVI definitívna séria — De La Rue
+    event: Obrazová séria Juraja VI. (¼d–£1) — hĺbkotlač, De La Rue; dotlač s iným zúbkovaním v rokoch 1942–43.
   - year: 1953
-    event: QEII definitívna séria
+    event: Obrazová séria Alžbety II. ("Map of the Island").
 draft: false
 ---
 
-Montserrat, a small volcanic island in the Leeward Islands, has been a British territory since 1632. The island's Irish heritage — many settlers came from Ireland — is reflected in its unofficial nickname "The Emerald Isle of the Caribbean."
+Montserrat, malý sopečný ostrov v Návetrných ostrovoch, je britským územím od roku 1632. Írsky pôvod mnohých osadníkov sa odráža v neoficiálnej prezývke ostrova "Smaragdový ostrov Karibiku". Vlastné poštové známky vydáva od roku 1876.
 
-The KGVI definitives of 1938, engraved by De La Rue, are notable for their complete set of denominations and the variety of design elements depicting the island's Badge, Government House and local scenery. Montserrat's stamps are popular with Leeward Islands specialists.
+Pri príležitosti 300. výročia kolonizácie (1632–1932) vyšla desaťznámková séria s bradatým portrétom Juraja V., vytlačená hĺbkotlačou spoločnosťou De La Rue. Motív zobrazuje prístavné mestečko New Plymouth a záliv v pozadí sopky.
+
+Obrazová séria Juraja VI., vydávaná od roku 1938 v hodnotách od ¼d do £1, bola takisto vytlačená hĺbkotlačou spoločnosťou De La Rue (pôvodne so zúbkovaním 13, od rokov 1942–43 dotláčaná so zúbkovaním 14). Zahŕňa niekoľko odlišných motívov podľa nominálnej hodnoty — záliv Carr's Bay (3d, £1), botanickú stanicu (2/6, 10/-) a zber bavlny druhu Sea Island na miestnych plantážach (1½d).
+
+Po nástupe kráľovnej Alžbety II. vyšla v roku 1953 nová definitívna séria s motívom mapy ostrova.
